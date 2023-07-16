@@ -1,0 +1,1 @@
+DaiAll write operations will always append the data to the end of the file, regardless of the file offset set by lseek
