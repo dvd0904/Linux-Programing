@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "debug_messages.h": "c",
+        "debug.h": "c"
+    }
+}

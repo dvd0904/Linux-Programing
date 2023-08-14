@@ -39,7 +39,7 @@ shared:
 install:
 	install $(LIB_SHARED_DIR)/$(SHARED_LIB_NAME) /usr/lib
 
-shared_lib: obj shared install
+all: obj shared install
 	$(CC) $(OBJ_DIR)/main.o -L$(LIB_SHARED_DIR) -lhello -o $(BIN_DIR)/$(PRJ_NAME)
 
 #Create static lib

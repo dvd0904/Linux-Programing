@@ -90,7 +90,8 @@ int main(int argc, char *argv[])
 
     /* Khởi tạo địa chỉ cho server */
     serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(port_no);
+    // serv_addr.sin_port = htons(port_no);
+    serv_addr.sin_port = port_no;
     serv_addr.sin_addr.s_addr = INADDR_ANY; // inet_addr("192.168.5.128"); //INADDR_ANY
 
     /* Gắn socket với địa chỉ server */
