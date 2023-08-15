@@ -1,5 +1,5 @@
-#ifndef     MAHFILE_H
-#define     MAHFILE_H
+#ifndef     ASS_FILE_H
+#define     ASS_FILE_H
 
 #include "shared.h"
 

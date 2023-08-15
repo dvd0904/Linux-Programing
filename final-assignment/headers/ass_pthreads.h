@@ -1,5 +1,5 @@
-#ifndef MAHPTHREADS_H
-#define MAHPTHREADS_H
+#ifndef ASS_PTHREADS_H
+#define ASS_PTHREADS_H
 
 
 #define mutex_init(x, y) { int error = pthread_mutex_init(x, y); if (error) printf("At pthread_mutex_init(): %s", strerror(error)); }

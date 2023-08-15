@@ -1,0 +1,5 @@
+{
+    "timestamp": "2023/08/15 09:48:17",
+    "level": "info",
+    "description": "Hello {\n\t\"name\":\t\"Awesome 4K\",\n\t\"resolutions\":\t[{\n\t\t\t\"width\":\t1280,\n\t\t\t\"height\":\t720\n\t\t}, {\n\t\t\t\"width\":\t1920,\n\t\t\t\"height\":\t1080\n\t\t}, {\n\t\t\t\"width\":\t3840,\n\t\t\t\"height\":\t2160\n\t\t}]\n}"
+}

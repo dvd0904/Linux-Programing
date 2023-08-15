@@ -2,6 +2,7 @@
 #define OS_HEADERS
 
 
+
 /* Size limit control */
 #define OS_SIZE_1048576             1048576
 #define OS_SIZE_65536               65536
@@ -22,6 +23,7 @@
 
 /* Level of log messages */
 
+#define LOGLEVEL_CRITICAL           4
 #define LOGLEVEL_ERROR              3
 #define LOGLEVEL_WARNING            2
 #define LOGLEVEL_INFO               1
@@ -33,7 +35,6 @@
 #define OS_FLSIZE                   OS_SIZE_256         /* Maximum file size                */
 #define OS_HEADER_SIZE              OS_SIZE_128         /* Maximum header size              */
 #define OS_LOG_HEADER               OS_SIZE_256         /* Maximum log header size          */
-#define OS_SK_HEADER                OS_SIZE_6144        /* Maximum syscheck header size     */
 #define IPSIZE                      INET6_ADDRSTRLEN    /* IP Address size                  */
 #define AUTH_POOL                   1000                /* Max number of connections        */
 #define BACKLOG                     128                 /* Socket input queue length        */
@@ -45,5 +46,11 @@
 #define KEEPALIVE_SIZE              700                 /* Random keepalive string size     */
 #define MAX_DYN_STR                 4194304             /* Max message size received 4MiB   */
 #define DATE_LENGTH                 64                  /* Format date time %D %T           */
+
+/* Global name */
+
+#define __ass_name                  "Final Assignment"
+#define __author                    "Nguyen Dinh Dai"
+#define __contact                   "dinhdai0904@gmail.com"
 
 #endif /* OS_HEADERS */
