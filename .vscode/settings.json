@@ -4,6 +4,8 @@
         "debug.h": "c",
         "unistd.h": "c",
         "getopt_posix.h": "c",
-        "ass_config.h": "c"
+        "ass_config.h": "c",
+        "shared.h": "c",
+        "os_queue.h": "c"
     }
 }

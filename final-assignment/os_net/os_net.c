@@ -1,6 +1,6 @@
 #include <errno.h>
 #include "shared.h"
-#include "ass_net.h"
+#include "os_net.h"
 
 
 
@@ -19,7 +19,7 @@ static int OS_Bindport(u_int16_t _port, unsigned int _proto, const char *_ip)
     if (_proto == IPPROTO_TCP) 
     {
         int flag = 1;
-        if ((os_sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
+        if ((os_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
             return (int)(OS_SOCKTERR);
         
 
@@ -29,6 +29,7 @@ static int OS_Bindport(u_int16_t _port, unsigned int _proto, const char *_ip)
             OS_CloseSocket(os_sock);
             return (OS_SOCKTERR);
         }
+
     } 
     else 
         return (OS_INVALID);
@@ -37,16 +38,19 @@ static int OS_Bindport(u_int16_t _port, unsigned int _proto, const char *_ip)
     server.sin_family = AF_INET;
     server.sin_port = htons(_port);
 
+    
     if ((_ip == NULL) || (_ip[0] == '\0')) 
         server.sin_addr.s_addr = htonl(INADDR_ANY);
     else 
         server.sin_addr.s_addr = inet_addr(_ip);
+
     
     if (bind(os_sock, (struct sockaddr *) &server, sizeof(server)) < 0) 
     {
         OS_CloseSocket(os_sock);
         return (OS_SOCKTERR);
     }
+
 
     if (_proto == IPPROTO_TCP) 
     {
@@ -78,7 +82,7 @@ static int OS_Connect(u_int16_t _port, unsigned int protocol, const char *_ip)
     struct sockaddr_in server;
 
 
-    if ((ossock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0) 
+    if ((ossock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0) 
         return (OS_SOCKTERR);
 
     if ((_ip == NULL) || (_ip[0] == '\0')) {
@@ -230,7 +234,17 @@ int OS_SendTCPbySize(int socket, int size, const char *msg)
     return (0);
 }
 
+int OS_SetRecvTimeout(int socket, long seconds, long useconds)
+{
+    struct timeval tv = { seconds, useconds };
+    return setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const void *)&tv, sizeof(tv));
+
+}
+
+
 int OS_CloseSocket(int socket)
 {
     return (close(socket));
 }
+
+

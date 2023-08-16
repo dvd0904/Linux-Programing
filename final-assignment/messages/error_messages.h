@@ -15,7 +15,8 @@
 
 /* COMMON ERRORS */
 #define PORT_ERROR      "(1201): Invalid port number: '%d'."
-#define BIND_ERROR      "(1202): Unable to Bind port '%d' due to [(%d)-(%s)]"
-#define ACCEPT_ERROR    "(1203): Couldn't accept TCP connections: %s (%d)"
+#define BIND_ERROR      "(1202): Unable to Bind port '%d' due to [(%d)-(%s)]."
+#define ACCEPT_ERROR    "(1203): Couldn't accept TCP connections: %s (%d)."
+#define SIGNAL_RECV     "(1204): SIGNAL [(%d)-(%s)] Received. Exit Cleaning..."
 
 #endif

@@ -30,11 +30,12 @@ static void _log(int level, const char * file, int line,
     char *filename;
     char *timestamp = get_timestamp(time(NULL));
 
-    const char *strlevel[4]= {
+    const char *strlevel[5]= {
         "DEBUG",
         "INFO",
         "WARNING",
         "ERROR",
+        "CRITICAL"
     };
 
     const char *strleveljson[5] = {
@@ -42,6 +43,7 @@ static void _log(int level, const char * file, int line,
         "info",
         "warning",
         "error",
+        "critical"
     };
 
     va_copy(args2, args);
@@ -113,7 +115,6 @@ static void _log(int level, const char * file, int line,
             fp = fopen(logfile, "a");
         else
         {
-            printf("vao day\n");
             /* REF: https://www.geeksforgeeks.org/umask-command-in-linux-with-examples/ */
             oldmask = umask(0006); /* set read, write permission for user and groups*/
             fp = fopen(logfile, "w");

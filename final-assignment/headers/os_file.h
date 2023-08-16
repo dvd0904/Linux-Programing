@@ -1,5 +1,5 @@
-#ifndef     ASS_FILE_H
-#define     ASS_FILE_H
+#ifndef     OSFILE_H
+#define     OSFILE_H
 
 #include "shared.h"
 

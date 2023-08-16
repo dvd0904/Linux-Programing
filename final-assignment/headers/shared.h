@@ -36,13 +36,14 @@
 #include <errno.h>
 #include <libgen.h>
 
-#include "ass_defs.h"
-#include "ass_debug.h"
-#include "ass_time.h"
-#include "ass_pthreads.h"
-#include "ass_file.h"
-#include "ass_err.h"
-#include "ass_config.h"
+#include "os_defs.h"
+#include "os_debug.h"
+#include "os_time.h"
+#include "os_pthreads.h"
+#include "os_file.h"
+#include "os_err.h"
+#include "os_queue.h"
+
 
 
 #include "messages/debug_messages.h"

@@ -1,5 +1,5 @@
-#ifndef ASS_TIME_H 
-#define ASS_TIME_H 
+#ifndef OSTIME_H 
+#define OSTIME_H 
 
 #define TIME_LENGTH     OS_SIZE_128
 

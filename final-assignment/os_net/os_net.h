@@ -1,8 +1,6 @@
-#ifndef ASS_NET_H
-#define ASS_NET_H
+#ifndef OSNET_H
+#define OSNET_H
 
-
-#define DEFAULT_PORT 1515
 
 /* OS_Bindport*
  * Bind a specific port (protocol and a ip).
@@ -33,6 +31,10 @@ int OS_SendTCPbySize(int socket, int size, const char *msg) __attribute__((nonnu
 /* Set the maximum buffer size for the socket */
 int OS_SetSocketSize(int sock, int mode, int max_msg_size);
 
+/* Set the receiving timeout for a socket
+ * Returns 0 on success, else -1
+ */
+int OS_SetRecvTimeout(int socket, long seconds, long useconds);
 
 /* Close a network socket
  * Returns 0 on success, else -1 or SOCKET_ERROR

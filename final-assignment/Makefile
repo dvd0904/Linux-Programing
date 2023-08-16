@@ -25,7 +25,13 @@ $(JSON_LIB): ${cjson_o}
 ${EXTERNAL_JSON}%.o: ${EXTERNAL_JSON}%.c
 	${CC} ${C_FLAGS} -fPIC -c $^ -o $@
 
-main: ${shared_o} main-server.c $(JSON_LIB)
+os_net_c := $(wildcard os_net/*.c)
+os_net_o := $(os_net_c:.c=.o)
+
+os_net/%.o: os_net/%.c
+	${CC} ${C_FLAGS} -c $^ -o $@
+
+main: ${shared_o} ${os_net_o} main-server.c $(JSON_LIB)
 	${CC} ${C_FLAGS} $^ -o $@
 
 .PHONY: main
@@ -34,4 +40,5 @@ clean:
 	rm -rf ${shared_o}
 	rm -rf main
 	rm -rf ${cjson_o}
+	rm -rf ${os_net_o}
 	rm -rf $(JSON_LIB)

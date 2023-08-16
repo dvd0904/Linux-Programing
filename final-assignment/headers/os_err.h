@@ -1,5 +1,5 @@
-#ifndef ASS_ERR
-#define ASS_ERR
+#ifndef OSERR
+#define OSERR
 
 #define OS_SUCCESS      0   /* Success                  */
 #define OS_INVALID      -1  /* Invalid entry            */
@@ -21,4 +21,4 @@
 
 typedef int w_err_t;
 
-#endif /* ASS_ERR */
+#endif /* OSERR */
