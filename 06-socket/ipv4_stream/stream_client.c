@@ -33,15 +33,15 @@ void chat_func(int server_fd)
         }
 		
         /* Nhận thông điệp từ server bằng hàm read */
-        numb_read = read(server_fd, recvbuff, sizeof(recvbuff));
-        if (numb_read < 0) 
-            handle_error("read()");
-        if (strncmp("exit", recvbuff, 4) == 0) {
-            printf("Server exit ...\n");
-            break;
-        }
+        // numb_read = read(server_fd, recvbuff, sizeof(recvbuff));
+        // if (numb_read < 0) 
+        //     handle_error("read()");
+        // if (strncmp("exit", recvbuff, 4) == 0) {
+        //     printf("Server exit ...\n");
+        //     break;
+        // }
 
-        printf("\nMessage from Server: %s\n",recvbuff);   
+        // printf("\nMessage from Server: %s\n",recvbuff);   
     }
     close(server_fd); /*close*/ 
 }

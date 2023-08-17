@@ -17,6 +17,9 @@ static void handler(int signum);
 /* Thread for manage new client */
 static void *run_connection_manager(void *arg);
 
+/* Thread for dispatcher client */
+static void *run_dispatcher_manager(void *arg);
+
 /* Thread for manage data */
 static void *run_data_manager(void *arg);
 
@@ -46,6 +49,7 @@ int main(int argc, char **argv)
     pthread_t thread_connection_manager = 0;
     pthread_t thread_data_managemer = 0;
     pthread_t thread_storage_manager = 0;
+    pthread_t thread_dispatcher_manager = 0;
 
     /* Get option */
     {
@@ -113,10 +117,18 @@ int main(int argc, char **argv)
         merror("Couldn't create thread: %s", strerror(status));
         return EXIT_FAILURE;
     }
-    minfo("Status: %d", status);
+
+    if (status = pthread_create(&thread_dispatcher_manager, NULL, (void *)&run_dispatcher_manager, NULL), status != 0)
+    {
+        merror("Couldn't create thread: %s", strerror(status));
+        return EXIT_FAILURE;
+    }
+    
+
 
 
     pthread_join(thread_connection_manager, NULL);
+    pthread_join(thread_dispatcher_manager, NULL);
 
     queue_free(client_queue);
     minfo("Exiting...");
@@ -202,6 +214,46 @@ static void *run_connection_manager(void *arg)
 
     close(sock);
     return NULL;
+}
+
+/* Thread for dispatch data */
+static void *run_dispatcher_manager(void *arg)
+{
+    char ip[IPSIZE + 1];
+    int ret;
+    char *buf = NULL;
+    char response[2048];
+    response[2047] = '\0';
+
+    authd_sigblock();
+
+    memset(ip, '\0', IPSIZE + 1);
+
+    mdebug1("Dispatch thread ready.");
+
+    while(running)
+    {
+        const struct timespec timeout = {.tv_sec = time(NULL) + 1};
+        struct client *client = queue_pop_ex_timedwait(client_queue, &timeout);
+
+        if (queue_push_ex(client_queue, client) == -1)
+        {
+            merror("Too many connections. Rejecting.");
+            close(client->socket);
+        }
+
+        if (!client)
+        {
+            continue;
+        }
+
+        strncpy(ip, inet_ntoa(client->addr), IPSIZE - 1);
+        minfo("New connection from %s", ip);
+
+        char *buf = OS_RecvTCP(client->socket, OS_SIZE_1024);
+        minfo("Buf: %s", buf);
+    }
+
 }
 
 /* Thread for manage data */
