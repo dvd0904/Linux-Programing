@@ -4,7 +4,6 @@ PRJ_NAME := hello
 SHARED_LIB_NAME := libhello.so
 STATIC_LIB_NAME := libhello.a
 
-LD_LIBRARY_PATH =
 
 CUR_DIR := $(shell pwd)
 INC_DIR := $(CUR_DIR)/inc
