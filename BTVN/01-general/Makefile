@@ -34,16 +34,18 @@ obj: mkdir_obj
 	$(CC) $(C_FLAGS) $(OBJ_DIR)/hello_world.o $(SRC_DIR)/hello_world.c -I $(INC_DIR)
 
 #Create shared-lib
-shared:
+shared: $(LIB_SHARED_DIR)
 	$(CC) -shared $(OBJ_DIR)/* -o $(LIB_SHARED_DIR)/$(SHARED_LIB_NAME)
+
+$(LIB_SHARED_DIR):
+	mkdir -p $(LIB_SHARED_DIR)
 
 install:
 	install $(LIB_SHARED_DIR)/$(SHARED_LIB_NAME) /usr/lib
 
-all: obj shared 
+all: obj shared install
+	mkdir -p $(BIN_DIR)
 	$(CC) $(OBJ_DIR)/main.o -L$(LIB_SHARED_DIR) -lhello -o $(BIN_DIR)/$(PRJ_NAME)
-	LD_LIBRARY_PATH=$(LIB_SHARED_DIR) $(LD_LIBRARY_PATH)
-	echo $(LD_LIBRARY_PATH)
 
 #Create static lib
 static: obj
@@ -57,3 +59,4 @@ clean:
 	rm -rf $(LIB_SHARED_DIR)/$(SHARED_LIB_NAME)
 	rm -rf $(BIN_DIR)/*
 	rm -rf $(LIB_STATIC_DIR)/$(STATIC_LIB_NAME)
+	rm -rf /usr/lib/libhello.so
