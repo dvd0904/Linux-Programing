@@ -4,7 +4,9 @@ PRJ_NAME := hello
 SHARED_LIB_NAME := libhello.so
 STATIC_LIB_NAME := libhello.a
 
-CUR_DIR := .
+LD_LIBRARY_PATH =
+
+CUR_DIR := $(shell pwd)
 INC_DIR := $(CUR_DIR)/inc
 SRC_DIR := $(CUR_DIR)/src
 OBJ_DIR := $(CUR_DIR)/obj
@@ -39,8 +41,10 @@ shared:
 install:
 	install $(LIB_SHARED_DIR)/$(SHARED_LIB_NAME) /usr/lib
 
-all: obj shared install
+all: obj shared 
 	$(CC) $(OBJ_DIR)/main.o -L$(LIB_SHARED_DIR) -lhello -o $(BIN_DIR)/$(PRJ_NAME)
+	LD_LIBRARY_PATH=$(LIB_SHARED_DIR) $(LD_LIBRARY_PATH)
+	echo $(LD_LIBRARY_PATH)
 
 #Create static lib
 static: obj
