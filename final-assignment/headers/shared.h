@@ -30,6 +30,7 @@
 #include <signal.h>
 #include <stdbool.h>
 #include <pthread.h>
+#include <poll.h>
 
 
 #include <time.h>

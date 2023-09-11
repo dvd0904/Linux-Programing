@@ -46,6 +46,8 @@
 #define KEEPALIVE_SIZE              700                 /* Random keepalive string size     */
 #define MAX_DYN_STR                 4194304             /* Max message size received 4MiB   */
 #define DATE_LENGTH                 64                  /* Format date time %D %T           */
+#define MIN_PORT                    1024                /* Minimum port number              */
+#define MAX_PORT                    65536               /* Maximum port number              */
 
 /* Global name */
 

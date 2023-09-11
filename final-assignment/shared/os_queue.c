@@ -1,6 +1,7 @@
 #include "shared.h"
 
 w_queue_t * queue_init(size_t size) {
+
     w_queue_t * queue;
     os_calloc(1, sizeof(w_queue_t), queue);
     os_malloc(size * sizeof(void *), queue->data);
