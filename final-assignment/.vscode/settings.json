@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "shared.h": "c"
+        "shared.h": "c",
+        "pthread.h": "c"
     }
 }

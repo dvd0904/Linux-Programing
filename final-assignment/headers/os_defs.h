@@ -1,7 +1,16 @@
 #ifndef OS_HEADERS
 #define OS_HEADERS
 
+#ifndef ARGV0
+#define ARGV0 "server"
+#endif
 
+typedef uint16_t sensor_id_t;
+typedef double sensor_value_t;     
+typedef time_t sensor_ts_t; 
+
+
+#define CONNECTION_MANAGER          "CONNECTION MANAGER"
 
 /* Size limit control */
 #define OS_SIZE_1048576             1048576
@@ -48,7 +57,8 @@
 #define DATE_LENGTH                 64                  /* Format date time %D %T           */
 #define MIN_PORT                    1024                /* Minimum port number              */
 #define MAX_PORT                    65536               /* Maximum port number              */
-
+#define DEFAULT_PORT                6543                /* Defualt port number              */
+#define TIMEOUT                     5
 /* Global name */
 
 #define __ass_name                  "Final Assignment"

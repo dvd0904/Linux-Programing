@@ -7,6 +7,8 @@
 #define RECV_SOCK 0
 #define SEND_SOCK 1
 
+
+
 /* Prototypes */
 static int OS_Bindport(u_int16_t _port, unsigned int _proto, const char *_ip);
 static int OS_Connect(u_int16_t _port, unsigned int protocol, const char *_ip);
@@ -164,24 +166,29 @@ int OS_SetSocketSize(int sock, int mode, int max_msg_size)
 }
 
 /* Accept a TCP connection */
-int OS_AcceptTCP(int socket, char *srcip, size_t addrsize)
+int OS_AcceptTCP(tcpsock_t *server_sock, tcpsock_t **client, size_t addrsize)
 {
-    int clientsocket;
+    tcpsock_t *tmp;
+    os_malloc(sizeof(tcpsock_t), tmp);
     struct sockaddr_in _nc;
     socklen_t _ncl;
 
     memset(&_nc, 0, sizeof(_nc));
     _ncl = sizeof(_nc);
 
-    if ((clientsocket = accept(socket, (struct sockaddr *) &_nc,
+    if ((tmp->sd = accept(server_sock->sd, (struct sockaddr *) &_nc,
                                &_ncl)) < 0) {
         return (-1);
     }
 
-    strncpy(srcip, inet_ntoa(_nc.sin_addr), addrsize - 1);
-    srcip[addrsize - 1] = '\0';
+    os_malloc(IPSIZE + 1, tmp->ip);
 
-    return (clientsocket);
+    strncpy(tmp->ip, inet_ntoa(_nc.sin_addr), addrsize - 1);
+    tmp->ip[addrsize - 1] = '\0';
+
+    *client = tmp;
+
+    return OS_SUCCESS;
 }
 
 /* Receive a TCP packet (from an open socket) */
@@ -247,4 +254,13 @@ int OS_CloseSocket(int socket)
     return (close(socket));
 }
 
+
+int OS_GetSocketSd(int *socket, int *poll_fd)
+{
+    if(!socket)
+        return (OS_SOCKTERR);
+    
+    *poll_fd = *socket;
+    return OS_SUCCESS;
+}
 

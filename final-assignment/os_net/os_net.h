@@ -2,6 +2,22 @@
 #define OSNET_H
 
 
+typedef struct tcpsock
+{
+    int sd;
+    char *ip;
+    unsigned short port;
+} tcpsock_t;
+
+
+typedef struct tcpsock_el 
+{
+    tcpsock_t *sock_ptr;
+    int sd;
+    sensor_id_t sensor;
+    char * last_active;
+} tcpsock_el_t;
+
 /* OS_Bindport*
  * Bind a specific port (protocol and a ip).
  * If the IP is not set, it is going to use ADDR_ANY
@@ -18,7 +34,7 @@ int OS_ConnectTCP(u_int16_t _port, const char *_ip);
 /* OS_RecvTCP
  * Receive a TCP packet
  */
-int OS_AcceptTCP(int socket, char *srcip, size_t addrsize) __attribute__((nonnull));
+int OS_AcceptTCP(tcpsock_t *server_sock, tcpsock_t **client, size_t addrsize);
 char *OS_RecvTCP(int socket, int sizet);
 int OS_RecvTCPBuffer(int socket, char *buffer, int sizet) __attribute__((nonnull));
 
@@ -41,5 +57,6 @@ int OS_SetRecvTimeout(int socket, long seconds, long useconds);
  */
 int OS_CloseSocket(int socket);
 
+int OS_GetSocketSd(int *socket, int *poll_fd);
 
 #endif

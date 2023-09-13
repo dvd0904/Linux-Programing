@@ -44,8 +44,7 @@
 #include "os_file.h"
 #include "os_err.h"
 #include "os_queue.h"
-
-
+#include "os_dll.h"
 
 #include "messages/debug_messages.h"
 #include "messages/error_messages.h"
