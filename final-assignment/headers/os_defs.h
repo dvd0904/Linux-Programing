@@ -5,11 +5,6 @@
 #define ARGV0 "server"
 #endif
 
-typedef uint16_t sensor_id_t;
-typedef double sensor_value_t;     
-typedef time_t sensor_ts_t; 
-
-
 #define CONNECTION_MANAGER          "CONNECTION MANAGER"
 
 /* Size limit control */
@@ -41,10 +36,13 @@ typedef time_t sensor_ts_t;
 
 #define OS_MAXSTR                   OS_SIZE_65536       /* Size for logs, sockets, etc      */
 #define OS_BUFFER_SIZE              OS_SIZE_2048        /* Size of general buffers          */
+#define OS_PIPE_BUFFER_SIZE         OS_SIZE_256         /* Size of buffers write to pipe    */
 #define OS_FLSIZE                   OS_SIZE_256         /* Maximum file size                */
 #define OS_HEADER_SIZE              OS_SIZE_128         /* Maximum header size              */
 #define OS_LOG_HEADER               OS_SIZE_256         /* Maximum log header size          */
+#define OS_MSG_SIZE                 OS_SIZE_64
 #define IPSIZE                      INET6_ADDRSTRLEN    /* IP Address size                  */
+#define THREADS_NUM                 3
 #define AUTH_POOL                   1000                /* Max number of connections        */
 #define BACKLOG                     128                 /* Socket input queue length        */
 #define MAX_EVENTS                  1024                /* Max number of epoll events       */
@@ -59,6 +57,9 @@ typedef time_t sensor_ts_t;
 #define MAX_PORT                    65536               /* Maximum port number              */
 #define DEFAULT_PORT                6543                /* Defualt port number              */
 #define TIMEOUT                     5
+#define SLEEP                       2
+#define MIN_TEMP                    17
+#define MAX_TEMP                    35
 /* Global name */
 
 #define __ass_name                  "Final Assignment"

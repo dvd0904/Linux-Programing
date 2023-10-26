@@ -6,6 +6,6 @@
 #include <time.h>
 
 
-char *get_timestamp(const time_t time);
+void get_timestamp(time_t time, char *timestamp);
 
 #endif

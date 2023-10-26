@@ -28,7 +28,9 @@ static void _log(int level, const char * file, int line,
     char *output;
     char logfile[PATH_MAX + 1];
     char *filename;
-    char *timestamp = get_timestamp(time(NULL));
+    char *timestamp = NULL;
+    os_calloc(TIME_LENGTH, sizeof(char), timestamp);
+    get_timestamp(time(NULL), timestamp);
 
     const char *strlevel[5]= {
         "DEBUG",
@@ -142,6 +144,8 @@ static void _log(int level, const char * file, int line,
         }
 
     }
+
+    os_free(timestamp);
 }
 
 

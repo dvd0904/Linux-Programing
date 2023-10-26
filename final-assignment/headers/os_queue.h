@@ -1,9 +1,6 @@
 #ifndef OS_QUEUE_H
 #define OS_QUEUE_H
 
-
-
-
 #include <pthread.h>
 
 /**
@@ -18,7 +15,7 @@ typedef struct queue_t {
     pthread_cond_t available; ///> condition variable when queue is empty
     pthread_cond_t available_not_empty; ///> Condition variable when queue is full
     unsigned int elements; ///> counts the number of elements stored in the queue
-} w_queue_t;
+} os_queue_t;
 
 
 /**
@@ -27,14 +24,14 @@ typedef struct queue_t {
  * @param n size of the circular queue (fits n - 1 elements)
  * @return initialize queue structure
  * */
-w_queue_t * queue_init(size_t n);
+os_queue_t * queue_init(size_t n);
 
 /**
  * @brief Frees an existent queue
  * 
  * @param queue 
  * */
-void queue_free(w_queue_t * queue);
+void queue_free(os_queue_t * queue);
 
 /**
  * @brief Evaluates whether the queue is full or not
@@ -42,7 +39,7 @@ void queue_free(w_queue_t * queue);
  * @param queue
  * @return 1 if true, 0 if false
  * */
-int queue_full(const w_queue_t * queue);
+int queue_full(const os_queue_t * queue);
 
 /**
  * @brief Evaluates whether the queue is empty or not
@@ -50,7 +47,7 @@ int queue_full(const w_queue_t * queue);
  * @param queue
  * @return 1 if true, 0 if false
  * */
-int queue_empty(const w_queue_t * queue);
+int queue_empty(const os_queue_t * queue);
 
 /** 
  * @brief Tries to insert an element into the queue
@@ -60,7 +57,7 @@ int queue_empty(const w_queue_t * queue);
  * @return -1 if queue is full
  *          0 on success
  * */
-int queue_push(w_queue_t * queue, void * data);
+int queue_push(os_queue_t * queue, void * data);
 
 /** 
  * @brief Same as queue_push but with mutual exclusion 
@@ -71,7 +68,7 @@ int queue_push(w_queue_t * queue, void * data);
  * @return -1 if queue is full
  *          0 on success
  * */
-int queue_push_ex(w_queue_t * queue, void * data);
+int queue_push_ex(os_queue_t * queue, void * data);
 
 /** 
  * @brief Same as queue_push_ex but if queue is full will
@@ -81,7 +78,7 @@ int queue_push_ex(w_queue_t * queue, void * data);
  * @param data data to be inserted
  * @return 0 always
  * */
-int queue_push_ex_block(w_queue_t * queue, void * data);
+int queue_push_ex_block(os_queue_t * queue, void * data);
 
 /**
  * @brief Retrieves next item in the queue
@@ -90,7 +87,7 @@ int queue_push_ex_block(w_queue_t * queue, void * data);
  * @return element if queue has a next
  *         NULL if queue is empty
  * */
-void * queue_pop(w_queue_t * queue);
+void * queue_pop(os_queue_t * queue);
 
 /**
  * @brief Same as queue_pop but with mutual exclusion 
@@ -99,7 +96,7 @@ void * queue_pop(w_queue_t * queue);
  * @param queue the queue
  * @return next element in the queue
  * */
-void * queue_pop_ex(w_queue_t * queue);
+void * queue_pop_ex(os_queue_t * queue);
 
 /**
  * @brief Same as queue_pop_ex but with a configured timeout for the
@@ -109,7 +106,7 @@ void * queue_pop_ex(w_queue_t * queue);
  * @param abstime timeout specification
  * @return next element in the queue
  * */
-void * queue_pop_ex_timedwait(w_queue_t * queue, const struct timespec * abstime);
+void * queue_pop_ex_timedwait(os_queue_t * queue, const struct timespec * abstime);
 
 
 

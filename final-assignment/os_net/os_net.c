@@ -2,89 +2,19 @@
 #include "shared.h"
 #include "os_net.h"
 
-
-
 #define RECV_SOCK 0
 #define SEND_SOCK 1
 
 
-
-/* Prototypes */
-static int OS_Bindport(u_int16_t _port, unsigned int _proto, const char *_ip);
-static int OS_Connect(u_int16_t _port, unsigned int protocol, const char *_ip);
-
-static int OS_Bindport(u_int16_t _port, unsigned int _proto, const char *_ip)
-{
-    int os_sock;
-    struct sockaddr_in server;
-
-    if (_proto == IPPROTO_TCP) 
-    {
-        int flag = 1;
-        if ((os_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
-            return (int)(OS_SOCKTERR);
-        
-
-        if (setsockopt(os_sock, SOL_SOCKET, SO_REUSEADDR,
-                       (char *)&flag,  sizeof(flag)) < 0) 
-        {
-            OS_CloseSocket(os_sock);
-            return (OS_SOCKTERR);
-        }
-
-    } 
-    else 
-        return (OS_INVALID);
-
-    memset(&server, 0, sizeof(server));
-    server.sin_family = AF_INET;
-    server.sin_port = htons(_port);
-
-    
-    if ((_ip == NULL) || (_ip[0] == '\0')) 
-        server.sin_addr.s_addr = htonl(INADDR_ANY);
-    else 
-        server.sin_addr.s_addr = inet_addr(_ip);
-
-    
-    if (bind(os_sock, (struct sockaddr *) &server, sizeof(server)) < 0) 
-    {
-        OS_CloseSocket(os_sock);
-        return (OS_SOCKTERR);
-    }
-
-
-    if (_proto == IPPROTO_TCP) 
-    {
-        if (listen(os_sock, BACKLOG) < 0) 
-        {
-            OS_CloseSocket(os_sock);
-            return (OS_SOCKTERR);
-        }
-    }
-
-    return (os_sock);
-}
-
-/* OS_Bindport*
- * Bind a specific port (protocol and a ip).
- * If the IP is not set, it is going to use ADDR_ANY
- * Return the socket.
- */
-int OS_Bindporttcp(u_int16_t _port, const char *_ip)
-{
-    return (OS_Bindport(_port, IPPROTO_TCP, _ip));
-}
-
-/* Open a TCP/UDP client socket */
-static int OS_Connect(u_int16_t _port, unsigned int protocol, const char *_ip)
+/* Open a TCP socket */
+int OS_Connect(u_int16_t _port, const char *_ip)
 {
     int ossock;
     int max_msg_size = OS_MAXSTR + 512;
     struct sockaddr_in server;
 
 
-    if ((ossock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0) 
+    if ((ossock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
         return (OS_SOCKTERR);
 
     if ((_ip == NULL) || (_ip[0] == '\0')) {
@@ -119,11 +49,56 @@ static int OS_Connect(u_int16_t _port, unsigned int protocol, const char *_ip)
     return (ossock);
 }
 
-/* Open a TCP socket */
-int OS_ConnectTCP(u_int16_t _port, const char *_ip)
+
+
+/* OS_Bindport*
+ * Bind a specific port (protocol and a ip).
+ * If the IP is not set, it is going to use ADDR_ANY
+ * Return the socket.
+ */
+int OS_Bindport(u_int16_t _port, const char *_ip)
 {
-    return (OS_Connect(_port, IPPROTO_TCP, _ip));
+    int os_sock;
+    struct sockaddr_in server;
+
+    int flag = 1;
+    if ((os_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
+        return (int)(OS_SOCKTERR);
+
+    if (setsockopt(os_sock, SOL_SOCKET, SO_REUSEADDR,
+                    (char *)&flag,  sizeof(flag)) < 0) 
+    {
+        OS_CloseSocket(os_sock);
+        return (OS_SOCKTERR);
+    }
+
+    memset(&server, 0, sizeof(server));
+    server.sin_family = AF_INET;
+    server.sin_port = htons(_port);
+
+    
+    if ((_ip == NULL) || (_ip[0] == '\0')) 
+        server.sin_addr.s_addr = htonl(INADDR_ANY);
+    else 
+        server.sin_addr.s_addr = inet_addr(_ip);
+
+    
+    if (bind(os_sock, (struct sockaddr *) &server, sizeof(server)) < 0) 
+    {
+        OS_CloseSocket(os_sock);
+        return (OS_SOCKTERR);
+    }
+
+    if (listen(os_sock, BACKLOG) < 0) 
+    {
+        OS_CloseSocket(os_sock);
+        return (OS_SOCKTERR);
+    }
+    
+
+    return (os_sock);
 }
+
 
 /* Set the maximum buffer size for the socket */
 int OS_SetSocketSize(int sock, int mode, int max_msg_size) 
@@ -166,29 +141,24 @@ int OS_SetSocketSize(int sock, int mode, int max_msg_size)
 }
 
 /* Accept a TCP connection */
-int OS_AcceptTCP(tcpsock_t *server_sock, tcpsock_t **client, size_t addrsize)
+int OS_AcceptTCP(int socket, char *srcip, size_t addrsize)
 {
-    tcpsock_t *tmp;
-    os_malloc(sizeof(tcpsock_t), tmp);
-    struct sockaddr_in _nc;
-    socklen_t _ncl;
+    int clientsocket;
+    struct sockaddr_in new_client;
+    socklen_t new_client_len;
 
-    memset(&_nc, 0, sizeof(_nc));
-    _ncl = sizeof(_nc);
+    memset(&new_client, 0, sizeof(new_client));
+    new_client_len = sizeof(new_client);
 
-    if ((tmp->sd = accept(server_sock->sd, (struct sockaddr *) &_nc,
-                               &_ncl)) < 0) {
+    if ((clientsocket = accept(socket, (struct sockaddr *) &new_client,
+                               &new_client_len)) < 0) {
         return (-1);
     }
 
-    os_malloc(IPSIZE + 1, tmp->ip);
+    strncpy(srcip, inet_ntoa(new_client.sin_addr), addrsize - 1);
+    srcip[addrsize - 1] = '\0';
 
-    strncpy(tmp->ip, inet_ntoa(_nc.sin_addr), addrsize - 1);
-    tmp->ip[addrsize - 1] = '\0';
-
-    *client = tmp;
-
-    return OS_SUCCESS;
+    return (clientsocket);
 }
 
 /* Receive a TCP packet (from an open socket) */
@@ -209,18 +179,6 @@ char *OS_RecvTCP(int socket, int sizet)
     return (ret);
 }
 
-/* Receive a TCP packet (from an open socket)
-   Returns the number of bytes received,
-   or -1 if an error occurred */
-int OS_RecvTCPBuffer(int socket, char *buffer, int sizet)
-{
-    int retsize;
-
-    if ((retsize = recv(socket, buffer, sizet - 1, 0)) > 0) {
-        buffer[retsize] = '\0';
-    }
-    return (retsize);
-}
 
 /* Send a TCP packet (through an open socket) */
 int OS_SendTCP(int socket, const char *msg)
@@ -245,7 +203,6 @@ int OS_SetRecvTimeout(int socket, long seconds, long useconds)
 {
     struct timeval tv = { seconds, useconds };
     return setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const void *)&tv, sizeof(tv));
-
 }
 
 
@@ -254,13 +211,4 @@ int OS_CloseSocket(int socket)
     return (close(socket));
 }
 
-
-int OS_GetSocketSd(int *socket, int *poll_fd)
-{
-    if(!socket)
-        return (OS_SOCKTERR);
-    
-    *poll_fd = *socket;
-    return OS_SUCCESS;
-}
 

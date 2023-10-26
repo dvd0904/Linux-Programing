@@ -6,8 +6,9 @@
 
 #ifndef LOGFILE
 
-#define LOGFILE         "logs/gateway.log"
-#define LOGJSONFILE     "logs/gateway.json"
+#define LOGFILE         "logs/debug.log"
+#define LOGJSONFILE     "logs/debug.json"
+#define GATEWAY_LOG      "logs/gateway.log"
 #define _PRINTF_FORMAT  printf
 
 #endif

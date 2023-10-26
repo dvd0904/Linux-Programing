@@ -1,9 +1,9 @@
 #include "shared.h"
 
-w_queue_t * queue_init(size_t size) {
+os_queue_t * queue_init(size_t size) {
 
-    w_queue_t * queue;
-    os_calloc(1, sizeof(w_queue_t), queue);
+    os_queue_t * queue;
+    os_calloc(1, sizeof(os_queue_t), queue);
     os_malloc(size * sizeof(void *), queue->data);
     queue->size = size;
     queue->elements = 0;
@@ -13,7 +13,7 @@ w_queue_t * queue_init(size_t size) {
     return queue;
 }
 
-void queue_free(w_queue_t * queue) {
+void queue_free(os_queue_t * queue) {
     if (queue) 
     {
         free(queue->data);
@@ -24,15 +24,15 @@ void queue_free(w_queue_t * queue) {
     }
 }
 
-int queue_full(const w_queue_t * queue) {
+int queue_full(const os_queue_t * queue) {
     return (queue->begin + 1) % queue->size == queue->end;
 }
 
-int queue_empty(const w_queue_t * queue) {
+int queue_empty(const os_queue_t * queue) {
     return queue->begin == queue->end;
 }
 
-int queue_push(w_queue_t * queue, void * data) {
+int queue_push(os_queue_t * queue, void * data) {
     if (queue_full(queue)) 
         return -1;
     else 
@@ -44,7 +44,7 @@ int queue_push(w_queue_t * queue, void * data) {
     }
 }
 
-int queue_push_ex(w_queue_t * queue, void * data) {
+int queue_push_ex(os_queue_t * queue, void * data) {
     int result;
 
     mutex_lock(&queue->mutex);
@@ -57,7 +57,7 @@ int queue_push_ex(w_queue_t * queue, void * data) {
     return result;
 }
 
-int queue_push_ex_block(w_queue_t * queue, void * data) {
+int queue_push_ex_block(os_queue_t * queue, void * data) {
     int result;
 
     mutex_lock(&queue->mutex);
@@ -75,7 +75,7 @@ int queue_push_ex_block(w_queue_t * queue, void * data) {
     return result;
 }
 
-void * queue_pop(w_queue_t * queue) {
+void * queue_pop(os_queue_t * queue) {
     void * data;
 
     if (queue_empty(queue)) 
@@ -89,7 +89,7 @@ void * queue_pop(w_queue_t * queue) {
     }
 }
 
-void * queue_pop_ex(w_queue_t * queue) {
+void * queue_pop_ex(os_queue_t * queue) {
     void * data;
 
     mutex_lock(&queue->mutex);
@@ -104,7 +104,7 @@ void * queue_pop_ex(w_queue_t * queue) {
     return data;
 }
 
-void * queue_pop_ex_timedwait(w_queue_t * queue, const struct timespec * abstime) {
+void * queue_pop_ex_timedwait(os_queue_t * queue, const struct timespec * abstime) {
     void * data;
 
     mutex_lock(&queue->mutex);
