@@ -5,7 +5,7 @@
 
 int IsFile(const char *file);
 
-void write_to_pipe(pthread_mutex_t * pipe_mutex, int pfds, char *send_buf);
+void write_to_pipe(pthread_mutex_t * pipe_mutex, int pfds, char *send_buf, ...);
 
 long get_fp_size(FILE * fp);
 

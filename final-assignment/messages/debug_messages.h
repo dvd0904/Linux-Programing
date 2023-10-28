@@ -3,13 +3,13 @@
 
 /* Connection manager */
 
-#define SENSOR_CONNECTION_OPEN      "A sensor with ID '%d' has opened a new connection."
-#define SENSOR_CONNECTION_CLOSE     "A sensor with ID '%d' has closed a new connection."
+#define SENSOR_CONNECTION_OPEN      "Client with ID '%d' has opened a new connection."
+#define SENSOR_CONNECTION_CLOSE     "Client with ID '%d' has closed a new connection."
 
 /* Data manager */
 
-#define SENSOR_TOO_COLD             "The sensor node with ID '%d' reports it's too cold (running temperature = <%d>)."
-#define SENSOR_TOO_HOT              "The sensor node with ID '%d' reports it's too cold (running temperature = <%d>)."
+#define SENSOR_COLD             "The sensor node with ID '%d' reports it's cold (running temperature = <%d>)."
+#define SENSOR_HOT              "The sensor node with ID '%d' reports it's hot (running temperature = <%d>)."
 #define SENSOR_INVALID              "Received sensor data with invalid sensor ID '%d'"
 
 /* Storage manager */

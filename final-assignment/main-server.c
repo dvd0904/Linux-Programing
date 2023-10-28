@@ -198,7 +198,7 @@ void *connection_mgr(void *arg)
                     if(bytes = recv(i, buf, sizeof buf, 0) <= 0)
                     {
                         if(bytes == 0)
-                            minfo("Socket %d hung up", i);
+                            minfo(SENSOR_CONNECTION_CLOSE, i);
                         else 
                             merror(RECV_ERROR, errno, strerror(errno));
 
@@ -228,7 +228,10 @@ void *data_mgr(void *arg)
     os_malloc(OS_BUFFER_SIZE, msg);
     cJSON *msg_root = NULL;
     cJSON *root = NULL, *IDs = NULL, *room_obj = NULL;
-    int senIDs[5], idx = 0, count = 1;
+    int senIDs[5], temp_avg = 0, check = 0;
+    int val[6][6] = {0};
+    for(int i = 1; i <= 5; i++)
+        val[i][0] = 1;
 
     if (root = json_fread("room.json", 0), !root) 
     {
@@ -263,17 +266,47 @@ void *data_mgr(void *arg)
     while(1)
     {
         msg = queue_pop_ex(shared_data);
-        // printf("Message from queue: %s\n", msg);
+        printf("Message from queue: %s\n", msg);
         msg_root = cJSON_Parse(msg);
         if(!cJSON_IsObject(msg_root))
             continue;
+
         cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
         if(cJSON_IsNumber(SID))
         {
             if(search(senIDs, SID->valueint, 0, 5))
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], "true");
+            {
+                cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
+                if(cJSON_IsNumber(temp))
+                {
+                    val[SID->valueint][val[SID->valueint][0]++] = temp->valueint;
+                    
+                    if(check)
+                        temp_avg = avg(val[SID->valueint]);
+                    
+
+                    if(val[SID->valueint][0] > 5)
+                    {
+                        val[SID->valueint][0] = 1;
+                        if(!check)
+                        {
+                            check = 1;
+                            temp_avg = avg(val[SID->valueint]);
+                        }
+                    }
+                    
+                    if(temp_avg >= 28)
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, SID->valueint, temp_avg);
+                    
+                    if(temp_avg <= 20 && temp_avg != 0)
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, SID->valueint, temp_avg);
+
+                }
+                else 
+                    cJSON_Delete(temp);
+            }
             else 
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], "false");
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID, SID->valueint);
         }
         else
             cJSON_Delete(SID);

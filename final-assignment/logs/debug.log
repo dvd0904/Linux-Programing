@@ -1,0 +1,345 @@
+2023/10/28 21:39:47 [3462] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/28 21:39:47 [3462] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/28 21:39:49 [3496] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 21:39:49 [3462] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 21:39:49 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:39:51 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:39:53 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:39:55 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:39:57 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:39:59 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:01 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:03 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:05 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:07 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:09 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:11 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:13 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:15 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:17 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:19 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:21 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:23 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:25 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:27 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:29 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:31 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:33 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:35 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:37 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:39 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:41 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:43 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:45 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:47 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:49 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:51 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:53 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:55 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:55 [3747] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 21:40:55 [3462] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 21:40:55 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:40:57 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:57 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:40:59 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:40:59 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:01 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:01 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:03 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:03 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:05 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:05 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:07 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:07 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:09 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:09 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:11 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:11 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:13 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:13 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:15 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:15 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:17 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:17 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:19 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:19 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:21 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:41:21 [3463] main-server.c:93 at main(): [DEBUG]: Bytes write: 39
+2023/10/28 21:41:22 [3462] main-server.c:203 at connection_mgr(): [ERROR]: (1114): Error recv due to [(0)-(Success)].
+2023/10/28 21:41:23 [3462] main-server.c:203 at connection_mgr(): [ERROR]: (1114): Error recv due to [(0)-(Success)].
+2023/10/28 21:52:13 [3962] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/28 21:52:13 [3962] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/28 21:52:17 [3962] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 21:52:17 [3985] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 21:52:17 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:19 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:19 [3986] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 21:52:19 [3962] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 21:52:19 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 82
+2023/10/28 21:52:21 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:21 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 82
+2023/10/28 21:52:23 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:23 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 82
+2023/10/28 21:52:25 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:25 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 82
+2023/10/28 21:52:27 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:27 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 82
+2023/10/28 21:52:29 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:29 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 82
+2023/10/28 21:52:31 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:31 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 82
+2023/10/28 21:52:33 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 21:52:33 [3963] main-server.c:93 at main(): [DEBUG]: Bytes write: 82
+2023/10/28 21:52:34 [3962] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/28 21:52:35 [3962] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/28 22:03:03 [4377] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/28 22:03:03 [4377] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/28 22:03:06 [4400] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 22:03:06 [4377] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 22:03:06 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:08 [4401] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 22:03:08 [4377] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 22:03:08 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:08 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:10 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:10 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:12 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:12 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:14 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:14 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:16 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:16 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:18 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:18 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:20 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:20 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:22 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:22 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:24 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:24 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:26 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:26 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:28 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:28 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:30 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:30 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:32 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:32 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:34 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:34 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:36 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:36 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:38 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:38 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:40 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:40 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:42 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:42 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:44 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:44 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:46 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:46 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:48 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:48 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:50 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:50 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:52 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:52 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:54 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:54 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:56 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:56 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:03:58 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:03:58 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:00 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:00 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:02 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:02 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:04 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:04 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:06 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:06 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:08 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:08 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:10 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:10 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:12 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:12 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:14 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:14 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:16 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:16 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:18 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:18 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:20 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:20 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:22 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:22 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:24 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:24 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:26 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:26 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:28 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:28 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:30 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:30 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:32 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:32 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:34 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:34 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:36 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:36 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:38 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:38 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:40 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:40 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:42 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:42 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:44 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:44 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:46 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:46 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:48 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:48 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:50 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:50 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:52 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:52 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:54 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:54 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:56 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:56 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:04:58 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:04:58 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:00 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:00 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:02 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:02 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:04 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:04 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:06 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:06 [4378] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:07 [4377] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/28 22:05:07 [4377] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/28 22:05:11 [4864] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/28 22:05:11 [4864] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/28 22:05:13 [4880] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 22:05:13 [4864] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 22:05:13 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:15 [4899] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 22:05:15 [4864] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 22:05:15 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:15 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:17 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:17 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:19 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:19 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:21 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:21 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:23 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:23 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:25 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:25 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 38
+2023/10/28 22:05:27 [4865] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:05:27 [4864] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/28 22:05:28 [4864] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/28 22:18:17 [5042] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/28 22:18:17 [5042] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/28 22:18:20 [5042] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 22:18:20 [5065] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 22:18:20 [5043] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:18:22 [5043] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/28 22:18:23 [5042] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/28 22:20:41 [5243] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/28 22:20:41 [5243] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/28 22:20:42 [5243] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/28 22:20:42 [5259] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/28 22:20:45 [5243] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/29 00:26:07 [5920] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 00:26:07 [5920] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 00:26:15 [5964] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 00:26:15 [5964] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 00:26:22 [5964] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 00:26:22 [6005] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 00:26:22 [5965] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:26:27 [5965] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:26:32 [5965] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:26:37 [5965] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:26:42 [5965] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 00:26:42 [5964] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/29 00:51:17 [6183] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 00:51:17 [6183] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 00:51:21 [6183] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 00:51:21 [6220] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 00:51:21 [6184] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:51:26 [6184] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:51:31 [6184] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:51:44 [6324] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 00:51:44 [6324] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 00:51:48 [6324] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 00:51:48 [6368] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 00:51:48 [6325] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:51:53 [6325] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:51:58 [6325] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:52:03 [6325] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:52:57 [6498] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 00:52:57 [6498] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 00:52:59 [6498] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 00:52:59 [6521] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 00:52:59 [6499] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:53:04 [6499] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:54:12 [6622] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 00:54:12 [6622] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 00:54:15 [6645] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 00:54:15 [6622] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 00:54:15 [6623] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:54:20 [6623] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:54:25 [6623] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:54:30 [6623] main-server.c:93 at main(): [DEBUG]: Bytes write: 107
+2023/10/29 00:56:47 [6806] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 00:56:47 [6806] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 00:56:50 [6806] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 00:56:50 [6829] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 00:57:10 [6807] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 00:57:15 [6807] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 01:00:17 [7009] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 01:00:17 [7009] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 01:00:20 [7009] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 01:00:20 [7053] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 01:00:45 [7010] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 01:00:50 [7010] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 01:02:39 [7192] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 01:02:39 [7192] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 01:02:43 [7226] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 01:02:43 [7192] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 01:03:03 [7193] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 01:03:08 [7193] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 01:04:17 [7388] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 01:04:17 [7388] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 01:04:20 [7388] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 01:04:20 [7425] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 01:05:55 [7660] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 01:05:55 [7660] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 01:05:58 [7660] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 01:05:58 [7683] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 01:06:38 [7661] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 01:06:43 [7661] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 01:06:48 [7661] main-server.c:93 at main(): [DEBUG]: Bytes write: 109
+2023/10/29 01:06:52 [7660] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/29 01:07:38 [7966] main-server.c:143 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/10/29 01:07:38 [7966] main-server.c:225 at data_mgr(): [DEBUG]: Data manager started.
+2023/10/29 01:07:41 [7989] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 01:07:41 [7966] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 01:07:48 [8009] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/10/29 01:07:48 [7966] main-server.c:192 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/10/29 01:07:48 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:07:53 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:07:58 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:08:03 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:08:08 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:08:13 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:08:18 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:08:23 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:08:28 [7967] main-server.c:93 at main(): [DEBUG]: Bytes write: 81
+2023/10/29 01:08:29 [7966] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/10/29 01:09:09 [7966] main-server.c:203 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].

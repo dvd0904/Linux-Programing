@@ -58,3 +58,15 @@ int search(int *a, int x, int left, int right)
 
     return 0;
 }
+
+
+int avg(int *a)
+{
+    int ret = 0;
+    for(int i = 1; i <= 5; i++)
+        ret += a[i];
+    
+    ret /= 5;
+
+    return ret;
+}

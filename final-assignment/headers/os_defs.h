@@ -31,7 +31,7 @@
 #define BACKLOG                     128                 /* Socket input queue length        */
 #define MIN_PORT                    1024                /* Minimum port number              */
 #define MAX_PORT                    65536               /* Maximum port number              */
-#define SLEEP                       2
+#define SLEEP                       5
 #define MIN_TEMP                    17
 #define MAX_TEMP                    35
 /* Global name */

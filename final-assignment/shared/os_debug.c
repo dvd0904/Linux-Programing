@@ -22,9 +22,7 @@ static void _log(int level, const char * file, int line, const char * func,
 static void _log(int level, const char * file, int line, 
                     const char * func, const char *msg, va_list args)
 {
-    va_list args2; /* For the JSON output */
     FILE *fp;
-    // char jsonstr[OS_MAXSTR];
     char *output;
     char logfile[PATH_MAX + 1];
     char *filename;
@@ -38,7 +36,6 @@ static void _log(int level, const char * file, int line,
         "ERROR",
         "CRITICAL"
     };
-    va_copy(args2, args);
 
     if(!flags.initialized)
         logging_init();
@@ -82,9 +79,7 @@ static void _log(int level, const char * file, int line,
 
             fclose(fp);
         }
-
     }
-
     os_free(timestamp);
 }
 
