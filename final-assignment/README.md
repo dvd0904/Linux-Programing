@@ -2,10 +2,10 @@
 Run make
 
 # To run server: 
-Run ./main -p <PORT>
+Run ./main -p [port]
 
 # To run client: 
-Run ./client -p <PORT> -i <sensorID> -a <IP>
+Run ./client -p [port] -i [sensorID] -a [IP]
 
 # To use debug mode: 
 Add option -d
