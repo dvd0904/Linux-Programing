@@ -1,7 +1,11 @@
-# To build sever and client: make
+# To build sever and client: 
+Run make
 
-# To run server: ./main -p <PORT>
+# To run server: 
+Run ./main -p <PORT>
 
-# To run client: ./client -p <PORT> -i <sensorID> -a <IP>
+# To run client: 
+Run ./client -p <PORT> -i <sensorID> -a <IP>
 
-# To use debug mode: -d
+# To use debug mode: 
+Add option -d

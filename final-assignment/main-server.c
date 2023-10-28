@@ -230,7 +230,7 @@ void *data_mgr(void *arg)
     cJSON *root = NULL, *IDs = NULL, *room_obj = NULL;
     int senIDs[5], idx = 0, count = 1;
 
-    if (root = json_fread("test.json", 0), !root) 
+    if (root = json_fread("room.json", 0), !root) 
     {
         if (errno) 
             mdebug("Couldn't load configuration file due to: %s (%d)", strerror(errno), errno);
