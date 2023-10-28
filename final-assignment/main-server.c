@@ -6,6 +6,7 @@
 
 static pthread_mutex_t ipc_pipe_mutex; 
 static os_queue_t *shared_data;
+int pfds[2];
 
 static void help_msg();
 void prevent_zombie(int signum);
@@ -13,16 +14,10 @@ void *connection_mgr(void *arg);
 void *data_mgr(void *arg);
 void *storage_mgr(void *arg);
 
-
-char *msg1 = "hello, world #1\n";
-char *msg2 = "hello, world #2\n";
-char *msg3 = "hello, world #3\n";
-
 int main(int argc, char **argv)
 {
-    int pfds[2];
     int debug_level = 0;
-    int ret;
+    int ret = 0;
     unsigned short port = 0;
 
     if(argc < 2)
@@ -53,7 +48,6 @@ int main(int argc, char **argv)
                     break;
                 
                 default:
-                    printf("wtf");
                     help_msg();
                     break;
             }
@@ -62,7 +56,6 @@ int main(int argc, char **argv)
 
     if(pipe(pfds) == -1)
         merror_exit(PIPE_ERROR, errno, strerror(errno));
-
 
     mutex_init(&ipc_pipe_mutex, NULL);
     pid_t child;
@@ -73,84 +66,81 @@ int main(int argc, char **argv)
     {
         /* Child */
         if(close(pfds[1]) == -1) /* Close unused write end in Child */
-            merror_exit(FCLOSE_ERROR, errno, strerror(errno));
+            merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
         char recv_buf[OS_MSG_SIZE];
         
-        FILE *fp = fopen(GATEWAY_LOG, "a");
-        if(!fp)
-            merror_exit(FOPEN_ERROR, errno, strerror(errno));
+        int fd = open(GATEWAY_LOG, O_WRONLY);
+        if(!fd)
+            merror_exit(OPEN_ERROR, errno, strerror(errno));   
+
+        size_t bytes = -1;
+        char *timestamp = NULL; 
+        char *buf_to_write =  NULL;
+        os_malloc(OS_PIPE_BUFFER_SIZE, buf_to_write);
 
         while(1)
         {   
-            char *timestamp = NULL; 
-            os_calloc(TIME_LENGTH, sizeof(char), timestamp);
-            get_timestamp(time(NULL), timestamp);
 
-            char *buf_to_write;
-            os_malloc(OS_PIPE_BUFFER_SIZE, buf_to_write);
-
-            ret = read(pfds[0], recv_buf, OS_MSG_SIZE);
-            if(ret > 0)
+            while(ret = read(pfds[0], recv_buf, OS_MSG_SIZE), ret > 0)
             {
-                sprintf(buf_to_write, "%s [%s]: %s", timestamp, "EVENT-LOG", recv_buf);
-                mdebug1("%s", buf_to_write);
-                fwrite(buf_to_write, strlen(buf_to_write), 1, fp); /* Write data from pipe to log file */
+                timestamp = get_timestamp(time(NULL));
+                sprintf(buf_to_write, "%s [%s]: %s\n", timestamp, "EVENT-LOG", recv_buf);
+                printf("buf from pipe: %s\n", buf_to_write);
+                if(bytes = write(fd, buf_to_write, strlen(buf_to_write)), bytes <= 0)
+                    merror(WRITE_ERROR, errno, strerror(errno));
+                else 
+                    mdebug("Bytes write: %ld", bytes);
+            }
+
+            if(ret == 0)
+            {
+                mdebug("%s [%s]: Read end of Pipe", timestamp, "EVENT-LOG");
+                os_free(timestamp);
+                os_free(buf_to_write);
+                break;
             }
             else
             {
-                if(ret == 0)
-                {
-                    mdebug1("%s [%s]: Read end of Pipe", timestamp, "EVENT-LOG");
-                    break;
-                }
-                else
-                    merror_exit(FREAD_ERROR, errno, strerror(errno));
-                
+                merror_exit(READ_ERROR, errno, strerror(errno));
+                os_free(timestamp);
+                os_free(buf_to_write);
             }
-            os_free(timestamp);
-            os_free(buf_to_write);
-        
         }
 
 
-        fclose(fp);
+        close(fd);
         if(close(pfds[0]) == -1)
-            merror_exit(FCLOSE_ERROR, errno, strerror(errno));
+            merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
-        mdebug1("Child process terminated.");
-        _exit(OS_SUCCESS);
+        mdebug("Child process terminated.");
+        _exit(0);
     }
     else 
     {
         if(close(pfds[0]) == -1) /* Close unused read end in Parent */
-            merror_exit(FCLOSE_ERROR, errno, strerror(errno));
+            merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
         signal(SIGCHLD, prevent_zombie);
-        // write_to_pipe(&ipc_pipe_mutex, pfds[1], msg1);
-        // write_to_pipe(&ipc_pipe_mutex, pfds[1], msg2);
-        // write_to_pipe(&ipc_pipe_mutex, pfds[1], msg3);
-
         // if(close(pfds[1]) == -1) /* Child will see End of Pipe */
-        //     merror_exit(FCLOSE_ERROR, errno, strerror(errno));
+        //     merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
-        shared_data = queue_init(1000);
+        shared_data = queue_init(100);
         
         pthread_t threads[THREADS_NUM];
-        void *exit_codes[THREADS_NUM];
 
         pthread_create(&(threads[0]), NULL, &connection_mgr, &port);
-        // pthread_create(&(threads[1]), NULL, &data_mgr, NULL);
+        pthread_create(&(threads[1]), NULL, &data_mgr, NULL);
+        pthread_create(&(threads[2]), NULL, &storage_mgr, NULL);
 
-        pthread_join(threads[0], NULL);
-        // pthread_join(threads[1], NULL);
+        for(int i = 0; i < THREADS_NUM; i++) pthread_join(threads[i], NULL);
         queue_free(shared_data);
-
     }
 }
 
 void *connection_mgr(void *arg)
 {
+    mdebug("Connection manager started.");
     fd_set master;    // master file descriptor list
     fd_set read_fds;
     char ip[IPSIZE + 1];
@@ -221,7 +211,7 @@ void *connection_mgr(void *arg)
                         if(queue_push_ex(shared_data, buf) == -1)
                             merror("Queue is full.");
                         
-                        printf("Data from client %d:'%s'\nQueue size: %d\n", i, buf, shared_data->elements);
+                        // printf("Data from client %d:'%s'\nQueue size: %d\n", i, buf, shared_data->elements);
                     }
                 }
             }
@@ -232,62 +222,43 @@ void *connection_mgr(void *arg)
 
 void *data_mgr(void *arg)
 {
+    mdebug("Data manager started.");
     char *msg;
     char room_buf[OS_MAXSTR];
     os_malloc(OS_BUFFER_SIZE, msg);
     cJSON *msg_root = NULL;
     cJSON *root = NULL, *IDs = NULL, *room_obj = NULL;
-    int senIDs[16], idx = 0, count = 1;
+    int senIDs[5], idx = 0, count = 1;
 
-
-    if (root = json_fread("room.json", 0), !root) 
+    if (root = json_fread("test.json", 0), !root) 
     {
         if (errno) 
-            mdebug1("Couldn't load configuration file due to: %s (%d)", strerror(errno), errno);
+            mdebug("Couldn't load configuration file due to: %s (%d)", strerror(errno), errno);
         else 
-            mdebug1("Couldn't load configuration file. Maybe format is invalid.");
+            mdebug("Couldn't load configuration file. Maybe format is invalid.");
     }
 
-    room_obj = cJSON_GetObjectItem(root, "roomID");
-    if(!cJSON_IsObject(room_obj))
+    room_obj = cJSON_GetObjectItem(root, "roomIDs");
+    if(!cJSON_IsArray(room_obj))
     {
         cJSON_Delete(room_obj);
         return NULL;
     }
-    
-    IDs = cJSON_GetObjectItem(room_obj, "IDs");
-    if(!cJSON_IsArray(IDs))
-    {
-        cJSON_Delete(IDs);
-        return NULL;
-    }
 
-    for(int i = 0; i < cJSON_GetArraySize(IDs); i++)
+    for(int i = 0; i < cJSON_GetArraySize(room_obj); i++)
     {
-        cJSON *subRID = cJSON_GetArrayItem(IDs, i);
-        if(cJSON_IsString(subRID))
+        cJSON *subRID = cJSON_GetArrayItem(room_obj, i);
+        if(cJSON_IsObject(subRID))
         {
-            cJSON *sensor_arr = cJSON_GetObjectItem(room_obj, subRID->valuestring);
-            if (!cJSON_IsArray(sensor_arr))
-            {
-                cJSON_Delete(sensor_arr);
-                return NULL;
-            }
-            
-            for(int j = 0; j < cJSON_GetArraySize(sensor_arr); j++)
-            {
-                cJSON *subSID = cJSON_GetArrayItem(sensor_arr, j);
-                if(cJSON_IsNumber(subSID))
-                    senIDs[idx++] = subSID->valueint;
-                else 
-                    cJSON_Delete(subSID);
-            }
-        }
-        else
+            cJSON *subSID = cJSON_GetObjectItem(subRID, "sensorID");
+            if(cJSON_IsNumber(subSID))
+                senIDs[i] = subSID->valueint;
+            else 
+                cJSON_Delete(subSID);
+        }   
+        else 
             cJSON_Delete(subRID);
     }
-
-    sort(senIDs, 0, 15);
 
     while(1)
     {
@@ -296,12 +267,16 @@ void *data_mgr(void *arg)
         msg_root = cJSON_Parse(msg);
         if(!cJSON_IsObject(msg_root))
             continue;
-        cJSON *subSID = cJSON_GetObjectItem(msg_root, "sensorID");
-        if(cJSON_IsNumber(subSID))
-            printf("%d\n", subSID->valueint);
-        else 
-            cJSON_Delete(subSID);
-
+        cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
+        if(cJSON_IsNumber(SID))
+        {
+            if(search(senIDs, SID->valueint, 0, 5))
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], "true");
+            else 
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], "false");
+        }
+        else
+            cJSON_Delete(SID);
     }
 
     cJSON_Delete(room_obj);
@@ -318,7 +293,7 @@ static void help_msg()
     print_out("%s - %s (%s)", __ass_name, __author, __contact);
     print_out("  Server: -[hdf] [-p port]");
     print_out("    -h          This help message.");
-    print_out("    -d          Debug mode. Use this parameter multiple times to increase the debug level.");
+    print_out("    -d          Debug mode.");
     print_out("    -p <port>   Manager port.");
     exit(1);
 

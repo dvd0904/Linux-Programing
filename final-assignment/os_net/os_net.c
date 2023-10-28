@@ -15,11 +15,11 @@ int OS_Connect(u_int16_t _port, const char *_ip)
 
 
     if ((ossock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
-        return (OS_SOCKTERR);
+        return (-1);
 
     if ((_ip == NULL) || (_ip[0] == '\0')) {
         OS_CloseSocket(ossock);
-        return (OS_INVALID);
+        return (-1);
     }
 
 
@@ -31,19 +31,7 @@ int OS_Connect(u_int16_t _port, const char *_ip)
     if (connect(ossock, (struct sockaddr *)&server, sizeof(server)) < 0) 
     {
         OS_CloseSocket(ossock);
-        return (OS_SOCKTERR);
-    }
-    
-    // Set socket maximum size
-    if (OS_SetSocketSize(ossock, RECV_SOCK, max_msg_size) < 0) 
-    {
-        OS_CloseSocket(ossock);
-        return (OS_SOCKTERR);
-    }
-    if (OS_SetSocketSize(ossock, SEND_SOCK, max_msg_size) < 0) 
-    {
-        OS_CloseSocket(ossock);
-        return (OS_SOCKTERR);
+        return (-1);
     }
 
     return (ossock);
@@ -51,11 +39,7 @@ int OS_Connect(u_int16_t _port, const char *_ip)
 
 
 
-/* OS_Bindport*
- * Bind a specific port (protocol and a ip).
- * If the IP is not set, it is going to use ADDR_ANY
- * Return the socket.
- */
+/* Bind a specific port */
 int OS_Bindport(u_int16_t _port, const char *_ip)
 {
     int os_sock;
@@ -63,13 +47,13 @@ int OS_Bindport(u_int16_t _port, const char *_ip)
 
     int flag = 1;
     if ((os_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
-        return (int)(OS_SOCKTERR);
+        return (int)(-1);
 
     if (setsockopt(os_sock, SOL_SOCKET, SO_REUSEADDR,
                     (char *)&flag,  sizeof(flag)) < 0) 
     {
         OS_CloseSocket(os_sock);
-        return (OS_SOCKTERR);
+        return (-1);
     }
 
     memset(&server, 0, sizeof(server));
@@ -86,59 +70,19 @@ int OS_Bindport(u_int16_t _port, const char *_ip)
     if (bind(os_sock, (struct sockaddr *) &server, sizeof(server)) < 0) 
     {
         OS_CloseSocket(os_sock);
-        return (OS_SOCKTERR);
+        return (-1);
     }
 
     if (listen(os_sock, BACKLOG) < 0) 
     {
         OS_CloseSocket(os_sock);
-        return (OS_SOCKTERR);
+        return (-1);
     }
     
 
     return (os_sock);
 }
 
-
-/* Set the maximum buffer size for the socket */
-int OS_SetSocketSize(int sock, int mode, int max_msg_size) 
-{
-
-    int len;
-    socklen_t optlen = sizeof(len);
-
-    if (mode == RECV_SOCK) 
-    {
-        /* Get current maximum size */
-        if (getsockopt(sock, SOL_SOCKET, SO_RCVBUF, (void *)&len, &optlen) == -1)
-            len = 0;
-    
-        /* Set maximum message size */
-        if (len < max_msg_size) 
-        {
-            len = max_msg_size;
-            if (setsockopt(sock, SOL_SOCKET, SO_RCVBUF, (const void *)&len, optlen) < 0) 
-                return -1;
-            
-        }
-
-    } else if (mode == SEND_SOCK) 
-    {
-        /* Get current maximum size */
-        if (getsockopt(sock, SOL_SOCKET, SO_SNDBUF, (void *)&len, &optlen) == -1)
-            len = 0;
-        
-        /* Set maximum message size */
-        if (len < max_msg_size) 
-        {
-            len = max_msg_size;
-            if (setsockopt(sock, SOL_SOCKET, SO_SNDBUF, (const void *)&len, optlen) < 0) 
-                return -1;  
-        }
-    }
-
-    return 0;
-}
 
 /* Accept a TCP connection */
 int OS_AcceptTCP(int socket, char *srcip, size_t addrsize)
@@ -184,25 +128,10 @@ char *OS_RecvTCP(int socket, int sizet)
 int OS_SendTCP(int socket, const char *msg)
 {
     if ((send(socket, msg, strlen(msg), 0)) <= 0) 
-        return (OS_SOCKTERR);
+        return (-1);
 
     return (0);
 
-}
-
-/* Send a TCP packet of a specific size (through a open socket) */
-int OS_SendTCPbySize(int socket, int size, const char *msg)
-{
-    if ((send(socket, msg, size, 0)) < size) 
-        return (OS_SOCKTERR);
-    
-    return (0);
-}
-
-int OS_SetRecvTimeout(int socket, long seconds, long useconds)
-{
-    struct timeval tv = { seconds, useconds };
-    return setsockopt(socket, SOL_SOCKET, SO_RCVTIMEO, (const void *)&tv, sizeof(tv));
 }
 
 

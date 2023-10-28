@@ -12,7 +12,7 @@ static void help_msg();
 
 int main(int argc, char *argv[])
 {
-	double temp;
+	int temp;
 	int senID, debug_level = 0, server_fd, ret;
 	unsigned short port = 0;
 	const char *ip = NULL;
@@ -81,9 +81,9 @@ int main(int argc, char *argv[])
 
 	while(1)
 	{
-		temp = MIN_TEMP + (double)rand()/((double)RAND_MAX/(MAX_TEMP - MIN_TEMP));
+		temp = MIN_TEMP + rand() % (MAX_TEMP - MIN_TEMP + 1);
 		getMsg(&msg, senID, temp);
-		if(ret = OS_SendTCP(server_fd, msg),ret < 0)
+		if(ret = OS_SendTCP(server_fd, msg), ret < 0)
 			merror(SEND_ERROR, errno, strerror(errno));
 		printf("Msg send to server: %s\n", msg);
 		sleep(SLEEP);
@@ -95,9 +95,9 @@ int main(int argc, char *argv[])
 static void help_msg()
 {
     print_out("%s - %s (%s)", __ass_name, __author, __contact);
-    print_out("  Client: -[hdf] [-p port] [-i ip]");
+    print_out("  Client: -[hd] [-p port] [-i sensorID] [-a IP]");
     print_out("    -h          		This help message.");
-    print_out("    -d          		Debug mode. Use this parameter multiple times to increase the debug level.");
+    print_out("    -d          		Debug mode.");
     print_out("    -p <port>   		Manager port.");
 	print_out("    -a <ip>			Manager IP.");
 	print_out("    -i <sensorID>		Sensor ID.");

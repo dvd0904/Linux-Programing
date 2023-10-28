@@ -1,0 +1,24 @@
+{
+    "roomIDs": [
+        {
+            "roomID": "501",
+            "sensorID": 1
+        },
+        {
+            "roomID": "602",
+            "sensorID": 2
+        },
+        {
+            "roomID": "703",
+            "sensorID": 3
+        },
+        {
+            "roomID": "804",
+            "sensorID": 4
+        },
+        {
+            "roomID": "905",
+            "sensorID": 5
+        }
+    ]
+}

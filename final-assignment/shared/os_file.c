@@ -9,7 +9,7 @@ int IsFile(const char *file)
 void write_to_pipe(pthread_mutex_t * pipe_mutex, int pfds, char *send_buf)
 {
     mutex_lock(pipe_mutex);
-    write(pfds, send_buf, OS_MSG_SIZE);
+    write(pfds, send_buf, strlen(send_buf) + 1);
     mutex_unlock(pipe_mutex);        
     // free(send_buf);
 }
@@ -56,25 +56,25 @@ char *get_file_content(const char *path, int max_size)
 
     if(path == NULL)
     {
-        mdebug1("Can not open NULL path");
+        mdebug("Can not open NULL path");
         goto end;
     }
 
     /* Load file */
     if (fp = fopen(path, "r"), !fp) {
-        mdebug1(FOPEN_ERROR, errno, strerror(errno));
+        mdebug(OPEN_ERROR, errno, strerror(errno));
         goto end;
     }
 
     /* Get file size */
     if (size = get_fp_size(fp), size < 0) {
-        mdebug1(FSEEK_ERROR, errno, strerror(errno));
+        mdebug(SEEK_ERROR, errno, strerror(errno));
         goto end;
     }
 
     /* Check file size limit */
     if (size > max_size) {
-        mdebug1("Cannot load file '%s': it exceeds %i MiB", path, (max_size / (1024 * 1024)));
+        mdebug("Cannot load file '%s': it exceeds %i MiB", path, (max_size / (1024 * 1024)));
         goto end;
     }
 
@@ -83,7 +83,7 @@ char *get_file_content(const char *path, int max_size)
 
     /* Get file content */
     if (read = fread(content, 1, size, fp), read != (size_t)size && !feof(fp)) {
-        mdebug1(FREAD_ERROR, errno, strerror(errno));
+        mdebug(READ_ERROR, errno, strerror(errno));
         os_free(content);
         goto end;
     }

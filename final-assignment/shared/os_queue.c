@@ -49,19 +49,6 @@ int queue_push_ex(os_queue_t * queue, void * data) {
 
     mutex_lock(&queue->mutex);
 
-    if (result = queue_push(queue, data), result == 0) 
-        cond_signal(&queue->available);
-    
-
-    mutex_unlock(&queue->mutex);
-    return result;
-}
-
-int queue_push_ex_block(os_queue_t * queue, void * data) {
-    int result;
-
-    mutex_lock(&queue->mutex);
-
     while (result = queue_full(queue), result) 
         cond_wait(&queue->available_not_empty, &queue->mutex);
     
@@ -97,26 +84,6 @@ void * queue_pop_ex(os_queue_t * queue) {
     while (data = queue_pop(queue), !data) 
         cond_wait(&queue->available, &queue->mutex);
     
-
-    cond_signal(&queue->available_not_empty);
-    mutex_unlock(&queue->mutex);
-
-    return data;
-}
-
-void * queue_pop_ex_timedwait(os_queue_t * queue, const struct timespec * abstime) {
-    void * data;
-
-    mutex_lock(&queue->mutex);
-
-    while (data = queue_pop(queue), !data) 
-    {
-        if (pthread_cond_timedwait(&queue->available, &queue->mutex, abstime) != 0) 
-        {
-            mutex_unlock(&queue->mutex);
-            return NULL;
-        }
-    }
 
     cond_signal(&queue->available_not_empty);
     mutex_unlock(&queue->mutex);

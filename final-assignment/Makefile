@@ -40,7 +40,7 @@ ${EXTERNAL_JSON}%.o: ${EXTERNAL_JSON}%.c
 
 
 os_net/%.o: os_net/%.c
-	${CC} ${C_FLAGS} -c $^ -o $@
+	${CC} ${C_FLAGS} -fPIC -c $^ -o $@
 
 
 

@@ -6,7 +6,7 @@ void getMsg(char **msg, int senID, double temp)
     char *timestamp = NULL; 
     cJSON *message = cJSON_CreateObject();
     os_calloc(TIME_LENGTH, sizeof(char), timestamp);
-    get_timestamp(time(NULL), timestamp);
+    timestamp = get_timestamp(time(NULL));
 
     cJSON_AddStringToObject(message, "timestamp", timestamp);
     cJSON_AddNumberToObject(message, "sensorID", senID);

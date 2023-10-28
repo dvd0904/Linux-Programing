@@ -25,15 +25,7 @@ char *OS_RecvTCP(int socket, int sizet);
  * Send a TCP packet (in a open socket)
  */
 int OS_SendTCP(int socket, const char *msg) __attribute__((nonnull));
-int OS_SendTCPbySize(int socket, int size, const char *msg) __attribute__((nonnull));
 
-/* Set the maximum buffer size for the socket */
-int OS_SetSocketSize(int sock, int mode, int max_msg_size);
-
-/* Set the receiving timeout for a socket
- * Returns 0 on success, else -1
- */
-int OS_SetRecvTimeout(int socket, long seconds, long useconds);
 
 /* Close a network socket
  * Returns 0 on success, else -1 or SOCKET_ERROR

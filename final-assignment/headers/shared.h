@@ -42,23 +42,21 @@
 #include "os_time.h"
 #include "os_pthreads.h"
 #include "os_file.h"
-#include "os_err.h"
 #include "os_queue.h"
 #include "os_msg.h"
 #include "os_json_file.h"
 #include "os_ss.h"
-// #include "os_dll.h"
 
 #include "messages/debug_messages.h"
 #include "messages/error_messages.h"
-
 
 #define os_calloc(x,y,z) ((z = (__typeof__(z)) calloc(x,y)))?(void)1:merror_exit(MEM_ERROR, errno, strerror(errno))
 
 #define os_malloc(x,y) ((y = (__typeof__(y)) malloc(x)))?(void)1:merror_exit(MEM_ERROR, errno, strerror(errno))
 
+#define os_realloc(x,y,z) ((z = (__typeof__(z))realloc(x,y)))?(void)1:merror_exit(MEM_ERROR, errno, strerror(errno))
+
 #define os_free(x) if(x){free(x);x=NULL;}
 
-#define os_realloc(x,y,z) ((z = (__typeof__(z))realloc(x,y)))?(void)1:merror_exit(MEM_ERROR, errno, strerror(errno))
 
 #endif

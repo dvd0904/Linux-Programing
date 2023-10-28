@@ -24,13 +24,12 @@ static void _log(int level, const char * file, int line,
 {
     va_list args2; /* For the JSON output */
     FILE *fp;
-    char jsonstr[OS_MAXSTR];
+    // char jsonstr[OS_MAXSTR];
     char *output;
     char logfile[PATH_MAX + 1];
     char *filename;
     char *timestamp = NULL;
-    os_calloc(TIME_LENGTH, sizeof(char), timestamp);
-    get_timestamp(time(NULL), timestamp);
+    timestamp = get_timestamp(time(NULL));
 
     const char *strlevel[5]= {
         "DEBUG",
@@ -39,15 +38,6 @@ static void _log(int level, const char * file, int line,
         "ERROR",
         "CRITICAL"
     };
-
-    const char *strleveljson[5] = {
-        "debug",
-        "info",
-        "warning",
-        "error",
-        "critical"
-    };
-
     va_copy(args2, args);
 
     if(!flags.initialized)
@@ -57,56 +47,6 @@ static void _log(int level, const char * file, int line,
         file = filename + 1;
     
     flags.log_plain = 1;
-
-    if(flags.log_json)
-    {
-        int oldmask;
-
-        strncpy(logfile, LOGJSONFILE, sizeof(logfile) - 1);
-        logfile[sizeof(logfile) - 1] = '\0';
-
-        if (!IsFile(logfile)) 
-            fp = fopen(logfile, "a");
-        else 
-        {
-            oldmask = umask(0006);
-            fp = fopen(logfile, "w");
-            umask(oldmask);
-        }
-
-        if (fp) {
-            cJSON *json_log = cJSON_CreateObject();
-
-            vsnprintf(jsonstr, OS_MAXSTR, msg, args2);
-
-            cJSON_AddStringToObject(json_log, "timestamp", timestamp);
-
-            if (dbg_flag > 0) {
-                cJSON_AddNumberToObject(json_log, "pid", pid);
-                cJSON_AddStringToObject(json_log, "file", file);
-                cJSON_AddNumberToObject(json_log, "line", line);
-                cJSON_AddStringToObject(json_log, "routine", func);
-            }
-
-            cJSON_AddStringToObject(json_log, "level", strleveljson[level]);
-            cJSON_AddStringToObject(json_log, "description", jsonstr);
-
-            output = cJSON_PrintUnformatted(json_log);
-
-            mutex_lock(&logging_mutex);
-            (void)fprintf(fp, "%s", output);
-            (void)fprintf(fp, "\n");
-            fflush(fp);
-            mutex_unlock(&logging_mutex);
-
-            cJSON_Delete(json_log);
-            free(output);
-            fclose(fp);
-        }
-
-
-    }
-
     if(flags.log_plain)
     {
         int oldmask;
@@ -117,8 +57,8 @@ static void _log(int level, const char * file, int line,
             fp = fopen(logfile, "a");
         else
         {
-            /* REF: https://www.geeksforgeeks.org/umask-command-in-linux-with-examples/ */
-            oldmask = umask(0006); /* set read, write permission for user and groups*/
+            
+            oldmask = umask(0006); 
             fp = fopen(logfile, "w");
             umask(oldmask);
         }
@@ -168,7 +108,7 @@ void _mwarn(const char * file, int line, const char * func, const char *msg, ...
     va_end(args);
 }
 
-void _mdebug1(const char * file, int line, const char * func, const char *msg, ...)
+void _mdebug(const char * file, int line, const char * func, const char *msg, ...)
 {
     if (dbg_flag >= 1) {
         va_list args;
