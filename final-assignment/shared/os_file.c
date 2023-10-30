@@ -11,10 +11,8 @@ static void _log(char *buf, int pfds, va_list args)
     size_t bytes = -1;
     char msg[128];
     vsprintf(msg, buf, args);
-    
     if(bytes = write(pfds, msg, strlen(msg) + 1), bytes <= 0)
         merror(WRITE_ERROR, errno, strerror(errno));
-    
 }
 
 void write_to_pipe(pthread_mutex_t * pipe_mutex, int pfds, char *send_buf, ...)

@@ -20,7 +20,7 @@ os_net_o := $(os_net_c:.c=.o)
 all: main client
 
 main: ${shared_o} ${os_net_o} main-server.c $(JSON_LIB)
-	${CC} ${C_FLAGS} $^ -o $@ 
+	${CC} ${C_FLAGS} $^ -o $@ -g
 
 client: ${shared_o} ${os_net_o} client.c $(JSON_LIB)
 	${CC} ${C_FLAGS} $^ -o $@ 

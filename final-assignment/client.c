@@ -33,7 +33,7 @@ int main(int argc, char *argv[])
 
                 case 'd':
                     debug_level = 1;
-                    nowDebug();
+                    use_debug();
                     break;
 
 				case 'p':

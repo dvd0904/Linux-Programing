@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 
                 case 'd':
                     debug_level = 1;
-                    nowDebug();
+                    use_debug();
                     break;
 
                 case 'p':
@@ -74,41 +74,39 @@ int main(int argc, char **argv)
         if(!fd)
             merror_exit(OPEN_ERROR, errno, strerror(errno));   
 
+        if(lseek(fd, 0, SEEK_END) < 0)
+            merror(SEEK_ERROR, errno, strerror(errno));
+
         size_t bytes = -1;
         char *timestamp = NULL; 
         char *buf_to_write =  NULL;
         os_malloc(OS_PIPE_BUFFER_SIZE, buf_to_write);
 
-        while(1)
-        {   
-
-            while(ret = read(pfds[0], recv_buf, OS_MSG_SIZE), ret > 0)
-            {
-                timestamp = get_timestamp(time(NULL));
-                sprintf(buf_to_write, "%s [%s]: %s\n", timestamp, "EVENT-LOG", recv_buf);
-                printf("buf from pipe: %s\n", buf_to_write);
-                if(bytes = write(fd, buf_to_write, strlen(buf_to_write)), bytes <= 0)
-                    merror(WRITE_ERROR, errno, strerror(errno));
-                else 
-                    mdebug("Bytes write: %ld", bytes);
-            }
-
-            if(ret == 0)
-            {
-                mdebug("%s [%s]: Read end of Pipe", timestamp, "EVENT-LOG");
-                os_free(timestamp);
-                os_free(buf_to_write);
-                break;
-            }
-            else
-            {
-                merror_exit(READ_ERROR, errno, strerror(errno));
-                os_free(timestamp);
-                os_free(buf_to_write);
-            }
+        while(ret = read(pfds[0], recv_buf, OS_MSG_SIZE), ret > 0)
+        {
+            timestamp = get_timestamp(time(NULL));
+            sprintf(buf_to_write, "%s [%s]: %s\n", timestamp, "EVENT-LOG", recv_buf);
+            printf("buf from pipe: %s\n", buf_to_write);
+            if(bytes = write(fd, buf_to_write, strlen(buf_to_write)), bytes <= 0)
+                merror(WRITE_ERROR, errno, strerror(errno));
+            else 
+                mdebug("Bytes write: %ld", bytes);
+            fsync(fd);
         }
 
-
+        if(ret == 0)
+        {
+            mdebug("%s [%s]: Read end of Pipe", timestamp, "EVENT-LOG");
+            os_free(timestamp);
+            os_free(buf_to_write);
+        }
+        else
+        {
+            merror_exit(READ_ERROR, errno, strerror(errno));
+            os_free(timestamp);
+            os_free(buf_to_write);
+        }
+    
         close(fd);
         if(close(pfds[0]) == -1)
             merror_exit(CLOSE_ERROR, errno, strerror(errno));
@@ -133,7 +131,9 @@ int main(int argc, char **argv)
         pthread_create(&(threads[1]), NULL, &data_mgr, NULL);
         pthread_create(&(threads[2]), NULL, &storage_mgr, NULL);
 
-        for(int i = 0; i < THREADS_NUM; i++) pthread_join(threads[i], NULL);
+        for( int i = 0; i < THREADS_NUM; i++ ) 
+            pthread_join(threads[i], NULL);
+
         queue_free(shared_data);
     }
 }
@@ -170,7 +170,7 @@ void *connection_mgr(void *arg)
         read_fds = master;
         if(select(fd_max + 1, &read_fds, NULL, NULL, NULL) == -1)
         {
-            merror_exit(SELECT_ERROR, errno, strerror(errno));
+            merror(SELECT_ERROR, errno, strerror(errno));
             exit(1);
         }
 
@@ -228,7 +228,7 @@ void *data_mgr(void *arg)
     os_malloc(OS_BUFFER_SIZE, msg);
     cJSON *msg_root = NULL;
     cJSON *root = NULL, *IDs = NULL, *room_obj = NULL;
-    int senIDs[5], temp_avg = 0, check = 0;
+    int senIDs[5], temp_avg = -1, check = 0;
     int val[6][6] = {0};
     for(int i = 1; i <= 5; i++)
         val[i][0] = 1;
@@ -266,7 +266,7 @@ void *data_mgr(void *arg)
     while(1)
     {
         msg = queue_pop_ex(shared_data);
-        printf("Message from queue: %s\n", msg);
+        // printf("Message from queue: %s\n", msg);
         msg_root = cJSON_Parse(msg);
         if(!cJSON_IsObject(msg_root))
             continue;
@@ -294,13 +294,21 @@ void *data_mgr(void *arg)
                             temp_avg = avg(val[SID->valueint]);
                         }
                     }
+                    if(temp_avg <= 0)
+                        continue;
                     
                     if(temp_avg >= 28)
+                    {
+                        minfo(SENSOR_HOT, SID->valueint, temp_avg);
                         write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, SID->valueint, temp_avg);
-                    
-                    if(temp_avg <= 20 && temp_avg != 0)
+                    }
+                    else if(temp_avg <= 22)
+                    {
+                        minfo(SENSOR_COLD, SID->valueint, temp_avg);
                         write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, SID->valueint, temp_avg);
-
+                    }
+                    else
+                        minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
                 }
                 else 
                     cJSON_Delete(temp);

@@ -156,7 +156,7 @@ void logging_init(void)
     pid = (int)getpid();
 }
 
-void nowDebug()
+void use_debug()
 {
     dbg_flag++;
 }

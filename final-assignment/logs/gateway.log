@@ -1,118 +1,16 @@
-2023/10/29 01:07:48 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/29 01:07:53 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/29 01:07:58 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/29 01:08:03 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/29 01:08:08 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/29 01:08:13 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/29 01:08:18 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/29 01:08:23 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/29 01:08:28 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-5:25 [EVENT-LOG]: true
-2023/10/28 22:05:27 [EVENT-LOG]: Received sensor data with invalid sensor ID '7'
-2023/10/28 22:03:20 [EVENT-LOG]: true
-2023/10/28 22:03:22 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:22 [EVENT-LOG]: true
-2023/10/28 22:03:24 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:24 [EVENT-LOG]: true
-2023/10/28 22:03:26 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:26 [EVENT-LOG]: true
-2023/10/28 22:03:28 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:28 [EVENT-LOG]: true
-2023/10/28 22:03:30 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:30 [EVENT-LOG]: true
-2023/10/28 22:03:32 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:32 [EVENT-LOG]: true
-2023/10/28 22:03:34 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:34 [EVENT-LOG]: true
-2023/10/28 22:03:36 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:36 [EVENT-LOG]: true
-2023/10/28 22:03:38 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:38 [EVENT-LOG]: true
-2023/10/28 22:03:40 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:40 [EVENT-LOG]: true
-2023/10/28 22:03:42 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:42 [EVENT-LOG]: true
-2023/10/28 22:03:44 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:44 [EVENT-LOG]: true
-2023/10/28 22:03:46 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:46 [EVENT-LOG]: true
-2023/10/28 22:03:48 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:48 [EVENT-LOG]: true
-2023/10/28 22:03:50 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:50 [EVENT-LOG]: true
-2023/10/28 22:03:52 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:52 [EVENT-LOG]: true
-2023/10/28 22:03:54 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:54 [EVENT-LOG]: true
-2023/10/28 22:03:56 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:56 [EVENT-LOG]: true
-2023/10/28 22:03:58 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:03:58 [EVENT-LOG]: true
-2023/10/28 22:04:00 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:00 [EVENT-LOG]: true
-2023/10/28 22:04:02 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:02 [EVENT-LOG]: true
-2023/10/28 22:04:04 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:04 [EVENT-LOG]: true
-2023/10/28 22:04:06 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:06 [EVENT-LOG]: true
-2023/10/28 22:04:08 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:08 [EVENT-LOG]: true
-2023/10/28 22:04:10 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:10 [EVENT-LOG]: true
-2023/10/28 22:04:12 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:12 [EVENT-LOG]: true
-2023/10/28 22:04:14 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:14 [EVENT-LOG]: true
-2023/10/28 22:04:16 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:16 [EVENT-LOG]: true
-2023/10/28 22:04:18 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:18 [EVENT-LOG]: true
-2023/10/28 22:04:20 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:20 [EVENT-LOG]: true
-2023/10/28 22:04:22 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:22 [EVENT-LOG]: true
-2023/10/28 22:04:24 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:24 [EVENT-LOG]: true
-2023/10/28 22:04:26 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:26 [EVENT-LOG]: true
-2023/10/28 22:04:28 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:28 [EVENT-LOG]: true
-2023/10/28 22:04:30 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:30 [EVENT-LOG]: true
-2023/10/28 22:04:32 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:32 [EVENT-LOG]: true
-2023/10/28 22:04:34 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:34 [EVENT-LOG]: true
-2023/10/28 22:04:36 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:36 [EVENT-LOG]: true
-2023/10/28 22:04:38 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:38 [EVENT-LOG]: true
-2023/10/28 22:04:40 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:40 [EVENT-LOG]: true
-2023/10/28 22:04:42 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:42 [EVENT-LOG]: true
-2023/10/28 22:04:44 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:44 [EVENT-LOG]: true
-2023/10/28 22:04:46 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:46 [EVENT-LOG]: true
-2023/10/28 22:04:48 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:48 [EVENT-LOG]: true
-2023/10/28 22:04:50 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:50 [EVENT-LOG]: true
-2023/10/28 22:04:52 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:52 [EVENT-LOG]: true
-2023/10/28 22:04:54 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:54 [EVENT-LOG]: true
-2023/10/28 22:04:56 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:56 [EVENT-LOG]: true
-2023/10/28 22:04:58 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:04:58 [EVENT-LOG]: true
-2023/10/28 22:05:00 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:05:00 [EVENT-LOG]: true
-2023/10/28 22:05:02 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:05:02 [EVENT-LOG]: true
-2023/10/28 22:05:04 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:05:04 [EVENT-LOG]: true
-2023/10/28 22:05:06 [EVENT-LOG]: Received sensor data with invalid sensor ID '5'
-2023/10/28 22:05:06 [EVENT-LOG]: true
+2023/10/30 22:38:59 [EVENT-LOG]: The sensor node with ID '4' reports it's cold (running temperature = <22>).
+2023/10/30 22:39:05 [EVENT-LOG]: The sensor node with ID '4' reports it's cold (running temperature = <22>).
+2023/10/30 22:39:17 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <29>).
+2023/10/30 22:39:20 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <28>).
+2023/10/30 22:39:23 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <28>).
+2023/10/30 22:39:26 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <28>).
+2023/10/30 22:39:29 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <28>).
+023/10/30 22:38:30 [EVENT-LOG]: The sensor node with ID '4' reports it's cold (running temperature = <22>).
+2023/10/30 23:14:04 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <32>).
+2023/10/30 23:14:07 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <29>).
+2023/10/30 23:14:19 [EVENT-LOG]: The sensor node with ID '4' reports it's cold (running temperature = <21>).
+2023/10/30 23:14:55 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <28>).
+2023/10/30 23:15:17 [EVENT-LOG]: The sensor node with ID '4' reports it's cold (running temperature = <22>).
+2023/10/30 23:15:29 [EVENT-LOG]: The sensor node with ID '4' reports it's cold (running temperature = <20>).
+2023/10/30 23:15:32 [EVENT-LOG]: The sensor node with ID '4' reports it's cold (running temperature = <22>).
+2023/10/30 23:15:41 [EVENT-LOG]: The sensor node with ID '4' reports it's hot (running temperature = <29>).

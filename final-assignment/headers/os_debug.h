@@ -31,7 +31,7 @@ void print_out(const char *msg, ...) __attribute__((format(_PRINTF_FORMAT, 1, 2)
 
 void logging_init(void);
 
-void nowDebug();
+void use_debug();
 
 
 #endif /* DEBUG_H */
