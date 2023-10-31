@@ -24,7 +24,6 @@
 
 #define OS_MAXSTR                   OS_SIZE_65536       
 #define OS_BUFFER_SIZE              OS_SIZE_2048        
-#define OS_PIPE_BUFFER_SIZE         OS_SIZE_512         /* Size of buffers write to pipe    */
 #define OS_MSG_SIZE                 OS_SIZE_128
 #define IPSIZE                      INET6_ADDRSTRLEN    /* IP Address size                  */
 #define THREADS_NUM                 3
@@ -34,6 +33,7 @@
 #define SLEEP                       3
 #define MIN_TEMP                    17
 #define MAX_TEMP                    35
+#define READER_THREADS              2                   /* Number of thread can read shared data */
 /* Global name */
 
 #define __ass_name                  "Final Assignment"

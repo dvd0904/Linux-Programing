@@ -52,6 +52,7 @@ int main(void)
     printf("LINE: %d ----- Mutex locked!\n", __LINE__);
     while (counter < THRESHOLD)
     {
+        printf("debug\n");
         pthread_cond_wait(&cond, &mutex);
         printf("Global variable counter = %d.\n", counter);
     }

@@ -44,7 +44,8 @@ int queue_push(os_queue_t * queue, void * data) {
     }
 }
 
-int queue_push_ex(os_queue_t * queue, void * data) {
+int queue_push_ex(os_queue_t * queue, void * data) 
+{
     int result;
 
     mutex_lock(&queue->mutex);
@@ -62,7 +63,8 @@ int queue_push_ex(os_queue_t * queue, void * data) {
     return result;
 }
 
-void * queue_pop(os_queue_t * queue) {
+void * queue_pop(os_queue_t * queue) 
+{
     void * data;
 
     if (queue_empty(queue)) 
@@ -76,7 +78,8 @@ void * queue_pop(os_queue_t * queue) {
     }
 }
 
-void * queue_pop_ex(os_queue_t * queue) {
+void * queue_pop_ex(os_queue_t * queue) 
+{
     void * data;
 
     mutex_lock(&queue->mutex);

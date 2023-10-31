@@ -78,34 +78,21 @@ int main(int argc, char **argv)
             merror(SEEK_ERROR, errno, strerror(errno));
 
         size_t bytes = -1;
-        char *timestamp = NULL; 
-        char *buf_to_write =  NULL;
-        os_malloc(OS_PIPE_BUFFER_SIZE, buf_to_write);
 
         while(ret = read(pfds[0], recv_buf, OS_MSG_SIZE), ret > 0)
         {
-            timestamp = get_timestamp(time(NULL));
-            sprintf(buf_to_write, "%s [%s]: %s\n", timestamp, "EVENT-LOG", recv_buf);
-            printf("buf from pipe: %s\n", buf_to_write);
-            if(bytes = write(fd, buf_to_write, strlen(buf_to_write)), bytes <= 0)
+            // printf("buf from pipe: %s\n", recv_buf);
+            if(bytes = write(fd, recv_buf, strlen(recv_buf)), bytes <= 0)
                 merror(WRITE_ERROR, errno, strerror(errno));
-            else 
-                mdebug("Bytes write: %ld", bytes);
+            // else 
+            //     mdebug("Bytes write: %ld", bytes);
             fsync(fd);
         }
 
         if(ret == 0)
-        {
-            mdebug("%s [%s]: Read end of Pipe", timestamp, "EVENT-LOG");
-            os_free(timestamp);
-            os_free(buf_to_write);
-        }
+            mdebug("Read end of Pipe");
         else
-        {
             merror_exit(READ_ERROR, errno, strerror(errno));
-            os_free(timestamp);
-            os_free(buf_to_write);
-        }
     
         close(fd);
         if(close(pfds[0]) == -1)
@@ -123,13 +110,14 @@ int main(int argc, char **argv)
         // if(close(pfds[1]) == -1) /* Child will see End of Pipe */
         //     merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
-        shared_data = queue_init(100);
+        shared_data = queue_init(100);  
+        int check_read1= 0, check_read2 = 1;
         
         pthread_t threads[THREADS_NUM];
 
         pthread_create(&(threads[0]), NULL, &connection_mgr, &port);
-        pthread_create(&(threads[1]), NULL, &data_mgr, NULL);
-        pthread_create(&(threads[2]), NULL, &storage_mgr, NULL);
+        pthread_create(&(threads[1]), NULL, &data_mgr, &check_read1);
+        pthread_create(&(threads[2]), NULL, &storage_mgr, &check_read2);
 
         for( int i = 0; i < THREADS_NUM; i++ ) 
             pthread_join(threads[i], NULL);
@@ -223,12 +211,13 @@ void *connection_mgr(void *arg)
 void *data_mgr(void *arg)
 {
     mdebug("Data manager started.");
-    char *msg;
+    char *msg, *timestamp;
     char room_buf[OS_MAXSTR];
     os_malloc(OS_BUFFER_SIZE, msg);
+    os_malloc(TIME_LENGTH, timestamp);
     cJSON *msg_root = NULL;
     cJSON *root = NULL, *IDs = NULL, *room_obj = NULL;
-    int senIDs[5], temp_avg = -1, check = 0;
+    int senIDs[5], temp_avg = -1, check = 0, read = *(int *)arg;
     int val[6][6] = {0};
     for(int i = 1; i <= 5; i++)
         val[i][0] = 1;
@@ -266,7 +255,6 @@ void *data_mgr(void *arg)
     while(1)
     {
         msg = queue_pop_ex(shared_data);
-        // printf("Message from queue: %s\n", msg);
         msg_root = cJSON_Parse(msg);
         if(!cJSON_IsObject(msg_root))
             continue;
@@ -274,6 +262,12 @@ void *data_mgr(void *arg)
         cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
         if(cJSON_IsNumber(SID))
         {
+            cJSON *ts = cJSON_GetObjectItem(msg_root, "timestamp");
+            if(cJSON_IsString(ts))
+                strcpy(timestamp, ts->valuestring);
+            else 
+                cJSON_Delete(ts);
+
             if(search(senIDs, SID->valueint, 0, 5))
             {
                 cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
@@ -284,7 +278,6 @@ void *data_mgr(void *arg)
                     if(check)
                         temp_avg = avg(val[SID->valueint]);
                     
-
                     if(val[SID->valueint][0] > 5)
                     {
                         val[SID->valueint][0] = 1;
@@ -294,18 +287,19 @@ void *data_mgr(void *arg)
                             temp_avg = avg(val[SID->valueint]);
                         }
                     }
+
                     if(temp_avg <= 0)
                         continue;
                     
-                    if(temp_avg >= 28)
+                    if(temp_avg >= 26)
                     {
-                        minfo(SENSOR_HOT, SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, SID->valueint, temp_avg);
+                        minfo(SENSOR_HOT, timestamp, SID->valueint, temp_avg);
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, timestamp, SID->valueint, temp_avg);
                     }
-                    else if(temp_avg <= 22)
+                    else if(temp_avg <= 24)
                     {
-                        minfo(SENSOR_COLD, SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, SID->valueint, temp_avg);
+                        minfo(SENSOR_COLD, timestamp, SID->valueint, temp_avg);
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, timestamp, SID->valueint, temp_avg);
                     }
                     else
                         minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
@@ -314,7 +308,7 @@ void *data_mgr(void *arg)
                     cJSON_Delete(temp);
             }
             else 
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID, SID->valueint);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID,timestamp, SID->valueint);
         }
         else
             cJSON_Delete(SID);
@@ -322,7 +316,9 @@ void *data_mgr(void *arg)
 
     cJSON_Delete(room_obj);
     cJSON_Delete(msg_root);
+    os_free(timestamp);
     os_free(msg);
+
 }
 void *storage_mgr(void *arg)
 {
