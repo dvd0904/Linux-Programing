@@ -22,7 +22,10 @@ cjson_o := $(cjson_c:.c=.o)
 os_net_c := $(wildcard os_net/*.c)
 os_net_o := $(os_net_c:.c=.o)
 
-all: main client
+dai: ${shared_o} ${os_net_o} dai.c $(JSON_LIB)
+	${CC} ${C_FLAGS} $^ -o $@ 
+
+all: main client 
 
 main: ${shared_o} ${os_net_o} $(JSON_LIB) $(SQLITE_LIB) main-server.c
 	${CC} ${C_FLAGS} $^ -o $@ 
@@ -30,7 +33,9 @@ main: ${shared_o} ${os_net_o} $(JSON_LIB) $(SQLITE_LIB) main-server.c
 client: ${shared_o} ${os_net_o} client.c $(JSON_LIB)
 	${CC} ${C_FLAGS} $^ -o $@ 
 
-.PHONY: main client
+
+
+.PHONY: main client dll dai
 
 
 shared/%.o: shared/%.c

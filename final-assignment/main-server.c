@@ -212,6 +212,7 @@ void *data_mgr(void *arg)
 {
     mdebug("Data manager started.");
     char *msg, *timestamp;
+    // sdata_t data;
     char room_buf[OS_MAXSTR];
     os_malloc(OS_BUFFER_SIZE, msg);
     os_malloc(TIME_LENGTH, timestamp);
@@ -255,6 +256,7 @@ void *data_mgr(void *arg)
     while(1)
     {
         msg = queue_pop_ex(shared_data);
+        printf("DATA: %s\n", msg);
         msg_root = cJSON_Parse(msg);
         if(!cJSON_IsObject(msg_root))
             continue;
@@ -322,6 +324,16 @@ void *data_mgr(void *arg)
 }
 void *storage_mgr(void *arg)
 {
+
+    mdebug("Storage manager started.");
+    char *msg;
+
+    os_malloc(OS_BUFFER_SIZE, msg);
+    while(1)
+    {
+        msg = queue_pop_ex(shared_data);
+        printf("STORAGE: %s\n", msg);
+    }
 
 }
 

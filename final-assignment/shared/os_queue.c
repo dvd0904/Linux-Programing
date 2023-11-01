@@ -63,6 +63,7 @@ int queue_push_ex(os_queue_t * queue, void * data)
     return result;
 }
 
+
 void * queue_pop(os_queue_t * queue) 
 {
     void * data;
@@ -81,7 +82,6 @@ void * queue_pop(os_queue_t * queue)
 void * queue_pop_ex(os_queue_t * queue) 
 {
     void * data;
-
     mutex_lock(&queue->mutex);
 
     while (data = queue_pop(queue), !data) 
