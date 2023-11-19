@@ -18,7 +18,8 @@ void *func(void *arg)
 
     sdata_pop(shared, msg, x);
     printf("At thread %d --- msg: %s\n", x, msg);
-
+    sdata_pop(shared, msg, x);
+    printf("At thread %d --- msg: %s\n", x, msg);
 }
 
 int main()
@@ -38,8 +39,6 @@ int main()
     }
 
     int a1 = 0, a2 = 1;
-
-
     pthread_create(&t1, NULL, &func, &a1);
     pthread_create(&t2, NULL, &func, &a2);
 
@@ -47,6 +46,7 @@ int main()
     sleep(4);
 
     sdata_print(shared);
+
 
 
     pthread_join(t1, NULL);

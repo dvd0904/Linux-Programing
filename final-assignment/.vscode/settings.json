@@ -1,8 +1,5 @@
 {
     "files.associations": {
-        "shared.h": "c",
-        "string.h": "c",
-        "wait.h": "c",
-        "cjson.h": "c"
+        "os_sdata.h": "c"
     }
 }

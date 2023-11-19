@@ -88,6 +88,8 @@ int main(int argc, char *argv[])
 		printf("Msg send to server: %s\n", msg);
 		sleep(SLEEP);
 	}
+
+	os_free(msg);
 	
 	return 0;
 }

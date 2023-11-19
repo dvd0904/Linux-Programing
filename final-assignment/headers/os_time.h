@@ -1,7 +1,7 @@
 #ifndef OSTIME_H 
 #define OSTIME_H 
 
-#define TIME_LENGTH     OS_SIZE_128
+#define TIME_LENGTH     OS_SIZE_64
 
 #include <time.h>
 

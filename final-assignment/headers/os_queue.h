@@ -15,6 +15,12 @@ typedef struct queue_t {
 } os_queue_t;
 
 
+typedef struct sdata_ele {
+    char msg[256];
+    int read_by[READER_THREADS]; 
+} sdata_ele_t;
+
+
 /* Initializes a new queue structure */
 os_queue_t * queue_init(size_t n);
 
@@ -34,10 +40,11 @@ int queue_push(os_queue_t * queue, void * data);
 int queue_push_ex(os_queue_t * queue, void * data);
 
 /* Retrieves next item in the queue */
-void * queue_pop(os_queue_t * queue);
+// void * queue_pop(os_queue_t * queue, int read);
+int queue_pop(os_queue_t * queue, sdata_ele_t *data, int read);
 
 /* Same as queue_pop but with mutual exclusion */
-void * queue_pop_ex(os_queue_t * queue);
+void * queue_pop_ex(os_queue_t * queue, int read);
 
 
 #endif

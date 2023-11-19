@@ -22,8 +22,8 @@ cjson_o := $(cjson_c:.c=.o)
 os_net_c := $(wildcard os_net/*.c)
 os_net_o := $(os_net_c:.c=.o)
 
-dai: ${shared_o} ${os_net_o} dai.c $(JSON_LIB)
-	${CC} ${C_FLAGS} $^ -o $@ 
+# dai: ${shared_o} ${os_net_o} dai.c $(JSON_LIB)
+# 	${CC} ${C_FLAGS} $^ -o $@ 
 
 all: main client 
 

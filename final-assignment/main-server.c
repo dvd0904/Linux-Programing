@@ -5,8 +5,9 @@
 #include "os_net/os_net.h"
 
 static pthread_mutex_t ipc_pipe_mutex; 
-static os_queue_t *shared_data;
-int pfds[2];
+static pthread_mutex_t cnt_ex; 
+static os_list *shared_data;
+int pfds[2], cnt = 0;
 
 static void help_msg();
 void prevent_zombie(int signum);
@@ -110,7 +111,9 @@ int main(int argc, char **argv)
         // if(close(pfds[1]) == -1) /* Child will see End of Pipe */
         //     merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
-        shared_data = queue_init(100);  
+        shared_data = list_create(100);
+        mutex_init(&cnt_ex, NULL);
+    
         int check_read1= 0, check_read2 = 1;
         
         pthread_t threads[THREADS_NUM];
@@ -122,7 +125,7 @@ int main(int argc, char **argv)
         for( int i = 0; i < THREADS_NUM; i++ ) 
             pthread_join(threads[i], NULL);
 
-        queue_free(shared_data);
+        list_destroy(shared_data);
     }
 }
 
@@ -133,12 +136,8 @@ void *connection_mgr(void *arg)
     fd_set read_fds;
     char ip[IPSIZE + 1];
     memset(ip, '\0', IPSIZE + 1);
-
-    int listener, new_client, fd_max = 0;
-
+    int listener, new_client, fd_max = 0, bytes;
     char buf[OS_BUFFER_SIZE];
-    int bytes;
-
     unsigned short port = *(unsigned short *)arg;
 
     if (listener = OS_Bindport(port, NULL), listener <= 0)
@@ -195,11 +194,10 @@ void *connection_mgr(void *arg)
                     }
                     else
                     {
-
-                        if(queue_push_ex(shared_data, buf) == -1)
-                            merror("Queue is full.");
+                        if(list_push(shared_data, buf))
+                            mdebug("Can not push data to shared data");
                         
-                        // printf("Data from client %d:'%s'\nQueue size: %d\n", i, buf, shared_data->elements);
+                        // printf("Data from client %d:'%s'\nList size: %d\n", i, buf, shared_data->cur_size);
                     }
                 }
             }
@@ -212,10 +210,11 @@ void *data_mgr(void *arg)
 {
     mdebug("Data manager started.");
     char *msg, *timestamp;
-    // sdata_t data;
-    char room_buf[OS_MAXSTR];
+    char old_msg[OS_BUFFER_SIZE], room_buf[OS_MAXSTR];
+    memset(old_msg, '\0', sizeof(old_msg));
     os_malloc(OS_BUFFER_SIZE, msg);
     os_malloc(TIME_LENGTH, timestamp);
+
     cJSON *msg_root = NULL;
     cJSON *root = NULL, *IDs = NULL, *room_obj = NULL;
     int senIDs[5], temp_avg = -1, check = 0, read = *(int *)arg;
@@ -255,65 +254,82 @@ void *data_mgr(void *arg)
 
     while(1)
     {
-        msg = queue_pop_ex(shared_data);
-        printf("DATA: %s\n", msg);
-        msg_root = cJSON_Parse(msg);
-        if(!cJSON_IsObject(msg_root))
-            continue;
-
-        cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
-        if(cJSON_IsNumber(SID))
+        mutex_lock(&cnt_ex);
+        if(msg = list_get_data_first_node(shared_data), msg != NULL)
         {
-            cJSON *ts = cJSON_GetObjectItem(msg_root, "timestamp");
-            if(cJSON_IsString(ts))
-                strcpy(timestamp, ts->valuestring);
-            else 
-                cJSON_Delete(ts);
-
-            if(search(senIDs, SID->valueint, 0, 5))
+            if(strcmp(msg, old_msg))
             {
-                cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
-                if(cJSON_IsNumber(temp))
-                {
-                    val[SID->valueint][val[SID->valueint][0]++] = temp->valueint;
-                    
-                    if(check)
-                        temp_avg = avg(val[SID->valueint]);
-                    
-                    if(val[SID->valueint][0] > 5)
-                    {
-                        val[SID->valueint][0] = 1;
-                        if(!check)
-                        {
-                            check = 1;
-                            temp_avg = avg(val[SID->valueint]);
-                        }
-                    }
-
-                    if(temp_avg <= 0)
-                        continue;
-                    
-                    if(temp_avg >= 26)
-                    {
-                        minfo(SENSOR_HOT, timestamp, SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, timestamp, SID->valueint, temp_avg);
-                    }
-                    else if(temp_avg <= 24)
-                    {
-                        minfo(SENSOR_COLD, timestamp, SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, timestamp, SID->valueint, temp_avg);
-                    }
-                    else
-                        minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
-                }
-                else 
-                    cJSON_Delete(temp);
+                strcpy(old_msg, msg);
+                cnt++;
+                printf("At Data Manager. Message: %s\n", msg);
             }
-            else 
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID,timestamp, SID->valueint);
         }
-        else
-            cJSON_Delete(SID);
+        if(cnt == 2)
+        {
+            cnt = 0;
+            list_remove_first_node(shared_data);
+        }
+        mutex_unlock(&cnt_ex);
+
+        // sleep(2);
+
+        // msg_root = cJSON_Parse(msg);
+        // if(!cJSON_IsObject(msg_root))
+        //     continue;
+
+        // cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
+        // if(cJSON_IsNumber(SID))
+        // {
+        //     cJSON *ts = cJSON_GetObjectItem(msg_root, "timestamp");
+        //     if(cJSON_IsString(ts))
+        //         strcpy(timestamp, ts->valuestring);
+        //     else 
+        //         cJSON_Delete(ts);
+
+        //     if(search(senIDs, SID->valueint, 0, 5))
+        //     {
+        //         cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
+        //         if(cJSON_IsNumber(temp))
+        //         {
+        //             val[SID->valueint][val[SID->valueint][0]++] = temp->valueint;
+                    
+        //             if(check)
+        //                 temp_avg = avg(val[SID->valueint]);
+                    
+        //             if(val[SID->valueint][0] > 5)
+        //             {
+        //                 val[SID->valueint][0] = 1;
+        //                 if(!check)
+        //                 {
+        //                     check = 1;
+        //                     temp_avg = avg(val[SID->valueint]);
+        //                 }
+        //             }
+
+        //             if(temp_avg <= 0)
+        //                 continue;
+                    
+        //             if(temp_avg >= 26)
+        //             {
+        //                 minfo(SENSOR_HOT, timestamp, SID->valueint, temp_avg);
+        //                 write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, timestamp, SID->valueint, temp_avg);
+        //             }
+        //             else if(temp_avg <= 24)
+        //             {
+        //                 minfo(SENSOR_COLD, timestamp, SID->valueint, temp_avg);
+        //                 write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, timestamp, SID->valueint, temp_avg);
+        //             }
+        //             else
+        //                 minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
+        //         }
+        //         else 
+        //             cJSON_Delete(temp);
+        //     }
+        //     else 
+        //         write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID,timestamp, SID->valueint);
+        // }
+        // else
+        //     cJSON_Delete(SID);
     }
 
     cJSON_Delete(room_obj);
@@ -324,15 +340,32 @@ void *data_mgr(void *arg)
 }
 void *storage_mgr(void *arg)
 {
-
     mdebug("Storage manager started.");
     char *msg;
-
+    char old_msg[OS_BUFFER_SIZE];
+    memset(old_msg, '\0', sizeof(old_msg));
     os_malloc(OS_BUFFER_SIZE, msg);
+    int read = *(int *)arg;
+
     while(1)
     {
-        msg = queue_pop_ex(shared_data);
-        printf("STORAGE: %s\n", msg);
+        mutex_lock(&cnt_ex);
+        if(msg = list_get_data_first_node(shared_data), msg != NULL)
+        {
+            if(strcmp(msg, old_msg))
+            {
+                strcpy(old_msg, msg);
+                cnt++;
+                printf("At Storage Manager. Message: %s\n", msg);
+            }
+        }
+        if(cnt == 2)
+        {
+            cnt = 0;
+            list_remove_first_node(shared_data);
+        }
+        mutex_unlock(&cnt_ex);
+        // sleep(2);
     }
 
 }
