@@ -9,9 +9,9 @@ int IsFile(const char *file)
 static void _log(char *buf, int pfds, va_list args)
 {
     size_t bytes = -1;
-    char msg[128];
+    char msg[OS_MSG_SIZE];
     vsprintf(msg, buf, args);
-    if(bytes = write(pfds, msg, strlen(msg) + 1), bytes <= 0)
+    if(bytes = write(pfds, msg, OS_MSG_SIZE), bytes <= 0)
         merror(WRITE_ERROR, errno, strerror(errno));
 }
 

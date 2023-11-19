@@ -23,7 +23,7 @@
 
 
 #define OS_MAXSTR                   OS_SIZE_65536       
-#define OS_BUFFER_SIZE              OS_SIZE_256        
+#define OS_BUFFER_SIZE              OS_SIZE_512        
 #define OS_MSG_SIZE                 OS_SIZE_128
 #define IPSIZE                      INET6_ADDRSTRLEN    /* IP Address size                  */
 #define THREADS_NUM                 3

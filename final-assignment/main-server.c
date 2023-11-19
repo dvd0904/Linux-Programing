@@ -82,11 +82,12 @@ int main(int argc, char **argv)
 
         while(ret = read(pfds[0], recv_buf, OS_MSG_SIZE), ret > 0)
         {
-            // printf("buf from pipe: %s\n", recv_buf);
+            printf("Buf from pipe: %s\nlen: %ld\n", recv_buf, strlen(recv_buf)); // ERROR
             if(bytes = write(fd, recv_buf, strlen(recv_buf)), bytes <= 0)
                 merror(WRITE_ERROR, errno, strerror(errno));
             // else 
-            //     mdebug("Bytes write: %ld", bytes);
+            //     mdebug("Bytes writed: %ld", bytes);
+
             fsync(fd);
         }
 
@@ -261,7 +262,7 @@ void *data_mgr(void *arg)
             {
                 strcpy(old_msg, msg);
                 cnt++;
-                printf("At Data Manager. Message: %s\n", msg);
+                // printf("At Data Manager. Message: %s\n", msg);
             }
         }
         if(cnt == 2)
@@ -271,65 +272,65 @@ void *data_mgr(void *arg)
         }
         mutex_unlock(&cnt_ex);
 
-        // sleep(2);
+        printf("MSG: %s\n", msg);
 
-        // msg_root = cJSON_Parse(msg);
-        // if(!cJSON_IsObject(msg_root))
-        //     continue;
+        msg_root = cJSON_Parse(msg);
+        if(!cJSON_IsObject(msg_root))
+            continue;
 
-        // cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
-        // if(cJSON_IsNumber(SID))
-        // {
-        //     cJSON *ts = cJSON_GetObjectItem(msg_root, "timestamp");
-        //     if(cJSON_IsString(ts))
-        //         strcpy(timestamp, ts->valuestring);
-        //     else 
-        //         cJSON_Delete(ts);
+        cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
+        if(cJSON_IsNumber(SID))
+        {
+            cJSON *ts = cJSON_GetObjectItem(msg_root, "timestamp");
+            if(cJSON_IsString(ts))
+                strcpy(timestamp, ts->valuestring);
+            else 
+                cJSON_Delete(ts);
 
-        //     if(search(senIDs, SID->valueint, 0, 5))
-        //     {
-        //         cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
-        //         if(cJSON_IsNumber(temp))
-        //         {
-        //             val[SID->valueint][val[SID->valueint][0]++] = temp->valueint;
+            if(search(senIDs, SID->valueint, 0, 5))
+            {
+                cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
+                if(cJSON_IsNumber(temp))
+                {
+                    val[SID->valueint][val[SID->valueint][0]++] = temp->valueint;
                     
-        //             if(check)
-        //                 temp_avg = avg(val[SID->valueint]);
+                    if(check)
+                        temp_avg = avg(val[SID->valueint]);
                     
-        //             if(val[SID->valueint][0] > 5)
-        //             {
-        //                 val[SID->valueint][0] = 1;
-        //                 if(!check)
-        //                 {
-        //                     check = 1;
-        //                     temp_avg = avg(val[SID->valueint]);
-        //                 }
-        //             }
+                    if(val[SID->valueint][0] > 5)
+                    {
+                        val[SID->valueint][0] = 1;
+                        if(!check)
+                        {
+                            check = 1;
+                            temp_avg = avg(val[SID->valueint]);
+                        }
+                    }
 
-        //             if(temp_avg <= 0)
-        //                 continue;
+                    if(temp_avg <= 0)
+                        continue;
                     
-        //             if(temp_avg >= 26)
-        //             {
-        //                 minfo(SENSOR_HOT, timestamp, SID->valueint, temp_avg);
-        //                 write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, timestamp, SID->valueint, temp_avg);
-        //             }
-        //             else if(temp_avg <= 24)
-        //             {
-        //                 minfo(SENSOR_COLD, timestamp, SID->valueint, temp_avg);
-        //                 write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, timestamp, SID->valueint, temp_avg);
-        //             }
-        //             else
-        //                 minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
-        //         }
-        //         else 
-        //             cJSON_Delete(temp);
-        //     }
-        //     else 
-        //         write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID,timestamp, SID->valueint);
-        // }
-        // else
-        //     cJSON_Delete(SID);
+                    if(temp_avg >= 26)
+                    {
+                        minfo(SENSOR_HOT, timestamp, SID->valueint, temp_avg);
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, timestamp, SID->valueint, temp_avg);
+                    }
+                    else if(temp_avg <= 24)
+                    {
+                        minfo(SENSOR_COLD, timestamp, SID->valueint, temp_avg);
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, timestamp, SID->valueint, temp_avg);
+                    }
+                    else
+                        minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
+                }
+                else 
+                    cJSON_Delete(temp);
+            }
+            else 
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID, timestamp, SID->valueint);
+        }
+        else
+            cJSON_Delete(SID);
     }
 
     cJSON_Delete(room_obj);
@@ -356,7 +357,7 @@ void *storage_mgr(void *arg)
             {
                 strcpy(old_msg, msg);
                 cnt++;
-                printf("At Storage Manager. Message: %s\n", msg);
+                // printf("At Storage Manager. Message: %s\n", msg);
             }
         }
         if(cnt == 2)

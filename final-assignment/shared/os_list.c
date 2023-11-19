@@ -41,19 +41,16 @@ int list_clean_nodes(os_list *list)
 {
     
     mutex_lock(&list->mutex);
-    printf("At func: %s ----- line: %d ----- mutex is used.\n", __func__, __LINE__);
+
     if(!list)
     {
         mutex_unlock(&list->mutex);
-        printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
-
         return LIST_FAIL;
     }
 
     if(list_empty(list))
     {
         mutex_unlock(&list->mutex);
-        printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
         return LIST_NODATA;
     }
     os_list_node *temp = NULL;
@@ -70,7 +67,7 @@ int list_clean_nodes(os_list *list)
     list->last_node = NULL;
     
     mutex_unlock(&list->mutex);
-    printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
+
     return LIST_SUCCESS;
 }
 
@@ -79,13 +76,13 @@ int list_push(os_list *list, void *data)
 {
     int retval;
     mutex_lock(&list->mutex);
-    // printf("At func: %s ----- line: %d ----- mutex is used.\n", __func__, __LINE__);    
+ 
     retval = _list_push(list, data);
     if(!retval)
         cond_broadcast(&list->data_available);
     
     mutex_unlock(&list->mutex);
-    // printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
+
     return retval;
 }
 
@@ -93,12 +90,12 @@ void *list_get_data_first_node(os_list *list)
 {
     os_list_node *first = NULL;
     mutex_lock(&list->mutex);
-    // printf("At func: %s ----- line: %d ----- mutex is used.\n", __func__, __LINE__);    
+  
     while(first = list->first_node, !first)
         cond_wait(&list->data_available, &list->mutex);
 
     mutex_unlock(&list->mutex);
-    // printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
+
     if(!first)
     {
         printf("Can not get data from node.\n");
@@ -110,11 +107,10 @@ void *list_get_data_first_node(os_list *list)
 void *list_get_data_last_node(os_list *list)
 {
     mutex_lock(&list->mutex);
-    printf("At func: %s ----- line: %d ----- mutex is used.\n", __func__, __LINE__);
 
     os_list_node *last = list->last_node;
     mutex_unlock(&list->mutex);
-    printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
+
     if(!last)
         return NULL;
     return last->data;
@@ -124,12 +120,11 @@ int list_remove_first_node(os_list *list)
 {
     os_list_node *temp;
     mutex_lock(&list->mutex);
-    // printf("At func: %s ----- line: %d ----- mutex is used.\n", __func__, __LINE__);
+
     if(list_empty(list))
     {
-        printf("list empty\n");
+        mdebug("Shared list is empty.");
         mutex_unlock(&list->mutex);
-        // printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
         return LIST_NODATA;
     }
     else 
@@ -143,9 +138,11 @@ int list_remove_first_node(os_list *list)
         free(list->first_node);
         list->first_node = temp;
     }
+
     list->cur_size--;
+
     mutex_unlock(&list->mutex);
-    // printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
+
     return LIST_SUCCESS;
 }
 
@@ -156,21 +153,17 @@ void print_list(os_list *list)
     if(list_empty(list))
     {
         mutex_unlock(&list->mutex);
-        printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
         printf("List is empty.\n");
         return;
     }
-    printf("At func: %s ----- line: %d ----- mutex is used.\n", __func__, __LINE__);
     os_list_node *temp = list->first_node;
     while(temp != NULL)
     {
-        printf("%d ", *(int *)(temp->data));
+        printf("%s ", (char *)(temp->data));
         temp = temp->next;
     }
     mutex_unlock(&list->mutex);
-    printf("\n");
-    printf("At func: %s ----- line :%d ----- mutex is released.\n", __func__, __LINE__);
-    
+    printf("\n");   
 }
 
 static int list_full(os_list *list)
@@ -194,7 +187,7 @@ static int _list_push(os_list *list, void *data)
         os_list_node *newnode = (os_list_node *)calloc(1, sizeof(os_list_node));
         if(!newnode)
         {
-            printf("Could not acquire memory due to [(%d)-(%s)].", errno, strerror(errno));
+            mdebug(MEM_ERROR, errno, strerror(errno));
             return LIST_FAIL;
         }
 
