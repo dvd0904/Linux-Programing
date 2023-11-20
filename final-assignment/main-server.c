@@ -82,7 +82,7 @@ int main(int argc, char **argv)
 
         while(ret = read(pfds[0], recv_buf, OS_MSG_SIZE), ret > 0)
         {
-            printf("Buf from pipe: %s\nlen: %ld\n", recv_buf, strlen(recv_buf)); // ERROR
+            // printf("Buf from pipe: %s\nlen: %ld\n", recv_buf, strlen(recv_buf)); 
             if(bytes = write(fd, recv_buf, strlen(recv_buf)), bytes <= 0)
                 merror(WRITE_ERROR, errno, strerror(errno));
             // else 
@@ -262,7 +262,11 @@ void *data_mgr(void *arg)
             {
                 strcpy(old_msg, msg);
                 cnt++;
-                // printf("At Data Manager. Message: %s\n", msg);
+            }
+            else 
+            {
+                mutex_unlock(&cnt_ex);
+                continue;
             }
         }
         if(cnt == 2)
@@ -270,13 +274,15 @@ void *data_mgr(void *arg)
             cnt = 0;
             list_remove_first_node(shared_data);
         }
+
         mutex_unlock(&cnt_ex);
 
-        printf("MSG: %s\n", msg);
 
+        printf("At Data Manager. Message: %s\n", msg);
         msg_root = cJSON_Parse(msg);
         if(!cJSON_IsObject(msg_root))
             continue;
+        
 
         cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
         if(cJSON_IsNumber(SID))
@@ -320,8 +326,11 @@ void *data_mgr(void *arg)
                         minfo(SENSOR_COLD, timestamp, SID->valueint, temp_avg);
                         write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, timestamp, SID->valueint, temp_avg);
                     }
-                    else
+                    else 
+                    {
                         minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP, timestamp, SID->valueint, temp_avg);
+                    }
                 }
                 else 
                     cJSON_Delete(temp);
@@ -331,6 +340,7 @@ void *data_mgr(void *arg)
         }
         else
             cJSON_Delete(SID);
+        
     }
 
     cJSON_Delete(room_obj);
@@ -357,7 +367,12 @@ void *storage_mgr(void *arg)
             {
                 strcpy(old_msg, msg);
                 cnt++;
-                // printf("At Storage Manager. Message: %s\n", msg);
+                printf("At Storage Manager. Message: %s\n", msg);
+            }
+            else 
+            {
+                mutex_unlock(&cnt_ex);
+                continue;
             }
         }
         if(cnt == 2)

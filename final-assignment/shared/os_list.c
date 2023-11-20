@@ -93,7 +93,7 @@ void *list_get_data_first_node(os_list *list)
   
     while(first = list->first_node, !first)
         cond_wait(&list->data_available, &list->mutex);
-
+        
     mutex_unlock(&list->mutex);
 
     if(!first)

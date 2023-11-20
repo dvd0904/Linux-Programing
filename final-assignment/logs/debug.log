@@ -1,0 +1,189 @@
+2023/11/20 13:29:13 [3465] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 13:29:13 [3465] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 13:29:13 [3465] main-server.c:344 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 13:29:27 [3465] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 13:29:27 [3471] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 13:30:27 [3537] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 13:30:27 [3537] main-server.c:344 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 13:30:30 [3537] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 13:30:30 [3542] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 13:32:13 [3589] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 13:32:13 [3589] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 13:32:13 [3589] main-server.c:344 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 13:32:16 [3589] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 13:32:16 [3594] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 13:36:33 [3915] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 13:36:33 [3915] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 13:36:33 [3915] main-server.c:344 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 13:36:33 [3916] main-server.c:95 at main(): [DEBUG]: Read end of Pipe
+2023/11/20 13:36:33 [3916] main-server.c:103 at main(): [DEBUG]: Child process terminated.
+2023/11/20 13:37:31 [3973] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 13:37:31 [3973] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 13:37:31 [3974] main-server.c:95 at main(): [DEBUG]: Read end of Pipe
+2023/11/20 13:37:31 [3974] main-server.c:103 at main(): [DEBUG]: Child process terminated.
+2023/11/20 13:37:48 [3996] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 13:37:48 [3996] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 13:37:48 [3996] main-server.c:344 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 13:40:54 [4037] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 13:40:54 [4037] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 13:40:54 [4038] main-server.c:95 at main(): [DEBUG]: Read end of Pipe
+2023/11/20 13:40:54 [4038] main-server.c:103 at main(): [DEBUG]: Child process terminated.
+2023/11/20 15:51:11 [4405] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:51:13 [4408] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:51:13 [4405] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:51:21 [4405] main-server.c:191 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/11/20 15:52:17 [4483] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:52:17 [4483] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:52:19 [4483] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:52:19 [4487] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:54:15 [4536] client.c:75 at main(): [CRITICAL]: Unable to connect to server at '192.168.227.128:2023': Connection refused (111).
+2023/11/20 15:54:18 [4537] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:54:18 [4537] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:54:20 [4553] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:54:20 [4537] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:54:55 [4594] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:54:55 [4594] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:54:57 [4598] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:54:57 [4594] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:55:14 [4628] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:55:14 [4628] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:55:16 [4632] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:55:16 [4628] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:56:22 [4672] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:56:22 [4672] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:56:25 [4672] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:56:25 [4688] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:56:58 [4730] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:56:58 [4730] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:56:58 [4730] main-server.c:349 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 15:56:59 [4735] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:56:59 [4730] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:57:25 [4770] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:57:25 [4770] main-server.c:349 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 15:57:25 [4770] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:57:27 [4770] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:57:27 [4775] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:57:34 [4770] main-server.c:191 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/11/20 15:57:58 [4822] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:57:58 [4822] main-server.c:349 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 15:57:58 [4822] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:58:00 [4822] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:58:00 [4827] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:58:37 [4872] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 15:58:37 [4872] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 15:58:37 [4872] main-server.c:348 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 15:58:38 [4877] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 15:58:38 [4872] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 15:58:50 [4872] main-server.c:319 at data_mgr(): [INFO]: 2023/11/20 15:58:50 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+
+2023/11/20 15:58:53 [4872] main-server.c:319 at data_mgr(): [INFO]: 2023/11/20 15:58:53 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 15:58:56 [4872] main-server.c:328 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/20 15:58:59 [4872] main-server.c:319 at data_mgr(): [INFO]: 2023/11/20 15:58:59 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:01:10 [5038] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 16:01:10 [5038] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 16:01:10 [5038] main-server.c:349 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 16:01:12 [5043] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 16:01:12 [5038] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 16:01:24 [5038] main-server.c:325 at data_mgr(): [INFO]: 2023/11/20 16:01:24 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+
+2023/11/20 16:01:27 [5038] main-server.c:325 at data_mgr(): [INFO]: 2023/11/20 16:01:27 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+
+2023/11/20 16:01:30 [5038] main-server.c:325 at data_mgr(): [INFO]: 2023/11/20 16:01:30 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+
+2023/11/20 16:01:33 [5038] main-server.c:320 at data_mgr(): [INFO]: 2023/11/20 16:01:33 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:01:36 [5038] main-server.c:329 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/20 16:01:39 [5038] main-server.c:320 at data_mgr(): [INFO]: 2023/11/20 16:01:39 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+
+2023/11/20 16:01:42 [5038] main-server.c:320 at data_mgr(): [INFO]: 2023/11/20 16:01:42 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+
+2023/11/20 16:02:24 [5110] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 16:02:24 [5110] main-server.c:349 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 16:02:24 [5110] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 16:02:26 [5115] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 16:02:26 [5110] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 16:02:38 [5110] main-server.c:320 at data_mgr(): [INFO]: 2023/11/20 16:02:38 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+
+2023/11/20 16:02:41 [5110] main-server.c:320 at data_mgr(): [INFO]: 2023/11/20 16:02:41 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:02:44 [5110] main-server.c:329 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/20 16:02:47 [5110] main-server.c:325 at data_mgr(): [INFO]: 2023/11/20 16:02:47 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+
+2023/11/20 16:02:50 [5110] main-server.c:329 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/20 16:08:41 [5197] main-server.c:364 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 16:08:41 [5197] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 16:08:41 [5197] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 16:08:42 [5214] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 16:08:42 [5197] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 16:08:54 [5197] main-server.c:329 at data_mgr(): [INFO]: 2023/11/20 16:08:54 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:08:57 [5197] main-server.c:329 at data_mgr(): [INFO]: 2023/11/20 16:08:57 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:09:00 [5197] main-server.c:334 at data_mgr(): [INFO]: 2023/11/20 16:09:00 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+
+2023/11/20 16:09:03 [5197] main-server.c:334 at data_mgr(): [INFO]: 2023/11/20 16:09:03 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+
+2023/11/20 16:09:06 [5197] main-server.c:329 at data_mgr(): [INFO]: 2023/11/20 16:09:06 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:09:09 [5197] main-server.c:338 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/20 16:09:12 [5197] main-server.c:334 at data_mgr(): [INFO]: 2023/11/20 16:09:12 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+
+2023/11/20 16:09:15 [5197] main-server.c:334 at data_mgr(): [INFO]: 2023/11/20 16:09:15 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+
+2023/11/20 16:14:58 [5436] main-server.c:354 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/20 16:14:58 [5436] main-server.c:135 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/20 16:14:58 [5436] main-server.c:212 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/20 16:14:59 [5441] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/20 16:14:59 [5436] main-server.c:180 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/20 16:15:11 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:11 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+
+2023/11/20 16:15:14 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:14 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+
+2023/11/20 16:15:17 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:17 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <30>).
+
+2023/11/20 16:15:20 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:20 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+
+2023/11/20 16:15:23 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:23 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+
+2023/11/20 16:15:26 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:26 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:15:29 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:15:29 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+
+2023/11/20 16:15:32 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:15:32 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+
+2023/11/20 16:15:35 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:15:35 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+
+2023/11/20 16:15:38 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:15:38 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+
+2023/11/20 16:15:41 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:15:41 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+
+2023/11/20 16:15:44 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:44 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:15:47 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:47 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:15:50 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:50 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+
+2023/11/20 16:15:53 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:15:53 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:15:56 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:15:56 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+
+2023/11/20 16:15:59 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:15:59 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+
+2023/11/20 16:16:02 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:16:02 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+
+2023/11/20 16:16:05 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:16:05 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+
+2023/11/20 16:16:08 [5436] main-server.c:326 at data_mgr(): [INFO]: 2023/11/20 16:16:08 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+
+2023/11/20 16:16:11 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:16:11 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+
+2023/11/20 16:16:14 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:16:14 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+
+2023/11/20 16:16:17 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:16:17 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+
+2023/11/20 16:16:20 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:16:20 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+
+2023/11/20 16:16:23 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:16:23 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+

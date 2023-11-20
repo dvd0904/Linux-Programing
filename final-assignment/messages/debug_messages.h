@@ -8,8 +8,9 @@
 
 /* Data manager */
 
-#define SENSOR_COLD                 "%s [WARNING]: The sensor node with ID '%d' reports it's cold (avg temperature = <%d>).\n"
-#define SENSOR_HOT                  "%s [WARNING]: The sensor node with ID '%d' reports it's hot (avg temperature = <%d>).\n"
+#define SENSOR_COLD                 "%s [WARNING]: The sensor node with ID '%d' reports it's cold (avg temperature = <%d>)."
+#define SENSOR_HOT                  "%s [WARNING]: The sensor node with ID '%d' reports it's hot (avg temperature = <%d>)."
+#define SENSOR_TEMP                 "%s [INFO]: The sensor node with ID '%d' (avg temperature = <%d>)."
 #define SENSOR_INVALID              "%s Received sensor data with invalid sensor ID '%d'"
 
 /* Storage manager */
