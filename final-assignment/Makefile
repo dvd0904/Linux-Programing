@@ -84,7 +84,6 @@ os_net/%.o: os_net/%.c
 	${F_CC} ${C_FLAGS} -fPIC -c $^ -o $@
 
 fdb/schema_%.o: fdb/schema_%.sql
-	@echo 'const char *'$(word 2, $(subst /, ,$(subst .,_,$<))) '= "'"`cat $< | tr -d \"\n\"`"'";'
 	${QUIET_CC}echo 'const char *'$(word 2, $(subst /, ,$(subst .,_,$<))) '= "'"`cat $< | tr -d \"\n\"`"'";' | ${CC} ${C_FLAGS} -xc -c -o $@ -
 
 fdb/%.o: fdb/%.c
@@ -101,3 +100,5 @@ clean:
 	rm -rf $(JSON_LIB)
 	rm -rf ${fdb_o}
 	rm -rf $(SQLITE_LIB)
+	rm -rf .template.db
+	rm -rf sensor.db

@@ -187,3 +187,199 @@
 
 2023/11/20 16:16:23 [5436] main-server.c:321 at data_mgr(): [INFO]: 2023/11/20 16:16:23 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
 
+2023/11/21 19:27:40 [4750] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 19:27:40 [4750] main-server.c:355 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 19:27:40 [4750] main-server.c:213 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/21 19:27:52 [4750] main-server.c:181 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/21 19:27:52 [4755] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/21 19:28:04 [4750] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:28:04 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 19:28:07 [4750] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:28:07 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 19:28:10 [4750] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:28:10 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 19:28:13 [4750] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:28:13 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+2023/11/21 19:29:51 [4821] main-server.c:213 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/21 19:29:51 [4821] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 19:29:51 [4821] main-server.c:355 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 19:29:53 [4821] main-server.c:181 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/21 19:29:53 [4826] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/21 19:30:05 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:30:08 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:30:08 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 19:30:11 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:30:11 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <30>).
+2023/11/21 19:30:14 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:30:14 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:30:17 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:30:17 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 19:30:20 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:30:20 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 19:30:23 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:30:23 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 19:30:26 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:30:26 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+2023/11/21 19:30:29 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:30:29 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 19:30:32 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:30:32 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:30:35 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:30:35 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:30:38 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:30:41 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:30:44 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:30:44 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:30:47 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:30:47 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 19:30:50 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:30:50 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 19:30:53 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:30:56 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:30:56 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:30:59 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:31:02 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:02 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:31:05 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:05 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 19:31:08 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:08 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 19:31:11 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:11 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 19:31:14 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:14 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:31:17 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:17 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:31:20 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:20 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:31:23 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:23 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:31:26 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:26 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 19:31:29 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:29 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 19:31:32 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:32 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 19:31:35 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:35 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:31:38 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:38 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:31:41 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:31:44 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:44 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 19:31:47 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:47 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:31:50 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:31:50 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:31:53 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:31:56 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:31:56 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 19:31:59 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:31:59 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 19:32:02 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:02 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 19:32:05 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:32:08 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:32:08 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:32:11 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:32:11 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <31>).
+2023/11/21 19:32:14 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:32:14 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 19:32:17 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:32:17 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 19:32:20 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:32:20 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:32:23 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:32:26 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:26 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 19:32:29 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:32:32 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:32 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 19:32:35 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:35 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 19:32:38 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:38 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 19:32:41 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:41 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 19:32:44 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:44 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 19:32:47 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:47 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 19:32:50 [4821] main-server.c:332 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 19:32:53 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:53 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 19:32:56 [4821] main-server.c:327 at data_mgr(): [INFO]: 2023/11/21 19:32:56 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 19:32:59 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:32:59 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 19:33:02 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:02 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 19:33:05 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:05 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 19:33:08 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:08 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <30>).
+2023/11/21 19:33:11 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:11 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <30>).
+2023/11/21 19:33:14 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:14 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <30>).
+2023/11/21 19:33:17 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:17 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 19:33:20 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:20 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 19:33:23 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:23 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 19:33:26 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:26 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 19:33:29 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:29 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <30>).
+2023/11/21 19:33:32 [4821] main-server.c:322 at data_mgr(): [INFO]: 2023/11/21 19:33:32 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 22:17:49 [6051] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:17:49 [6051] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:17:49 [6052] main-server.c:96 at main(): [DEBUG]: Read end of Pipe
+2023/11/21 22:17:49 [6052] main-server.c:104 at main(): [DEBUG]: Child process terminated.
+2023/11/21 22:18:38 [6092] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:18:38 [6092] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:18:38 [6093] main-server.c:96 at main(): [DEBUG]: Read end of Pipe
+2023/11/21 22:18:38 [6093] main-server.c:104 at main(): [DEBUG]: Child process terminated.
+2023/11/21 22:18:48 [6136] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:18:48 [6136] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:18:48 [6137] main-server.c:96 at main(): [DEBUG]: Read end of Pipe
+2023/11/21 22:18:48 [6137] main-server.c:104 at main(): [DEBUG]: Child process terminated.
+2023/11/21 22:19:11 [6198] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:19:11 [6198] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:19:12 [6199] main-server.c:96 at main(): [DEBUG]: Read end of Pipe
+2023/11/21 22:19:12 [6199] main-server.c:104 at main(): [DEBUG]: Child process terminated.
+2023/11/21 22:19:20 [6245] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:19:20 [6245] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:19:20 [6246] main-server.c:96 at main(): [DEBUG]: Read end of Pipe
+2023/11/21 22:19:20 [6246] main-server.c:104 at main(): [DEBUG]: Child process terminated.
+2023/11/21 22:19:45 [6306] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:19:45 [6306] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:19:47 [6313] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:19:47 [6313] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:20:37 [6359] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:20:37 [6359] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:20:47 [6406] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:20:47 [6406] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:30:44 [6530] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:30:44 [6530] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:30:47 [6537] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/21 22:30:47 [6530] main-server.c:181 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/21 22:33:22 [6645] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:33:22 [6645] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:33:27 [6645] main-server.c:181 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/21 22:33:27 [6664] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/21 22:36:22 [6721] main-server.c:357 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:36:22 [6721] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:36:31 [6737] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/21 22:36:31 [6721] main-server.c:181 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/21 22:38:59 [7082] main-server.c:136 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/21 22:38:59 [7082] main-server.c:355 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/21 22:38:59 [7082] main-server.c:213 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/21 22:39:05 [7082] main-server.c:181 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/21 22:39:05 [7087] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/21 22:39:17 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:39:17 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 22:39:20 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:39:20 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:39:23 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:39:23 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 22:39:26 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:39:26 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:39:29 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:39:29 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:39:32 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:39:32 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:39:35 [7082] main-server.c:330 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 22:39:38 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:39:38 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 22:39:41 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:39:41 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 22:39:44 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:39:44 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:39:47 [7082] main-server.c:330 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 22:39:50 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:39:50 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:39:53 [7082] main-server.c:330 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 22:39:56 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:39:56 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 22:39:59 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:39:59 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 22:40:02 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:40:02 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <29>).
+2023/11/21 22:40:05 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:40:05 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <30>).
+2023/11/21 22:40:08 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:40:08 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 22:40:11 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:40:11 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 22:40:14 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:40:14 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 22:40:17 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:40:17 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 22:40:20 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:20 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:40:23 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:23 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:40:26 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:26 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 22:40:29 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:29 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <20>).
+2023/11/21 22:40:32 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:32 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <20>).
+2023/11/21 22:40:35 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:35 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 22:40:38 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:38 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 22:40:41 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:41 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+2023/11/21 22:40:44 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:44 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 22:40:47 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:47 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 22:40:50 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:50 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 22:40:53 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:40:53 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:40:56 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:40:56 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 22:40:59 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:40:59 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 22:41:02 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:02 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 22:41:05 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:05 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 22:41:08 [7082] main-server.c:330 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 22:41:11 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:11 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+2023/11/21 22:41:14 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:14 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <19>).
+2023/11/21 22:41:17 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:17 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <19>).
+2023/11/21 22:41:20 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:20 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <21>).
+2023/11/21 22:41:23 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:23 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 22:41:25 [7244] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/21 22:41:25 [7082] main-server.c:181 at connection_mgr(): [INFO]: New connection from 192.168.227.128
+2023/11/21 22:41:25 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:25 [WARNING]: The sensor node with ID '2' reports it's cold (avg temperature = <3>).
+2023/11/21 22:41:26 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:26 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <22>).
+2023/11/21 22:41:28 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:28 [WARNING]: The sensor node with ID '2' reports it's cold (avg temperature = <8>).
+2023/11/21 22:41:29 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:29 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <23>).
+2023/11/21 22:41:31 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:31 [WARNING]: The sensor node with ID '2' reports it's cold (avg temperature = <14>).
+2023/11/21 22:41:32 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:32 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:41:34 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:34 [WARNING]: The sensor node with ID '2' reports it's cold (avg temperature = <18>).
+2023/11/21 22:41:35 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:35 [WARNING]: The sensor node with ID '3' reports it's cold (avg temperature = <24>).
+2023/11/21 22:41:37 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:37 [WARNING]: The sensor node with ID '2' reports it's cold (avg temperature = <24>).
+2023/11/21 22:41:38 [7082] main-server.c:330 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 22:41:40 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:40 [WARNING]: The sensor node with ID '2' reports it's hot (avg temperature = <27>).
+2023/11/21 22:41:41 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:41 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 22:41:43 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:43 [WARNING]: The sensor node with ID '2' reports it's hot (avg temperature = <29>).
+2023/11/21 22:41:44 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:44 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
+2023/11/21 22:41:46 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:46 [WARNING]: The sensor node with ID '2' reports it's hot (avg temperature = <29>).
+2023/11/21 22:41:47 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:47 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <27>).
+2023/11/21 22:41:49 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:49 [WARNING]: The sensor node with ID '2' reports it's hot (avg temperature = <28>).
+2023/11/21 22:41:50 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:50 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <28>).
+2023/11/21 22:41:52 [7082] main-server.c:330 at data_mgr(): [INFO]: Temperature at sensor '2': 25
+2023/11/21 22:41:53 [7082] main-server.c:330 at data_mgr(): [INFO]: Temperature at sensor '3': 25
+2023/11/21 22:41:55 [7082] main-server.c:325 at data_mgr(): [INFO]: 2023/11/21 22:41:55 [WARNING]: The sensor node with ID '2' reports it's cold (avg temperature = <24>).
+2023/11/21 22:41:56 [7082] main-server.c:320 at data_mgr(): [INFO]: 2023/11/21 22:41:56 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).

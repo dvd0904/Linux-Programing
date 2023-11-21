@@ -218,7 +218,7 @@ void *data_mgr(void *arg)
     os_malloc(TIME_LENGTH, timestamp);
 
     cJSON *msg_root = NULL;
-    cJSON *root = NULL, *IDs = NULL, *room_obj = NULL;
+    cJSON *root = NULL, *room_obj = NULL;
     int senIDs[5], temp_avg = -1, check = 0, read = *(int *)arg;
     int val[6][6] = {0};
     for(int i = 1; i <= 5; i++)
@@ -275,9 +275,7 @@ void *data_mgr(void *arg)
             cnt = 0;
             list_remove_first_node(shared_data);
         }
-
         mutex_unlock(&cnt_ex);
-
 
         printf("At Data Manager. Message: %s\n", msg);
         msg_root = cJSON_Parse(msg);
@@ -320,24 +318,24 @@ void *data_mgr(void *arg)
                     if(temp_avg >= 26)
                     {
                         minfo(SENSOR_HOT, timestamp, SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT, timestamp, SID->valueint, temp_avg);
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT"\n", timestamp, SID->valueint, temp_avg);
                     }
                     else if(temp_avg <= 24)
                     {
                         minfo(SENSOR_COLD, timestamp, SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD, timestamp, SID->valueint, temp_avg);
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD"\n", timestamp, SID->valueint, temp_avg);
                     }
                     else 
                     {
                         minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP, timestamp, SID->valueint, temp_avg);
+                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP"\n", timestamp, SID->valueint, temp_avg);
                     }
                 }
                 else 
                     cJSON_Delete(temp);
             }
             else 
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID, timestamp, SID->valueint);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID"\n", timestamp, SID->valueint);
         }
         else
             cJSON_Delete(SID);
@@ -345,11 +343,13 @@ void *data_mgr(void *arg)
     }
 
     cJSON_Delete(room_obj);
+    cJSON_Delete(root);
     cJSON_Delete(msg_root);
     os_free(timestamp);
     os_free(msg);
 
 }
+
 void *storage_mgr(void *arg)
 {
     mdebug("Storage manager started.");
@@ -358,6 +358,8 @@ void *storage_mgr(void *arg)
     memset(old_msg, '\0', sizeof(old_msg));
     os_malloc(OS_BUFFER_SIZE, msg);
     int read = *(int *)arg;
+    msg_t *parsed = NULL;
+    fdb_t *fdb = fdb_open_sensor_db();
 
     while(1)
     {
@@ -368,7 +370,6 @@ void *storage_mgr(void *arg)
             {
                 strcpy(old_msg, msg);
                 cnt++;
-                printf("At Storage Manager. Message: %s\n", msg);
             }
             else 
             {
@@ -382,9 +383,16 @@ void *storage_mgr(void *arg)
             list_remove_first_node(shared_data);
         }
         mutex_unlock(&cnt_ex);
-        // sleep(2);
+
+        printf("At Storage Manager. Message: %s\n", msg);
+        parsed = msg_parse(msg);
+        // printf("SID: %d\nTEMP: %d\nTS: %s\n", parsed->senID, parsed->temp, parsed->ts);
+        fdb_data_insert(fdb, parsed->senID, parsed->temp, parsed->ts);
+        os_free(parsed);
     }
 
+    fdb_destroy(fdb);
+    // os_free(parsed);
 }
 
 static void help_msg()
