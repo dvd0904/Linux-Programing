@@ -13,6 +13,6 @@ void getMsg(char **msg, int senID, double temp);
 
 int *read_room();
 
-msg_t *msg_parse(char *msg);
+msg_t *msg_parse(char *msg, int *senIDs);
 
 #endif

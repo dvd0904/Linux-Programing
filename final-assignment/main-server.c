@@ -128,6 +128,7 @@ int main(int argc, char **argv)
             pthread_join(threads[i], NULL);
 
         list_destroy(shared_data);
+        mutex_destroy(&cnt_ex);
     }
 }
 
@@ -211,48 +212,16 @@ void *connection_mgr(void *arg)
 void *data_mgr(void *arg)
 {
     mdebug("Data manager started.");
-    char *msg, *timestamp;
-    char old_msg[OS_BUFFER_SIZE], room_buf[OS_MAXSTR];
-    memset(old_msg, '\0', sizeof(old_msg));
+    char *msg;
     os_malloc(OS_BUFFER_SIZE, msg);
-    os_malloc(TIME_LENGTH, timestamp);
-
-    cJSON *msg_root = NULL;
-    cJSON *root = NULL, *room_obj = NULL;
-    int senIDs[5], temp_avg = -1, check = 0, read = *(int *)arg;
+    char old_msg[OS_BUFFER_SIZE];
+    memset(old_msg, '\0', sizeof(old_msg));
+    msg_t *parsed = NULL;
+    int *senIDs = read_room(); 
+    int temp_avg = -1, check = 0, read = *(int *)arg;
     int val[6][6] = {0};
     for(int i = 1; i <= 5; i++)
         val[i][0] = 1;
-
-    if (root = json_fread("room.json", 0), !root) 
-    {
-        if (errno) 
-            mdebug("Couldn't load configuration file due to: %s (%d)", strerror(errno), errno);
-        else 
-            mdebug("Couldn't load configuration file. Maybe format is invalid.");
-    }
-
-    room_obj = cJSON_GetObjectItem(root, "roomIDs");
-    if(!cJSON_IsArray(room_obj))
-    {
-        cJSON_Delete(room_obj);
-        return NULL;
-    }
-
-    for(int i = 0; i < cJSON_GetArraySize(room_obj); i++)
-    {
-        cJSON *subRID = cJSON_GetArrayItem(room_obj, i);
-        if(cJSON_IsObject(subRID))
-        {
-            cJSON *subSID = cJSON_GetObjectItem(subRID, "sensorID");
-            if(cJSON_IsNumber(subSID))
-                senIDs[i] = subSID->valueint;
-            else 
-                cJSON_Delete(subSID);
-        }   
-        else 
-            cJSON_Delete(subRID);
-    }
 
     while(1)
     {
@@ -278,74 +247,48 @@ void *data_mgr(void *arg)
         mutex_unlock(&cnt_ex);
 
         printf("At Data Manager. Message: %s\n", msg);
-        msg_root = cJSON_Parse(msg);
-        if(!cJSON_IsObject(msg_root))
-            continue;
-        
 
-        cJSON *SID = cJSON_GetObjectItem(msg_root, "sensorID");
-        if(cJSON_IsNumber(SID))
+        parsed = msg_parse(msg, senIDs);
+        if(parsed != NULL)
         {
-            cJSON *ts = cJSON_GetObjectItem(msg_root, "timestamp");
-            if(cJSON_IsString(ts))
-                strcpy(timestamp, ts->valuestring);
-            else 
-                cJSON_Delete(ts);
-
-            if(search(senIDs, SID->valueint, 0, 5))
+            val[parsed->senID][val[parsed->senID][0]++] = parsed->temp;
+            
+            if(check)
+                temp_avg = avg(val[parsed->senID]);
+            
+            if(val[parsed->senID][0] > 5)
             {
-                cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
-                if(cJSON_IsNumber(temp))
+                val[parsed->senID][0] = 1;
+                if(!check)
                 {
-                    val[SID->valueint][val[SID->valueint][0]++] = temp->valueint;
-                    
-                    if(check)
-                        temp_avg = avg(val[SID->valueint]);
-                    
-                    if(val[SID->valueint][0] > 5)
-                    {
-                        val[SID->valueint][0] = 1;
-                        if(!check)
-                        {
-                            check = 1;
-                            temp_avg = avg(val[SID->valueint]);
-                        }
-                    }
-
-                    if(temp_avg <= 0)
-                        continue;
-                    
-                    if(temp_avg >= 26)
-                    {
-                        minfo(SENSOR_HOT, timestamp, SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT"\n", timestamp, SID->valueint, temp_avg);
-                    }
-                    else if(temp_avg <= 24)
-                    {
-                        minfo(SENSOR_COLD, timestamp, SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD"\n", timestamp, SID->valueint, temp_avg);
-                    }
-                    else 
-                    {
-                        minfo("Temperature at sensor '%d': %d", SID->valueint, temp_avg);
-                        write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP"\n", timestamp, SID->valueint, temp_avg);
-                    }
+                    check = 1;
+                    temp_avg = avg(val[parsed->senID]);
                 }
-                else 
-                    cJSON_Delete(temp);
+            }
+
+            if(temp_avg <= 0)
+                continue;
+            
+            if(temp_avg >= 26)
+            {
+                minfo(SENSOR_HOT, parsed->ts, parsed->senID, temp_avg);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT"\n", parsed->ts, parsed->senID, temp_avg);
+            }
+            else if(temp_avg <= 24)
+            {
+                minfo(SENSOR_COLD, parsed->ts, parsed->senID, temp_avg);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD"\n", parsed->ts, parsed->senID, temp_avg);
             }
             else 
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_INVALID"\n", timestamp, SID->valueint);
+            {
+                minfo("Temperature at sensor '%d': %d", parsed->senID, temp_avg);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP"\n", parsed->ts, parsed->senID, temp_avg);
+            }
         }
-        else
-            cJSON_Delete(SID);
-        
+        os_free(parsed);
     }
 
-    cJSON_Delete(room_obj);
-    cJSON_Delete(root);
-    cJSON_Delete(msg_root);
-    os_free(timestamp);
+    os_free(senIDs);
     os_free(msg);
 
 }
@@ -358,6 +301,7 @@ void *storage_mgr(void *arg)
     memset(old_msg, '\0', sizeof(old_msg));
     os_malloc(OS_BUFFER_SIZE, msg);
     int read = *(int *)arg;
+    int *sendIDs = read_room();
     msg_t *parsed = NULL;
     fdb_t *fdb = fdb_open_sensor_db();
 
@@ -385,14 +329,13 @@ void *storage_mgr(void *arg)
         mutex_unlock(&cnt_ex);
 
         printf("At Storage Manager. Message: %s\n", msg);
-        parsed = msg_parse(msg);
-        // printf("SID: %d\nTEMP: %d\nTS: %s\n", parsed->senID, parsed->temp, parsed->ts);
+        parsed = msg_parse(msg, sendIDs);
         fdb_data_insert(fdb, parsed->senID, parsed->temp, parsed->ts);
         os_free(parsed);
     }
 
     fdb_destroy(fdb);
-    // os_free(parsed);
+    os_free(sendIDs);
 }
 
 static void help_msg()
