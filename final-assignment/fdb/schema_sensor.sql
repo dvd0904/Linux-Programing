@@ -1,0 +1,11 @@
+
+BEGIN;
+
+CREATE TABLE IF NOT EXISTS sensor (
+    id INTEGER PRIMARY KEY ASC AUTOINCREMENT,
+    sensor_id INTEGER,
+    temperature INTEGER,
+    ts TEXT
+);
+
+END;

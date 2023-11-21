@@ -3,6 +3,7 @@
 #include "shared.h"
 #include "cJSON.h"
 #include "os_net/os_net.h"
+#include "fdb/fdb.h"
 
 static pthread_mutex_t ipc_pipe_mutex; 
 static pthread_mutex_t cnt_ex; 
