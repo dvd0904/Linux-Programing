@@ -18,3 +18,6 @@ Fixed all bug at 18-11-2023
 ``````
 Store data from Storage Manager to DB
 ``````
+ 
+ ## Bug
+ Memory leak at Storage and Data manager thread.

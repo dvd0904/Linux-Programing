@@ -205,9 +205,11 @@ void *connection_mgr(void *arg)
 void *data_mgr(void *arg)
 {
     mdebug("Data manager started.");
-    char *msg = (char *)malloc(sizeof(char) * OS_BUFFER_SIZE);
-    if(!msg)
-        merror_exit(MEM_ERROR, errno, strerror(errno));
+    /* Mem leak */
+    // char *msg = (char *)malloc(sizeof(char) * OS_BUFFER_SIZE);
+    // if(!msg)
+    //     merror_exit(MEM_ERROR, errno, strerror(errno));
+    char *msg = NULL;
     char old_msg[OS_BUFFER_SIZE];
     memset(old_msg, '\0', sizeof(old_msg));
 
@@ -291,10 +293,16 @@ void *data_mgr(void *arg)
 void *storage_mgr(void *arg)
 {
     mdebug("Storage manager started.");
-    char *msg;
+    char *msg = NULL;
+
+    /* Mem leak */
+    // msg = malloc(sizeof(char) * OS_BUFFER_SIZE);    
+    // if(!msg)
+    //     merror_exit(MEM_ERROR, errno, strerror(errno));
+
     char old_msg[OS_BUFFER_SIZE];
     memset(old_msg, '\0', sizeof(old_msg));
-    os_malloc(OS_BUFFER_SIZE, msg);
+    
     int read = *(int *)arg;
     int *sendIDs = read_room();
     msg_t *parsed = NULL;

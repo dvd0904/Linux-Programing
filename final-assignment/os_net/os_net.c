@@ -94,9 +94,9 @@ int OS_AcceptTCP(int socket, char *srcip, size_t addrsize)
 
 char *OS_RecvTCP(int socket, int sizet)
 {
-    char *ret;
-
-    ret = (char *) calloc((sizet), sizeof(char));
+    char *ret = NULL;
+    ret = (char *)calloc((sizet), sizeof(char));
+    
     if (ret == NULL) 
         return (NULL);
 
