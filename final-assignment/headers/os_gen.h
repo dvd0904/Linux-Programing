@@ -27,4 +27,5 @@ int search(int *arr, int x, int left, int right);
 */
 int avg(int *arr);
 
+
 #endif

@@ -84,7 +84,8 @@ int main(int argc, char *argv[])
 		if(ret = OS_SendTCP(server_fd, msg), ret < 0)
 			merror(SEND_ERROR, errno, strerror(errno));
 		printf("Msg send to server: %s\n", msg);
-		sleep(SLEEP);
+		// sleep(SLEEP);
+		sleep(2);
 	}
 
 	os_free(msg);

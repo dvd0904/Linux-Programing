@@ -6,14 +6,17 @@
 #include "fdb/fdb.h"
 
 static pthread_mutex_t ipc_pipe_mutex; 
+static pthread_rwlock_t sen_lock;
 static os_list *shared_data;
-int pfds[2], cnt = 0;
+int pfds[2], cnt = 0, *senIDs;
+
 
 static void help_msg();
 void prevent_zombie(int signum);
 void *connection_mgr(void *arg);
 void *data_mgr(void *arg);
 void *storage_mgr(void *arg);
+
 
 int main(int argc, char **argv)
 {
@@ -106,9 +109,8 @@ int main(int argc, char **argv)
             merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
         signal(SIGCHLD, prevent_zombie);
-        // if(close(pfds[1]) == -1) /* Child will see End of Pipe */
-        //     merror_exit(CLOSE_ERROR, errno, strerror(errno));
-
+        rwlock_init(&sen_lock, NULL);
+        senIDs = read_room();
         shared_data = list_create(100);
     
         int check_read1= 0, check_read2 = 1;
@@ -123,6 +125,8 @@ int main(int argc, char **argv)
             pthread_join(threads[i], NULL);
 
         list_destroy(shared_data);
+        rwlock_destroy(&sen_lock);
+        os_free(senIDs);
     }
 }
 
@@ -205,20 +209,18 @@ void *connection_mgr(void *arg)
 void *data_mgr(void *arg)
 {
     mdebug("Data manager started.");
-    /* Mem leak */
-    // char *msg = (char *)malloc(sizeof(char) * OS_BUFFER_SIZE);
-    // if(!msg)
-    //     merror_exit(MEM_ERROR, errno, strerror(errno));
     char *msg = NULL;
     char old_msg[OS_BUFFER_SIZE];
     memset(old_msg, '\0', sizeof(old_msg));
 
     msg_t *parsed = NULL;
-    int *senIDs = read_room(); 
-    int temp_avg = -1, check = 0, read = *(int *)arg;
+    int temp_avg[5], check[5] = {0}, read = *(int *)arg;
     int val[6][6] = {0};
     for(int i = 1; i <= 5; i++)
+    {
         val[i][0] = 1;
+        temp_avg[i - 1] = -1;
+    }
 
     while(1)
     {
@@ -244,42 +246,45 @@ void *data_mgr(void *arg)
         mutex_unlock(&shared_data->cnt_mutex);
 
         // printf("At Data Manager. Message: %s\n", msg);
-
+        rwlock_rdlock(&sen_lock);
         parsed = msg_parse(msg, senIDs);
+        rwlock_unlock(&sen_lock);
+
         if(parsed != NULL)
-        {
+        {   
             val[parsed->senID][val[parsed->senID][0]++] = parsed->temp;
+            if(check[parsed->senID - 1])
+                temp_avg[parsed->senID - 1] = avg(val[parsed->senID]);
             
-            if(check)
-                temp_avg = avg(val[parsed->senID]);
             
             if(val[parsed->senID][0] > 5)
             {
                 val[parsed->senID][0] = 1;
-                if(!check)
+                if(!check[parsed->senID - 1])
                 {
-                    check = 1;
-                    temp_avg = avg(val[parsed->senID]);
+                    check[parsed->senID - 1] = 1;
+                    temp_avg[parsed->senID - 1] = avg(val[parsed->senID]);
                 }
             }
 
-            if(temp_avg <= 0)
+
+            if(temp_avg[parsed->senID - 1] <= 0)
                 continue;
             
-            if(temp_avg >= 26)
+            if(temp_avg[parsed->senID - 1] >= 26)
             {
-                minfo(SENSOR_HOT, parsed->ts, parsed->senID, temp_avg);
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT"\n", parsed->ts, parsed->senID, temp_avg);
+                minfo(SENSOR_HOT, parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT"\n", parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
             }
-            else if(temp_avg <= 24)
+            else if(temp_avg[parsed->senID - 1] <= 24)
             {
-                minfo(SENSOR_COLD, parsed->ts, parsed->senID, temp_avg);
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD"\n", parsed->ts, parsed->senID, temp_avg);
+                minfo(SENSOR_COLD, parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD"\n", parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
             }
             else 
             {
-                minfo("Temperature at sensor '%d': %d", parsed->senID, temp_avg);
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP"\n", parsed->ts, parsed->senID, temp_avg);
+                minfo("Temperature at sensor '%d': %d", parsed->senID, temp_avg[parsed->senID - 1]);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP"\n", parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
             }
         }
         os_free(parsed);
@@ -295,16 +300,10 @@ void *storage_mgr(void *arg)
     mdebug("Storage manager started.");
     char *msg = NULL;
 
-    /* Mem leak */
-    // msg = malloc(sizeof(char) * OS_BUFFER_SIZE);    
-    // if(!msg)
-    //     merror_exit(MEM_ERROR, errno, strerror(errno));
-
     char old_msg[OS_BUFFER_SIZE];
     memset(old_msg, '\0', sizeof(old_msg));
     
     int read = *(int *)arg;
-    int *sendIDs = read_room();
     msg_t *parsed = NULL;
     fdb_t *fdb = fdb_open_sensor_db();
     if(fdb != NULL)
@@ -336,7 +335,10 @@ void *storage_mgr(void *arg)
         mutex_unlock(&shared_data->cnt_mutex);
 
         // printf("At Storage Manager. Message: %s\n", msg);
-        parsed = msg_parse(msg, sendIDs);
+        rwlock_rdlock(&sen_lock);
+        parsed = msg_parse(msg, senIDs);
+        rwlock_unlock(&sen_lock);
+
         if(parsed != NULL)
         {
             if(!fdb_data_insert(fdb, parsed->senID, parsed->temp, parsed->ts))
@@ -347,7 +349,7 @@ void *storage_mgr(void *arg)
     }
 
     fdb_destroy(fdb);
-    os_free(sendIDs);
+    os_free(senIDs);
     os_free(msg);
 }
 

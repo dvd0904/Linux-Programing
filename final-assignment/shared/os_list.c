@@ -34,6 +34,7 @@ int list_destroy(os_list *list)
     mutex_destroy(&list->mutex);
     mutex_destroy(&list->cnt_mutex);
     cond_destroy(&list->data_available);
+
     free(list);
     list = NULL;
     return LIST_SUCCESS;
@@ -55,6 +56,7 @@ int list_clean_nodes(os_list *list)
         mutex_unlock(&list->mutex);
         return LIST_NODATA;
     }
+    
     os_list_node *temp = NULL;
 
     while(list->first_node != NULL)

@@ -10,14 +10,22 @@ Data to write to pipe is wrong.
 
 ## Fixed
 ``````
-Fixed all bug at 18-11-2023
+Fixed all bug at 18-11-2023.
 ``````
 # 21-11-2023
 
 ## Add
 ``````
-Store data from Storage Manager to DB
+Store data from Storage Manager to DB.
 ``````
- 
- ## Bug
- Memory leak at Storage and Data manager thread.
+
+## Bug
+``````
+Memory leak at Storage and Data manager thread.
+``````
+
+## Fixed
+``````
+Write wrong data to pipe if multi client send data to server.
+``````
+

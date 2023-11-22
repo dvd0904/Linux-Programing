@@ -40,7 +40,7 @@ static int fdb_create_file(const char *path, const char *source)
 
     if (sqlite3_open_v2(path, &db, SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE, NULL))
     {
-        mdebug("Couldn't create SQLite database '%s': %s", path, sqlite3_errmsg(db));
+        mdebug("Couldn't create SQLite database '%s': %s.", path, sqlite3_errmsg(db));
         sqlite3_close_v2(db);
         return -1;
     }
@@ -49,7 +49,7 @@ static int fdb_create_file(const char *path, const char *source)
     {
         if (sqlite3_prepare_v2(db, sql, -1, &stmt, &tail) != SQLITE_OK)
         {
-            mdebug("Preparing statement: %s", sqlite3_errmsg(db));
+            mdebug("Preparing statement: %s.", sqlite3_errmsg(db));
             sqlite3_close_v2(db);
             return -1;
         }
@@ -63,7 +63,7 @@ static int fdb_create_file(const char *path, const char *source)
         case SQLITE_DONE:
             break;
         default:
-            mdebug("Stepping statement: %s", sqlite3_errmsg(db));
+            mdebug("Stepping statement: %s.", sqlite3_errmsg(db));
             sqlite3_finalize(stmt);
             sqlite3_close_v2(db);
             return -1;
@@ -97,7 +97,7 @@ int fdb_create_sensor_db()
 
     if (!(source = fopen(path, "r")))
     {
-        mdebug("Profile database not found, creating.\n");
+        mdebug("Profile database not found, creating.");
 
         if (fdb_create_file(path, schema_sensor_sql) < 0)
             return -1;
@@ -114,7 +114,7 @@ int fdb_create_sensor_db()
 
     if (!(dest = fopen(path, "w")))
     {
-        merror("Couldn't create database '%s': %s (%d)", path, strerror(errno), errno);
+        merror("Couldn't create database '%s': %s (%d).", path, strerror(errno), errno);
         fclose(source);
         return -1;
     }
@@ -133,7 +133,7 @@ int fdb_create_sensor_db()
     fclose(source);
     if (fclose(dest) == -1)
     {
-        merror("Couldn't create file %s completely ", path);
+        merror("Couldn't create file %s completely.", path);
         return -1;
     }
 
@@ -164,19 +164,19 @@ fdb_t *fdb_open_sensor_db()
     
     if (sqlite3_open_v2(path, &db, SQLITE_OPEN_READWRITE, NULL))
     {
-        mdebug("No SQLite database found, creating.\n");
+        mdebug("No SQLite database found, creating.");
         sqlite3_close_v2(db);
 
         if (fdb_create_sensor_db() < 0)
         {
-            merror("Couldn't create SQLite database '%s'\n", path);
+            merror("Couldn't create SQLite database '%s'", path);
             goto end;
         }
 
         // Retry to open
         if (sqlite3_open_v2(path, &db, SQLITE_OPEN_READWRITE, NULL))
         {
-            merror("Can't open SQLite database '%s': %s\n", path, sqlite3_errmsg(db));
+            merror("Can't open SQLite database '%s': %s", path, sqlite3_errmsg(db));
             sqlite3_close_v2(db);
             goto end;
         }
@@ -199,7 +199,7 @@ int fdb_stmt_cache(fdb_t *fdb, int index)
 {
     if (index >= FDB_STMT_SIZE)
     {
-        merror("DB SQL statement index (%d) out of bounds", index);
+        merror("DB SQL statement index (%d) out of bounds.", index);
         return -1;
     }
 
