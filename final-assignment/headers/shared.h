@@ -42,7 +42,6 @@
 #include "os_time.h"
 #include "os_pthreads.h"
 #include "os_file.h"
-#include "os_queue.h"
 #include "os_msg.h"
 #include "os_json.h"
 #include "os_gen.h"

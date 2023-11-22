@@ -49,8 +49,7 @@ int OS_Bindport(u_int16_t _port, const char *_ip)
     if ((os_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
         return (int)(-1);
 
-    if (setsockopt(os_sock, SOL_SOCKET, SO_REUSEADDR,
-                    (char *)&flag,  sizeof(flag)) < 0) 
+    if (setsockopt(os_sock, SOL_SOCKET, SO_REUSEADDR, (char *)&flag,  sizeof(flag)) < 0) 
     {
         OS_CloseSocket(os_sock);
         return (-1);

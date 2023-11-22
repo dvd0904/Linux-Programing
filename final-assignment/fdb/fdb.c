@@ -17,6 +17,8 @@ fdb_t *fdb_init(sqlite3 *db)
 
 void fdb_destroy(fdb_t *fdb)
 {
+    if(sqlite3_close_v2(fdb->db) == SQLITE_OK)
+        mdebug(DB_DISCONNECT);
     free(fdb);
 }
 

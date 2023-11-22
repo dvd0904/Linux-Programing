@@ -10,7 +10,7 @@ cJSON * json_fread(const char * path, char retry) {
         mdebug("Cannot get the content of the file: %s", path);
         return NULL;
     }
-
+    
     if (item = cJSON_ParseWithOpts(buffer, &jsonErrPtr, 0), !item) {
         if (retry) {
             mdebug("Couldn't parse JSON file '%s'. Trying to clear comments.", path);
@@ -25,7 +25,6 @@ cJSON * json_fread(const char * path, char retry) {
     os_free(buffer);
     return item;
 }
-
 
 int json_fwrite(const char * path, const cJSON * item) {
     FILE * fp = NULL;
@@ -62,7 +61,6 @@ end:
     return retval;
 }
 
-// Clear C/C++ style comments from a JSON string
 void json_strip(char * json) {
     char * line;
     char * cursor;
@@ -72,6 +70,8 @@ void json_strip(char * json) {
         if (next = strchr(line, '\n'), next) {
             *next = '\0';
         }
+        printf("line: %s\n", line);
+        printf("next: %s\n", next);
 
         // Skip whitespaces
         cursor = line + strspn(line, " \t");
@@ -105,3 +105,5 @@ void json_strip(char * json) {
         }
     }
 }
+
+

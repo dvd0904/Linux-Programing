@@ -6,7 +6,6 @@
 #include "fdb/fdb.h"
 
 static pthread_mutex_t ipc_pipe_mutex; 
-// static pthread_mutex_t cnt_ex; 
 static os_list *shared_data;
 int pfds[2], cnt = 0;
 
@@ -111,7 +110,6 @@ int main(int argc, char **argv)
         //     merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
         shared_data = list_create(100);
-        // mutex_init(&cnt_ex, NULL);
     
         int check_read1= 0, check_read2 = 1;
         
@@ -125,7 +123,6 @@ int main(int argc, char **argv)
             pthread_join(threads[i], NULL);
 
         list_destroy(shared_data);
-        // mutex_destroy(&cnt_ex);
     }
 }
 
@@ -208,10 +205,12 @@ void *connection_mgr(void *arg)
 void *data_mgr(void *arg)
 {
     mdebug("Data manager started.");
-    char *msg;
-    os_malloc(OS_BUFFER_SIZE, msg);
+    char *msg = (char *)malloc(sizeof(char) * OS_BUFFER_SIZE);
+    if(!msg)
+        merror_exit(MEM_ERROR, errno, strerror(errno));
     char old_msg[OS_BUFFER_SIZE];
     memset(old_msg, '\0', sizeof(old_msg));
+
     msg_t *parsed = NULL;
     int *senIDs = read_room(); 
     int temp_avg = -1, check = 0, read = *(int *)arg;
@@ -242,7 +241,7 @@ void *data_mgr(void *arg)
         }
         mutex_unlock(&shared_data->cnt_mutex);
 
-        printf("At Data Manager. Message: %s\n", msg);
+        // printf("At Data Manager. Message: %s\n", msg);
 
         parsed = msg_parse(msg, senIDs);
         if(parsed != NULL)
@@ -301,9 +300,9 @@ void *storage_mgr(void *arg)
     msg_t *parsed = NULL;
     fdb_t *fdb = fdb_open_sensor_db();
     if(fdb != NULL)
-        mdebug(DB_NEW_CONNECTION);
+        minfo(DB_NEW_CONNECTION);
     else 
-        mdebug(DB_UNABLE_CONNECTION);
+        merror(DB_UNABLE_CONNECTION);
 
     while(1)
     {
@@ -328,7 +327,7 @@ void *storage_mgr(void *arg)
         }
         mutex_unlock(&shared_data->cnt_mutex);
 
-        printf("At Storage Manager. Message: %s\n", msg);
+        // printf("At Storage Manager. Message: %s\n", msg);
         parsed = msg_parse(msg, sendIDs);
         if(parsed != NULL)
         {
@@ -341,6 +340,7 @@ void *storage_mgr(void *arg)
 
     fdb_destroy(fdb);
     os_free(sendIDs);
+    os_free(msg);
 }
 
 static void help_msg()

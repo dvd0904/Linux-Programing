@@ -48,9 +48,6 @@ fdb_sql := $(wildcard fdb/*.sql)
 fdb_c := $(wildcard fdb/*.c)
 fdb_o := $(fdb_c:.c=.o) $(fdb_sql:.sql=.o)
 
-# dai: ${shared_o} ${os_net_o} dai.c $(JSON_LIB)
-# 	${CC} ${C_FLAGS} $^ -o $@ 
-
 all: main client 
 
 main: ${fdb_o} ${shared_o} ${os_net_o} $(JSON_LIB) $(SQLITE_LIB) main-server.c
@@ -100,5 +97,3 @@ clean:
 	rm -rf $(JSON_LIB)
 	rm -rf ${fdb_o}
 	rm -rf $(SQLITE_LIB)
-	rm -rf .template.db
-	rm -rf sensor.db

@@ -34,19 +34,10 @@
 #define MIN_TEMP                    17
 #define MAX_TEMP                    35
 #define READER_THREADS              2                   /* Number of thread can read shared data */
-/* Global name */
 
 #define __ass_name                  "Final Assignment"
 #define __author                    "Nguyen Dinh Dai"
 #define __contact                   "dinhdai0904@gmail.com"
 
-typedef enum _room_list
-{
-    R501 = 0,
-    R602,
-    R703,
-    R804,
-    R905
-} room_list;
 
 #endif /* OS_HEADERS */

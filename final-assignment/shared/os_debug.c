@@ -50,7 +50,7 @@ static void _log(int level, const char * file, int line,
         strncpy(logfile, LOGFILE, sizeof(logfile) - 1);
         logfile[sizeof(logfile) - 1] = '\0';
 
-        if (!IsFile(logfile)) 
+        if (!is_file(logfile)) 
             fp = fopen(logfile, "a");
         else
         {
@@ -140,7 +140,7 @@ void print_out(const char *msg, ...)
 {
     va_list args;
     va_start(args, msg);
-
+    
     /* Print to stderr */
     (void)vfprintf(stderr, msg, args);
     (void)fprintf(stderr, "\n");

@@ -39,18 +39,18 @@ void sort(int *arr, int l, int r)
     }
 }
 
-int search(int *a, int x, int left, int right)
+int search(int *arr, int x, int left, int right)
 {
     int res = -1, m;
     while (left <= right)
     {
         m = (left + right) / 2;
-        if (a[m] == x)
+        if (arr[m] == x)
         {
             res = m;
             return 1;
         }
-        else if (a[m] < x)
+        else if (arr[m] < x)
             left = m + 1;
         else
             right = m - 1;
@@ -60,11 +60,11 @@ int search(int *a, int x, int left, int right)
 }
 
 
-int avg(int *a)
+int avg(int *arr)
 {
     int ret = 0;
     for(int i = 1; i <= 5; i++)
-        ret += a[i];
+        ret += arr[i];
     
     ret /= 5;
 

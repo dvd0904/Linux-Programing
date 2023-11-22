@@ -16,9 +16,9 @@
 /* Storage manager */
 
 #define DB_CREATE                   "Database '%s' is created."
-#define DB_NEW_CONNECTION           "Connection to SQL server established."
-#define DB_LOST_CONNECTION          "Connection to SQL server lost."
-#define DB_UNABLE_CONNECTION        "Unable to connect to SQL server."
 #define DB_INSERT                   "New data is push into Database."
+#define DB_NEW_CONNECTION           "Connection to SQL server established."
+#define DB_DISCONNECT               "Database disconnected."
+#define DB_UNABLE_CONNECTION        "Unable to connect to SQL server."
 
 #endif /* DEBUG_MESSAGES_H */
