@@ -18,6 +18,7 @@ os_list *list_create(int size)
     list->max_size = size;
 
     mutex_init(&list->mutex, NULL);
+    mutex_init(&list->cnt_mutex, NULL);
     cond_init(&list->data_available, NULL);
 
     return list;
@@ -31,6 +32,7 @@ int list_destroy(os_list *list)
     list_clean_nodes(list);
     
     mutex_destroy(&list->mutex);
+    mutex_destroy(&list->cnt_mutex);
     cond_destroy(&list->data_available);
     free(list);
     list = NULL;

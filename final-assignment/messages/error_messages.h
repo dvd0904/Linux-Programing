@@ -17,6 +17,7 @@
 #define PIPE_ERROR          "Could not create pipe due to [(%d)-(%s)]."
 #define SELECT_ERROR        "Error slecect due to [(%d)-(%s)]."
 #define RECV_ERROR          "Error recv due to [(%d)-(%s)]."
+#define CHMOD_ERROR         "Could not chmod object '%s' due to [(%d)-(%s)]."
 
 #define PORT_ERROR          "Invalid port number: '%d'."
 #define BIND_ERROR          "Unable to Bind port '%d' due to [(%d)-(%s)]."

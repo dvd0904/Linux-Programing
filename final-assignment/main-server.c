@@ -6,7 +6,7 @@
 #include "fdb/fdb.h"
 
 static pthread_mutex_t ipc_pipe_mutex; 
-static pthread_mutex_t cnt_ex; 
+// static pthread_mutex_t cnt_ex; 
 static os_list *shared_data;
 int pfds[2], cnt = 0;
 
@@ -83,11 +83,8 @@ int main(int argc, char **argv)
 
         while(ret = read(pfds[0], recv_buf, OS_MSG_SIZE), ret > 0)
         {
-            // printf("Buf from pipe: %s\nlen: %ld\n", recv_buf, strlen(recv_buf)); 
             if(bytes = write(fd, recv_buf, strlen(recv_buf)), bytes <= 0)
                 merror(WRITE_ERROR, errno, strerror(errno));
-            // else 
-            //     mdebug("Bytes writed: %ld", bytes);
 
             fsync(fd);
         }
@@ -114,7 +111,7 @@ int main(int argc, char **argv)
         //     merror_exit(CLOSE_ERROR, errno, strerror(errno));
 
         shared_data = list_create(100);
-        mutex_init(&cnt_ex, NULL);
+        // mutex_init(&cnt_ex, NULL);
     
         int check_read1= 0, check_read2 = 1;
         
@@ -128,7 +125,7 @@ int main(int argc, char **argv)
             pthread_join(threads[i], NULL);
 
         list_destroy(shared_data);
-        mutex_destroy(&cnt_ex);
+        // mutex_destroy(&cnt_ex);
     }
 }
 
@@ -200,7 +197,6 @@ void *connection_mgr(void *arg)
                         if(list_push(shared_data, buf))
                             mdebug("Can not push data to shared data");
                         
-                        // printf("Data from client %d:'%s'\nList size: %d\n", i, buf, shared_data->cur_size);
                     }
                 }
             }
@@ -225,7 +221,7 @@ void *data_mgr(void *arg)
 
     while(1)
     {
-        mutex_lock(&cnt_ex);
+        mutex_lock(&shared_data->cnt_mutex);
         if(msg = list_get_data_first_node(shared_data), msg != NULL)
         {
             if(strcmp(msg, old_msg))
@@ -235,7 +231,7 @@ void *data_mgr(void *arg)
             }
             else 
             {
-                mutex_unlock(&cnt_ex);
+                mutex_unlock(&shared_data->cnt_mutex);
                 continue;
             }
         }
@@ -244,7 +240,7 @@ void *data_mgr(void *arg)
             cnt = 0;
             list_remove_first_node(shared_data);
         }
-        mutex_unlock(&cnt_ex);
+        mutex_unlock(&shared_data->cnt_mutex);
 
         printf("At Data Manager. Message: %s\n", msg);
 
@@ -304,10 +300,14 @@ void *storage_mgr(void *arg)
     int *sendIDs = read_room();
     msg_t *parsed = NULL;
     fdb_t *fdb = fdb_open_sensor_db();
+    if(fdb != NULL)
+        mdebug(DB_NEW_CONNECTION);
+    else 
+        mdebug(DB_UNABLE_CONNECTION);
 
     while(1)
     {
-        mutex_lock(&cnt_ex);
+        mutex_lock(&shared_data->cnt_mutex);
         if(msg = list_get_data_first_node(shared_data), msg != NULL)
         {
             if(strcmp(msg, old_msg))
@@ -317,7 +317,7 @@ void *storage_mgr(void *arg)
             }
             else 
             {
-                mutex_unlock(&cnt_ex);
+                mutex_unlock(&shared_data->cnt_mutex);
                 continue;
             }
         }
@@ -326,12 +326,17 @@ void *storage_mgr(void *arg)
             cnt = 0;
             list_remove_first_node(shared_data);
         }
-        mutex_unlock(&cnt_ex);
+        mutex_unlock(&shared_data->cnt_mutex);
 
         printf("At Storage Manager. Message: %s\n", msg);
         parsed = msg_parse(msg, sendIDs);
-        fdb_data_insert(fdb, parsed->senID, parsed->temp, parsed->ts);
-        os_free(parsed);
+        if(parsed != NULL)
+        {
+            if(!fdb_data_insert(fdb, parsed->senID, parsed->temp, parsed->ts))
+                mdebug(DB_INSERT);
+
+            os_free(parsed);
+        }
     }
 
     fdb_destroy(fdb);

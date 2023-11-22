@@ -62,7 +62,6 @@ int *read_room()
 
 msg_t *msg_parse(char *msg, int *senIDs)
 {
-    // int *senIDs = read_room();
     msg_t *msg_parsed = (msg_t *)malloc(sizeof(msg_t));
     cJSON *msg_root = cJSON_Parse(msg);
     if(!cJSON_IsObject(msg_root))
@@ -100,7 +99,6 @@ msg_t *msg_parse(char *msg, int *senIDs)
         }
     }
 
-    // os_free(senIDs);
     cJSON_Delete(msg_root);
 
     return msg_parsed;

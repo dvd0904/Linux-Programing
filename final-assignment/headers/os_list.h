@@ -22,6 +22,7 @@ typedef struct _os_list
     int max_size;
 
     pthread_mutex_t mutex;
+    pthread_mutex_t cnt_mutex;
     pthread_cond_t data_available;
 } os_list;
 

@@ -764,3 +764,476 @@
 2023/11/22 00:28:33 [9762] main-server.c:274 at data_mgr(): [INFO]: 2023/11/22 00:28:33 [WARNING]: The sensor node with ID '2' reports it's hot (avg temperature = <27>).
 2023/11/22 00:28:36 [9762] main-server.c:274 at data_mgr(): [INFO]: 2023/11/22 00:28:36 [WARNING]: The sensor node with ID '3' reports it's hot (avg temperature = <26>).
 2023/11/22 00:28:36 [9762] main-server.c:274 at data_mgr(): [INFO]: 2023/11/22 00:28:36 [WARNING]: The sensor node with ID '2' reports it's hot (avg temperature = <28>).
+2023/11/22 08:59:33 [61447] main-server.c:210 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/22 08:59:33 [61447] main-server.c:134 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/22 08:59:33 [61447] main-server.c:294 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/22 08:59:33 [61447] fdb.c:158 at fdb_open_sensor_db(): [DEBUG]: No SQLite database found, creating.
+
+2023/11/22 08:59:33 [61447] fdb.c:94 at fdb_create_sensor_db(): [DEBUG]: Profile database not found, creating.
+
+2023/11/22 08:59:48 [61454] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/22 08:59:48 [61447] main-server.c:179 at connection_mgr(): [INFO]: New connection from 192.168.15.144
+2023/11/22 09:00:00 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:00:00 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:00:03 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:00:03 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:00:06 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:00:06 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:00:09 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:00:09 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <30>).
+2023/11/22 09:00:12 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:00:12 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:00:15 [61447] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:00:18 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:18 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:00:21 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:21 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <22>).
+2023/11/22 09:00:24 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:24 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <22>).
+2023/11/22 09:00:27 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:27 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:00:30 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:30 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:00:33 [61447] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:00:36 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:36 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:00:39 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:39 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <21>).
+2023/11/22 09:00:42 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:42 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <20>).
+2023/11/22 09:00:45 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:45 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <20>).
+2023/11/22 09:00:48 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:48 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <21>).
+2023/11/22 09:00:51 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:51 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <22>).
+2023/11/22 09:00:54 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:00:54 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:00:57 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:00:57 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:01:00 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:00 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <29>).
+2023/11/22 09:01:03 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:03 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:01:06 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:06 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:01:09 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:09 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:01:12 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:01:12 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:01:15 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:01:15 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:01:18 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:01:18 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:01:21 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:01:21 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:01:24 [61447] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:01:27 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:27 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:01:30 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:01:30 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:01:33 [61447] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:01:36 [61447] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:01:36 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:01:39 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:39 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:01:42 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:42 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:01:45 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:45 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:01:48 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:48 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:01:51 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:51 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:01:54 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:54 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:01:57 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:01:57 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:02:00 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:02:00 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:02:03 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:02:03 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:02:06 [61447] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:02:06 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:27:09 [62206] main-server.c:134 at connection_mgr(): [DEBUG]: Connection manager started.
+2023/11/22 09:27:09 [62206] main-server.c:210 at data_mgr(): [DEBUG]: Data manager started.
+2023/11/22 09:27:09 [62206] main-server.c:294 at storage_mgr(): [DEBUG]: Storage manager started.
+2023/11/22 09:27:09 [62206] main-server.c:304 at storage_mgr(): [DEBUG]: Connection to SQL server established.
+2023/11/22 09:27:12 [62214] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/22 09:27:12 [62206] main-server.c:179 at connection_mgr(): [INFO]: New connection from 192.168.15.144
+2023/11/22 09:27:12 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:15 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:18 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:21 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:24 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:24 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:27:24 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:27 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:27 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:27:27 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:30 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:30 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:27:30 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:33 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:33 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:27:33 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:36 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:27:36 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:39 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:27:39 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:41 [62206] main-server.c:179 at connection_mgr(): [INFO]: New connection from 192.168.15.144
+2023/11/22 09:27:41 [62353] client.c:77 at main(): [INFO]: Connect to server successfully.
+2023/11/22 09:27:41 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:27:41 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <5>).
+2023/11/22 09:27:41 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:42 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:27:42 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:44 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:27:44 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <9>).
+2023/11/22 09:27:44 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:45 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:45 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:27:45 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:47 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:27:47 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <14>).
+2023/11/22 09:27:47 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:48 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:48 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:27:48 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:50 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:27:50 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <19>).
+2023/11/22 09:27:50 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:51 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:51 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:27:51 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:53 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:27:53 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:27:53 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:54 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:54 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:27:54 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:56 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:27:56 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:57 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:57 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:27:57 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:27:59 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:27:59 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:27:59 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:00 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:00 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:28:00 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:02 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:02 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:28:02 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:03 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:03 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:28:03 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:05 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:05 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:28:05 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:06 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:06 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:28:06 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:08 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:08 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:28:08 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:09 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:09 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:28:09 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:11 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:11 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:28:11 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:12 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:12 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <22>).
+2023/11/22 09:28:12 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:14 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:14 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:28:14 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:15 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:15 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:28:15 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:17 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:28:17 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:18 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:18 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:28:18 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:20 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:20 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:28:20 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:21 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:21 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:28:21 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:23 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:23 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:28:23 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:24 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:28:24 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:26 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:26 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:28:26 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:27 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:27 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:28:27 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:29 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:29 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:28:29 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:30 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:30 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:28:30 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:32 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:32 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:28:32 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:33 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:33 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:28:33 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:35 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:35 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <22>).
+2023/11/22 09:28:35 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:36 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:36 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:28:36 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:38 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:38 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <21>).
+2023/11/22 09:28:38 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:39 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:39 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:28:39 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:41 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:41 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <20>).
+2023/11/22 09:28:41 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:42 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:42 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:28:42 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:44 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:44 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <19>).
+2023/11/22 09:28:44 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:45 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:45 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <29>).
+2023/11/22 09:28:45 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:47 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:47 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <22>).
+2023/11/22 09:28:47 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:48 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:48 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <29>).
+2023/11/22 09:28:48 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:50 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:28:50 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:28:50 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:51 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:51 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <30>).
+2023/11/22 09:28:51 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:53 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:28:53 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:54 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:54 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <31>).
+2023/11/22 09:28:54 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:56 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:56 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:28:56 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:57 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:57 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <30>).
+2023/11/22 09:28:57 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:28:59 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:28:59 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <30>).
+2023/11/22 09:28:59 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:00 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:00 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <29>).
+2023/11/22 09:29:00 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:02 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:02 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:29:02 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:03 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:03 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:29:03 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:05 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:05 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <30>).
+2023/11/22 09:29:05 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:06 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:06 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:29:06 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:08 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:08 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <30>).
+2023/11/22 09:29:08 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:09 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:09 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:29:09 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:11 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:11 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:29:11 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:12 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:12 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:29:12 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:14 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:14 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:29:14 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:15 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:15 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:29:15 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:17 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:17 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:29:17 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:18 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:18 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <28>).
+2023/11/22 09:29:18 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:20 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:20 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:29:20 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:21 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:21 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <27>).
+2023/11/22 09:29:21 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:23 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:23 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:29:23 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:24 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:24 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:29:24 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:26 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:26 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:29:26 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:27 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:27 [WARNING]: The sensor node with ID '1' reports it's hot (avg temperature = <26>).
+2023/11/22 09:29:27 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:29 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:29 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:29:29 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:30 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:30 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:29:30 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:32 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:32 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:29:32 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:33 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:33 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:29:33 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:35 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:35 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:29:35 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:36 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:36 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:29:36 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:38 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:29:38 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:29:38 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:39 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:29:39 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:41 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:41 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:29:41 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:42 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '1': 25
+2023/11/22 09:29:42 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:44 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:44 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:29:44 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:45 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:45 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:29:45 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:47 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:29:47 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:48 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:48 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <23>).
+2023/11/22 09:29:48 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:50 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:50 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:29:50 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:51 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:51 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <22>).
+2023/11/22 09:29:51 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:53 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:53 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:29:53 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:54 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:54 [WARNING]: The sensor node with ID '1' reports it's cold (avg temperature = <24>).
+2023/11/22 09:29:54 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:54 [62206] main-server.c:190 at connection_mgr(): [ERROR]: Error recv due to [(0)-(Success)].
+2023/11/22 09:29:56 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:56 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:29:56 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:29:59 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:29:59 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <22>).
+2023/11/22 09:29:59 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:02 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:30:02 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <21>).
+2023/11/22 09:30:02 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:05 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:30:05 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:30:05 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:08 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:08 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:30:08 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:11 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:11 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:30:11 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:14 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:14 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:30:14 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:17 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:17 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:30:17 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:20 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:30:20 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:23 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:30:23 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:26 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:26 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:30:26 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:29 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:29 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <30>).
+2023/11/22 09:30:29 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:32 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:32 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:30:32 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:35 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:35 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <30>).
+2023/11/22 09:30:35 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:38 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:38 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <30>).
+2023/11/22 09:30:38 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:41 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:41 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:30:41 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:44 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:44 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:30:44 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:47 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:47 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:30:47 [62206] main-server.c:336 at storage_mgr(): [DEBUG]: New data is push into Database.
+2023/11/22 09:30:50 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:50 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:30:50 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:30:53 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:53 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:30:53 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:30:56 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:30:56 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:56 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:30:59 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:30:59 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:30:59 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:02 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:31:02 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:31:02 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:05 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:31:05 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:08 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:31:08 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:31:08 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:11 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:31:11 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:31:11 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:14 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:14 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:31:14 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:17 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:17 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:31:17 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:20 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:20 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:31:20 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:23 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:23 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:31:23 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:26 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:26 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <30>).
+2023/11/22 09:31:26 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:29 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:29 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:31:29 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:32 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:32 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:31:32 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:35 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:35 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:31:35 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:38 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:31:38 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:41 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:31:41 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:31:41 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:44 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:31:44 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:47 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:47 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:31:47 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:50 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:31:50 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:53 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:31:53 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:31:53 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:56 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:31:56 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:31:59 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:31:59 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:31:59 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:02 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:32:02 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:32:02 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:05 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:32:05 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:32:05 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:08 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:32:08 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:32:08 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:11 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:32:11 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:32:11 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:14 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:32:14 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:32:14 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:17 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:32:17 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:32:17 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:20 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:20 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:32:20 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:23 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:23 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:32:23 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:26 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:26 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:32:26 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:29 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:29 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:32:29 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:32 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:32 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:32:32 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:35 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:32:35 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:38 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:38 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:32:38 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:41 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:41 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:32:41 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:44 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:44 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:32:44 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:47 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:47 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:32:47 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:50 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:50 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:32:50 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:53 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:53 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:32:53 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:56 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:56 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:32:56 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:32:59 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:32:59 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:32:59 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:02 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:02 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:33:02 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:05 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:05 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <29>).
+2023/11/22 09:33:05 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:08 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:08 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:33:08 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:11 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:11 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:33:11 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:14 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:14 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:33:14 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:17 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:33:17 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:20 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:33:20 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <22>).
+2023/11/22 09:33:20 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:23 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:33:23 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <21>).
+2023/11/22 09:33:23 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:26 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:33:26 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <22>).
+2023/11/22 09:33:26 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:29 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:33:29 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:32 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:33:32 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:35 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:35 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:33:35 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:38 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:38 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:33:38 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:41 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:41 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:33:41 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:44 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:44 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:33:44 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:47 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:47 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:33:47 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:50 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:50 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:33:50 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:53 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:53 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:33:53 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:56 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:33:56 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:33:56 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:33:59 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:33:59 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:33:59 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:02 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:34:02 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:05 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:34:05 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:08 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:08 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:34:08 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:11 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:34:11 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:14 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:14 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:34:14 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:17 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:34:17 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:34:17 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:20 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:34:20 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:34:20 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:23 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:34:23 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:34:23 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:26 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:26 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:34:26 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:29 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:34:29 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:32 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:32 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:34:32 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:35 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:35 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:34:35 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:38 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:38 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:34:38 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:41 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:34:41 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:44 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:44 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:34:44 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:47 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:47 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <27>).
+2023/11/22 09:34:47 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:50 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:50 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <28>).
+2023/11/22 09:34:50 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:53 [62206] main-server.c:270 at data_mgr(): [INFO]: 2023/11/22 09:34:53 [WARNING]: The sensor node with ID '4' reports it's hot (avg temperature = <26>).
+2023/11/22 09:34:53 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:56 [62206] main-server.c:280 at data_mgr(): [INFO]: Temperature at sensor '4': 25
+2023/11/22 09:34:56 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:34:59 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:34:59 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:34:59 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:35:02 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:35:02 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <21>).
+2023/11/22 09:35:02 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:35:05 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:35:05 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <21>).
+2023/11/22 09:35:05 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:35:08 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:35:08 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <22>).
+2023/11/22 09:35:08 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:35:11 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:35:11 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <23>).
+2023/11/22 09:35:11 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:35:14 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:35:14 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <22>).
+2023/11/22 09:35:14 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database
+2023/11/22 09:35:17 [62206] main-server.c:275 at data_mgr(): [INFO]: 2023/11/22 09:35:17 [WARNING]: The sensor node with ID '4' reports it's cold (avg temperature = <24>).
+2023/11/22 09:35:17 [62206] fdb.c:234 at fdb_data_insert(): [ERROR]: at fdb_data_insert(): sqlite3_step(): attempt to write a readonly database

@@ -22,17 +22,11 @@ fdb_t *fdb_init(sqlite3 *db);
 
 void fdb_destroy(fdb_t *db);
 
-// wdb_hardware_insert
-
-int wdb_create_profile(const char *path);
-
-int wdb_create_file(const char *path, const char *source);
+int fdb_create_file(const char *path, const char *source);
 
 int fdb_create_sensor_db();
 
 int fdb_stmt_cache(fdb_t *fdb, int index);
-
-// int fdb_data_save(fdb_t *fdb, int SID, int temp, char *ts);
 
 int fdb_data_insert(fdb_t *fdb, int SID, int temp, const char *ts);
 

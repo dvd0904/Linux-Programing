@@ -6,8 +6,6 @@
 
 #define PORT "2023" // the port client will be connecting to 
 
-#define MAXDATASIZE 100 // max number of bytes we can get at once 
-
 static void help_msg();
 
 int main(int argc, char *argv[])
