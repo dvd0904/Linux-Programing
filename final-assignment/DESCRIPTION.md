@@ -27,5 +27,6 @@ Memory leak at Storage and Data manager thread.
 ## Fixed
 ``````
 Write wrong data to pipe if multi client send data to server.
+Fixed memory leak.
 ``````
 

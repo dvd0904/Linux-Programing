@@ -1,4 +1,4 @@
 *.o
 *.a
 *.db
-final-assignment/logs/*.log
+*.log

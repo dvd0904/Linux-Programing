@@ -214,7 +214,8 @@ void *data_mgr(void *arg)
     memset(old_msg, '\0', sizeof(old_msg));
 
     msg_t *parsed = NULL;
-    int temp_avg[5], check[5] = {0}, read = *(int *)arg;
+    parsed = (msg_t *)malloc(sizeof(msg_t));
+    int temp_avg[5], check[5] = {0}, read = *(int *)arg, ret = -1;
     int val[6][6] = {0};
     for(int i = 1; i <= 5; i++)
     {
@@ -247,10 +248,10 @@ void *data_mgr(void *arg)
 
         // printf("At Data Manager. Message: %s\n", msg);
         rwlock_rdlock(&sen_lock);
-        parsed = msg_parse(msg, senIDs);
+        ret = msg_parse(&parsed, msg, senIDs);
         rwlock_unlock(&sen_lock);
 
-        if(parsed != NULL)
+        if(ret == 0)
         {   
             val[parsed->senID][val[parsed->senID][0]++] = parsed->temp;
             if(check[parsed->senID - 1])
@@ -287,9 +288,10 @@ void *data_mgr(void *arg)
                 write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP"\n", parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
             }
         }
-        os_free(parsed);
+        
     }
 
+    os_free(parsed);
     os_free(senIDs);
     os_free(msg);
 
@@ -303,8 +305,9 @@ void *storage_mgr(void *arg)
     char old_msg[OS_BUFFER_SIZE];
     memset(old_msg, '\0', sizeof(old_msg));
     
-    int read = *(int *)arg;
+    int read = *(int *)arg, ret = -1;
     msg_t *parsed = NULL;
+    parsed = (msg_t *)malloc(sizeof(msg_t));
     fdb_t *fdb = fdb_open_sensor_db();
     if(fdb != NULL)
         minfo(DB_NEW_CONNECTION);
@@ -336,19 +339,19 @@ void *storage_mgr(void *arg)
 
         // printf("At Storage Manager. Message: %s\n", msg);
         rwlock_rdlock(&sen_lock);
-        parsed = msg_parse(msg, senIDs);
+        ret = msg_parse(&parsed, msg, senIDs);
         rwlock_unlock(&sen_lock);
 
-        if(parsed != NULL)
+        if(ret == 0)
         {
             if(!fdb_data_insert(fdb, parsed->senID, parsed->temp, parsed->ts))
                 mdebug(DB_INSERT);
 
-            os_free(parsed);
         }
     }
 
     fdb_destroy(fdb);
+    os_free(parsed);
     os_free(senIDs);
     os_free(msg);
 }

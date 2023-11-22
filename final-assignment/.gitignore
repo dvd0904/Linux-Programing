@@ -2,3 +2,4 @@
 *.a
 *.db
 *.log
+logs/

@@ -19,7 +19,7 @@ EXTERNAL_SQLITE=sqlite/
 
 AR 		:= ar
 CC 		:= gcc
-C_FLAGS :=-I./ -I./headers/ -I./os_net/ -I./fdb/ -I$(EXTERNAL_JSON) -I$(EXTERNAL_SQLITE) -pthread 
+C_FLAGS :=-I./ -I./headers/ -I./os_net/ -I./fdb/ -I$(EXTERNAL_JSON) -I$(EXTERNAL_SQLITE) -pthread -g
 LD_FLAGS := -ldl
 LINK	:= ${AR} -rcs
 RANLIB  := ranlib

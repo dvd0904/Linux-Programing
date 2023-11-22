@@ -60,46 +60,46 @@ int *read_room()
 }
 
 
-msg_t *msg_parse(char *msg, int *senIDs)
+int msg_parse(msg_t **msg_parsed, char *msg, int *senIDs)
 {
-    msg_t *msg_parsed = (msg_t *)malloc(sizeof(msg_t));
+    // msg_t *msg_parsed = (msg_t *)malloc(sizeof(msg_t));
     cJSON *msg_root = cJSON_Parse(msg);
     if(!cJSON_IsObject(msg_root))
-        return NULL;
+        return -1;
 
     cJSON *senID = cJSON_GetObjectItem(msg_root, "sensorID");
     if(cJSON_IsNumber(senID))
     {
         if(search(senIDs, senID->valueint, 0, 5))
         {
-            msg_parsed->senID = senID->valueint;
+            (*msg_parsed)->senID = senID->valueint;
 
             cJSON *ts = cJSON_GetObjectItem(msg_root, "timestamp");
             if(cJSON_IsString(ts))
-                strcpy(msg_parsed->ts, ts->valuestring);
+                strcpy((*msg_parsed)->ts, ts->valuestring);
             else
             { 
                 cJSON_Delete(ts);
-                return NULL;
+                return -1;
             }
 
             cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
             if(cJSON_IsNumber(temp))
-                msg_parsed->temp = temp->valueint;
+                (*msg_parsed)->temp = temp->valueint;
             else 
             {
                 cJSON_Delete(temp);
-                return NULL;
+                return -1;
             }
         }
         else 
         {
-            return NULL;
+            return -1;
             cJSON_Delete(senID);
         }
     }
 
     cJSON_Delete(msg_root);
 
-    return msg_parsed;
+    return 0;
 }

@@ -29,6 +29,7 @@ int *read_room();
  * @param senIDs an array of sensor ID
  * @return a struct contain all information of message
 */
-msg_t *msg_parse(char *msg, int *senIDs);
+// msg_t *msg_parse(char *msg, int *senIDs);
+int msg_parse(msg_t **msg_parsed, char *msg, int *senIDs);
 
 #endif
