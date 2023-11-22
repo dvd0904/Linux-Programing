@@ -1,7 +1,5 @@
 #include "shared.h"
 
-
-
 char *get_timestamp(time_t time) 
 {
     struct tm localtm;

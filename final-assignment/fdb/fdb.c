@@ -6,6 +6,13 @@ static const char *SQL_STMT[] = {
     [FDB_STMT_DATA_GET_TEMP_ASC]    = "SELECT * FROM sensor WHERE sensor_id = ? ORDER BY temperature;",
 };
 
+/**
+ * @brief Create a database file
+ * @param path path to database file name
+ * @param source script from sql file
+ * @return 0 if success otherwise 0
+ */
+static int fdb_create_file(const char *path, const char *source);
 
 fdb_t *fdb_init(sqlite3 *db)
 {
@@ -19,10 +26,11 @@ void fdb_destroy(fdb_t *fdb)
 {
     if(sqlite3_close_v2(fdb->db) == SQLITE_OK)
         mdebug(DB_DISCONNECT);
+        
     free(fdb);
 }
 
-int fdb_create_file(const char *path, const char *source)
+static int fdb_create_file(const char *path, const char *source)
 {
     const char *sql;
     const char *tail;

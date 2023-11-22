@@ -137,7 +137,7 @@ void *connection_mgr(void *arg)
     char buf[OS_BUFFER_SIZE];
     unsigned short port = *(unsigned short *)arg;
 
-    if (listener = OS_Bindport(port, NULL), listener <= 0)
+    if (listener = OS_BindPort(port), listener <= 0)
     {
         merror(BIND_ERROR, port, errno, strerror(errno));
         exit(1);
@@ -351,7 +351,6 @@ static void help_msg()
     print_out("    -d          Debug mode.");
     print_out("    -p <port>   Manager port.");
     exit(1);
-
 }
 
 void prevent_zombie(int signum)

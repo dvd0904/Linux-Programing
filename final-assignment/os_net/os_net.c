@@ -25,7 +25,7 @@ int OS_Connect(u_int16_t _port, const char *_ip)
 
     memset(&server, 0, sizeof(server));
     server.sin_family = AF_INET;
-    server.sin_port = htons( _port );
+    server.sin_port = htons(_port);
     server.sin_addr.s_addr = inet_addr(_ip);
 
     if (connect(ossock, (struct sockaddr *)&server, sizeof(server)) < 0) 
@@ -37,53 +37,42 @@ int OS_Connect(u_int16_t _port, const char *_ip)
     return (ossock);
 }
 
-
-
-/* Bind a specific port */
-int OS_Bindport(u_int16_t _port, const char *_ip)
+int OS_BindPort(u_int16_t _port)
 {
     int os_sock;
     struct sockaddr_in server;
 
     int flag = 1;
     if ((os_sock = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0) 
-        return (int)(-1);
+        return -1;
 
     if (setsockopt(os_sock, SOL_SOCKET, SO_REUSEADDR, (char *)&flag,  sizeof(flag)) < 0) 
     {
         OS_CloseSocket(os_sock);
-        return (-1);
+        return -1;
     }
 
     memset(&server, 0, sizeof(server));
     server.sin_family = AF_INET;
     server.sin_port = htons(_port);
-
-    
-    if ((_ip == NULL) || (_ip[0] == '\0')) 
-        server.sin_addr.s_addr = htonl(INADDR_ANY);
-    else 
-        server.sin_addr.s_addr = inet_addr(_ip);
-
+    server.sin_addr.s_addr = htonl(INADDR_ANY);
     
     if (bind(os_sock, (struct sockaddr *) &server, sizeof(server)) < 0) 
     {
         OS_CloseSocket(os_sock);
-        return (-1);
+        return -1;
     }
 
     if (listen(os_sock, BACKLOG) < 0) 
     {
         OS_CloseSocket(os_sock);
-        return (-1);
+        return -1;
     }
     
 
-    return (os_sock);
+    return os_sock;
 }
 
-
-/* Accept a TCP connection */
 int OS_AcceptTCP(int socket, char *srcip, size_t addrsize)
 {
     int clientsocket;
@@ -93,8 +82,7 @@ int OS_AcceptTCP(int socket, char *srcip, size_t addrsize)
     memset(&new_client, 0, sizeof(new_client));
     new_client_len = sizeof(new_client);
 
-    if ((clientsocket = accept(socket, (struct sockaddr *) &new_client,
-                               &new_client_len)) < 0) {
+    if ((clientsocket = accept(socket, (struct sockaddr *) &new_client, &new_client_len)) < 0) {
         return (-1);
     }
 
@@ -104,7 +92,6 @@ int OS_AcceptTCP(int socket, char *srcip, size_t addrsize)
     return (clientsocket);
 }
 
-/* Receive a TCP packet (from an open socket) */
 char *OS_RecvTCP(int socket, int sizet)
 {
     char *ret;
@@ -122,8 +109,6 @@ char *OS_RecvTCP(int socket, int sizet)
     return (ret);
 }
 
-
-/* Send a TCP packet (through an open socket) */
 int OS_SendTCP(int socket, const char *msg)
 {
     if ((send(socket, msg, strlen(msg), 0)) <= 0) 
@@ -132,7 +117,6 @@ int OS_SendTCP(int socket, const char *msg)
     return (0);
 
 }
-
 
 int OS_CloseSocket(int socket)
 {

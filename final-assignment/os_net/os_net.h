@@ -1,34 +1,50 @@
-#ifndef OSNET_H
-#define OSNET_H
+#ifndef OS_NET_H
+#define OS_NET_H
 
-/* OS_Bindport*
- * Bind a specific port (protocol and a ip).
- * If the IP is not set, it is going to use ADDR_ANY
- * Return the socket.
+/**
+ * @brief Bind a specific port.
+ * @param _port port to bind
+ * @return socket descriptor
  */
-int OS_Bindport(u_int16_t _port, const char *_ip);
+int OS_BindPort(u_int16_t _port);
 
-/* OS_Connect
- * Connect to a TCP socket
+/**
+ * @brief Connect to a TCP socket.
+ * @param _port port to connect
+ * @param _ip ip address to connect
+ * @return socket descriptor
  */
 int OS_Connect(u_int16_t _port, const char *_ip);
 
-/* Accept a TCP connection */
+/**
+ * @brief Accept a TCP connection.
+ * @param socket socket file descriptor
+ * @param srcip ip address of incomming connection
+ * @param addrsize address size
+ * @return socket descriptor of an incomming connection
+ */
 int OS_AcceptTCP(int socket, char *srcip, size_t addrsize);
 
-/* OS_RecvTCP
- * Receive a TCP packet
+/**
+ * @brief Receive a TCP packet.
+ * @param socket socket file descriptor
+ * @param sizet number of bytes to read
+ * @return a string represent for packet content
  */
 char *OS_RecvTCP(int socket, int sizet);
 
-/* OS_SendTCP
- * Send a TCP packet (in a open socket)
+/**
+ * @brief Send a TCP packet.
+ * @param socket socket file descriptor
+ * @param msg message to send
+ * @return 0 if success otherwise -1
  */
-int OS_SendTCP(int socket, const char *msg) __attribute__((nonnull));
+int OS_SendTCP(int socket, const char *msg);
 
-
-/* Close a network socket
- * Returns 0 on success, else -1 or SOCKET_ERROR
+/**
+ * @brief Close a network socket.
+ * @param socket socket file descriptor
+ * @return 0 if success otherwise -1 or SOCKET_ERROR
  */
 int OS_CloseSocket(int socket);
 
