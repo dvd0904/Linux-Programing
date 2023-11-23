@@ -221,7 +221,7 @@ int fdb_stmt_cache(fdb_t *fdb, int index)
     return 0;
 }
 
-int fdb_data_insert(fdb_t *fdb, int SID, int temp, const char *ts)
+int fdb_data_insert(fdb_t *fdb, int SID, double temp, const char *ts)
 {
     sqlite3_stmt *stmt = NULL;
 
@@ -234,7 +234,7 @@ int fdb_data_insert(fdb_t *fdb, int SID, int temp, const char *ts)
     stmt = fdb->stmt[FDB_STMT_DATA_INSERT];
 
     sqlite3_bind_int(stmt, 1, SID);
-    sqlite3_bind_int(stmt, 2, temp);
+    sqlite3_bind_double(stmt, 2, temp);
     sqlite3_bind_text(stmt, 3, ts, -1, NULL);
 
     if (sqlite3_step(stmt) == SQLITE_DONE)

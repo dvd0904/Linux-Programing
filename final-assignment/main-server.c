@@ -215,13 +215,11 @@ void *data_mgr(void *arg)
 
     msg_t *parsed = NULL;
     parsed = (msg_t *)malloc(sizeof(msg_t));
-    int temp_avg[5], check[5] = {0}, read = *(int *)arg, ret = -1;
-    int val[6][6] = {0};
+    double temp_avg, check[5] = {0}, read = *(int *)arg, ret = -1;
+    double val[6][6] = {0};
     for(int i = 1; i <= 5; i++)
-    {
         val[i][0] = 1;
-        temp_avg[i - 1] = -1;
-    }
+    
 
     while(1)
     {
@@ -253,9 +251,10 @@ void *data_mgr(void *arg)
 
         if(ret == 0)
         {   
-            val[parsed->senID][val[parsed->senID][0]++] = parsed->temp;
+            temp_avg = -1;
+            val[parsed->senID][(int)val[parsed->senID][0]++] = parsed->temp;
             if(check[parsed->senID - 1])
-                temp_avg[parsed->senID - 1] = avg(val[parsed->senID]);
+                temp_avg = avg(val[parsed->senID]);
             
             
             if(val[parsed->senID][0] > 5)
@@ -264,28 +263,27 @@ void *data_mgr(void *arg)
                 if(!check[parsed->senID - 1])
                 {
                     check[parsed->senID - 1] = 1;
-                    temp_avg[parsed->senID - 1] = avg(val[parsed->senID]);
+                    temp_avg = avg(val[parsed->senID]);
                 }
             }
 
-
-            if(temp_avg[parsed->senID - 1] <= 0)
+            if(temp_avg <= 0)
                 continue;
             
-            if(temp_avg[parsed->senID - 1] >= 26)
+            if(temp_avg >= 26)
             {
-                minfo(SENSOR_HOT, parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT"\n", parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
+                minfo(SENSOR_HOT, parsed->ts, parsed->senID, temp_avg);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_HOT"\n", parsed->ts, parsed->senID, temp_avg);
             }
-            else if(temp_avg[parsed->senID - 1] <= 24)
+            else if(temp_avg <= 24)
             {
-                minfo(SENSOR_COLD, parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD"\n", parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
+                minfo(SENSOR_COLD, parsed->ts, parsed->senID, temp_avg);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_COLD"\n", parsed->ts, parsed->senID, temp_avg);
             }
             else 
             {
-                minfo("Temperature at sensor '%d': %d", parsed->senID, temp_avg[parsed->senID - 1]);
-                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP"\n", parsed->ts, parsed->senID, temp_avg[parsed->senID - 1]);
+                minfo("Temperature at sensor '%d': %.1lf", parsed->senID, temp_avg);
+                write_to_pipe(&ipc_pipe_mutex, pfds[1], SENSOR_TEMP"\n", parsed->ts, parsed->senID, temp_avg);
             }
         }
         

@@ -20,7 +20,7 @@ EXTERNAL_SQLITE=sqlite/
 AR 		:= ar
 CC 		:= gcc
 C_FLAGS :=-I./ -I./headers/ -I./os_net/ -I./fdb/ -I$(EXTERNAL_JSON) -I$(EXTERNAL_SQLITE) -pthread -g
-LD_FLAGS := -ldl
+LD_FLAGS := -ldl -lm
 LINK	:= ${AR} -rcs
 RANLIB  := ranlib
 
@@ -54,7 +54,7 @@ main: ${fdb_o} ${shared_o} ${os_net_o} $(JSON_LIB) $(SQLITE_LIB) main-server.c
 	${F_CCBIN} ${C_FLAGS} $^ -o $@ ${LD_FLAGS}
 
 client: ${shared_o} ${os_net_o} client.c $(JSON_LIB)
-	${F_CCBIN} ${C_FLAGS} $^ -o $@ 
+	${F_CCBIN} ${C_FLAGS} $^ -o $@ ${LD_FLAGS}
 
 .PHONY: main client dll dai
 

@@ -85,7 +85,7 @@ int msg_parse(msg_t **msg_parsed, char *msg, int *senIDs)
 
             cJSON *temp = cJSON_GetObjectItem(msg_root, "temperature");
             if(cJSON_IsNumber(temp))
-                (*msg_parsed)->temp = temp->valueint;
+                (*msg_parsed)->temp = round(temp->valuedouble * 10) / 10;
             else 
             {
                 cJSON_Delete(temp);

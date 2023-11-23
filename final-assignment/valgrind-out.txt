@@ -1,0 +1,792 @@
+==79163== Memcheck, a memory error detector
+==79163== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==79163== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==79163== Command: ./main -d -p 2023
+==79163== Parent PID: 79162
+==79163== 
+--79163-- 
+--79163-- Valgrind options:
+--79163--    --leak-check=full
+--79163--    --show-leak-kinds=all
+--79163--    --track-origins=yes
+--79163--    --verbose
+--79163--    --log-file=valgrind-out.txt
+--79163-- Contents of /proc/version:
+--79163--   Linux version 5.15.0-88-generic (buildd@lcy02-amd64-011) (gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #98~20.04.1-Ubuntu SMP Mon Oct 9 16:43:45 UTC 2023
+--79163-- 
+--79163-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-rdtscp-sse3-ssse3-avx
+--79163-- Page sizes: currently 4096, max supported 4096
+--79163-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--79163-- Reading syms from /home/ne/Workspace/embed/Linux-Programing/final-assignment/main
+--79163-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--79163--   Considering /usr/lib/debug/.build-id/c6/90288cb132a32066848b987fe4bfeb82e54291.debug ..
+--79163--   .. build-id is valid
+--79163-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--79163--    object doesn't have a symbol table
+--79163--    object doesn't have a dynamic symbol table
+--79163-- Scheduler: using generic scheduler lock implementation.
+--79163-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==79163== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-79163-by-ne-on-???
+==79163== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-79163-by-ne-on-???
+==79163== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-79163-by-ne-on-???
+==79163== 
+==79163== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==79163== don't want to do, unless you know exactly what you're doing,
+==79163== or are doing some strange experiment):
+==79163==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=79163 ...command...
+==79163== 
+==79163== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==79163==   /path/to/gdb ./main
+==79163== and then give GDB the following command
+==79163==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=79163
+==79163== --pid is optional if only one valgrind process is running
+==79163== 
+--79163-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--79163-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--79163-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--79163--    object doesn't have a symbol table
+--79163-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--79163--    object doesn't have a symbol table
+==79163== WARNING: new redirection conflicts with existing -- ignoring it
+--79163--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--79163--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--79163-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--79163-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--79163-- Reading syms from /usr/lib/x86_64-linux-gnu/libdl-2.31.so
+--79163--   Considering /usr/lib/debug/.build-id/0e/6272b02b03de43552498edad759b3a54f74b3c.debug ..
+--79163--   .. build-id is valid
+--79163-- Reading syms from /usr/lib/x86_64-linux-gnu/libm-2.31.so
+--79163--   Considering /usr/lib/debug/.build-id/da/bf2e22177d19cba820bb905d826c50abdc9110.debug ..
+--79163--   .. build-id is valid
+--79163-- Reading syms from /usr/lib/x86_64-linux-gnu/libpthread-2.31.so
+--79163--   Considering /usr/lib/debug/.build-id/f5/b7b9b3efe01ef7aec691dc8f4e272c518f8cdf.debug ..
+--79163--   .. build-id is valid
+--79163-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--79163--   Considering /usr/lib/debug/.build-id/e6/78fe54a5d2c2092f8e47eb0b33105e380f7340.debug ..
+--79163--   .. build-id is valid
+--79163-- REDIR: 0x4a75480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a757b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a740a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a747e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a76c50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a91ce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a91820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a755e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a75410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a75540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a917e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a75800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a741d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a75950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a92f50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a91860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a7dbb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a75850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a753d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a91930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a74ae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a75750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a756f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a76c90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a758a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a752f0 (libc.so.6:strstr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--79163-- REDIR: 0x4a868c0 (libc.so.6:__strrchr_sse2) redirected to 0x483ea70 (__strrchr_sse2)
+--79163-- REDIR: 0x4a86bc0 (libc.so.6:__strlen_sse2) redirected to 0x483efa0 (__strlen_sse2)
+--79163-- REDIR: 0x4a86480 (libc.so.6:__strchr_sse2) redirected to 0x483eb90 (__strchr_sse2)
+--79163-- REDIR: 0x4a6f0e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--79163-- REDIR: 0x4a74fa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--79163-- REDIR: 0x4a6f6d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--79163-- REDIR: 0x4a90ad0 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4840100 (memcpy@GLIBC_2.2.5)
+--79163-- REDIR: 0x4a90f00 (libc.so.6:__memset_sse2_unaligned) redirected to 0x48428e0 (memset)
+--79163-- REDIR: 0x4b53cc0 (libc.so.6:__strncmp_sse42) redirected to 0x483f7c0 (__strncmp_sse42)
+--79163-- REDIR: 0x4a70b10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
+--79163-- REDIR: 0x4b62570 (libc.so.6:__memcmp_sse4_1) redirected to 0x4842150 (__memcmp_sse4_1)
+--79163-- REDIR: 0x4a7f3b0 (libc.so.6:__strcmp_sse2_unaligned) redirected to 0x483fed0 (strcmp)
+--79163-- REDIR: 0x4a866b0 (libc.so.6:__strchrnul_sse2) redirected to 0x4843540 (strchrnul)
+--79163-- REDIR: 0x4a8c130 (libc.so.6:__strncpy_sse2_unaligned) redirected to 0x483f560 (__strncpy_sse2_unaligned)
+--79163-- REDIR: 0x4a90ab0 (libc.so.6:__mempcpy_sse2_unaligned) redirected to 0x4843660 (mempcpy)
+--79163-- REDIR: 0x4a8bb00 (libc.so.6:__strcpy_sse2_unaligned) redirected to 0x483f090 (strcpy)
+==79163== Thread 3:
+==79163== Syscall param write(buf) points to uninitialised byte(s)
+==79163==    at 0x49C532F: __libc_write (write.c:26)
+==79163==    by 0x49C532F: write (write.c:24)
+==79163==    by 0x115C59: _log (os_file.c:14)
+==79163==    by 0x115DC3: write_to_pipe (os_file.c:23)
+==79163==    by 0x1E9CD1: data_mgr (main-server.c:276)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163==  Address 0x5fc99e9 is on thread 3's stack
+==79163==  in frame #1, created by _log (os_file.c:10)
+==79163==  Uninitialised value was created by a stack allocation
+==79163==    at 0x115BE0: _log (os_file.c:10)
+==79163== 
+==79163== Syscall param write(buf) points to uninitialised byte(s)
+==79163==    at 0x49C532F: __libc_write (write.c:26)
+==79163==    by 0x49C532F: write (write.c:24)
+==79163==    by 0x115C59: _log (os_file.c:14)
+==79163==    by 0x115DC3: write_to_pipe (os_file.c:23)
+==79163==    by 0x1E9D7C: data_mgr (main-server.c:281)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163==  Address 0x5fc99ea is on thread 3's stack
+==79163==  in frame #1, created by _log (os_file.c:10)
+==79163==  Uninitialised value was created by a stack allocation
+==79163==    at 0x115BE0: _log (os_file.c:10)
+==79163== 
+==79163== Syscall param write(buf) points to uninitialised byte(s)
+==79163==    at 0x49C532F: __libc_write (write.c:26)
+==79163==    by 0x49C532F: write (write.c:24)
+==79163==    by 0x115C59: _log (os_file.c:14)
+==79163==    by 0x115DC3: write_to_pipe (os_file.c:23)
+==79163==    by 0x1E9E04: data_mgr (main-server.c:286)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163==  Address 0x5fc99d5 is on thread 3's stack
+==79163==  in frame #1, created by _log (os_file.c:10)
+==79163==  Uninitialised value was created by a stack allocation
+==79163==    at 0x115BE0: _log (os_file.c:10)
+==79163== 
+--79163-- REDIR: 0x4a8d140 (libc.so.6:__stpcpy_sse2_unaligned) redirected to 0x4842570 (__stpcpy_sse2_unaligned)
+==79164== 
+==79164== Process terminating with default action of signal 2 (SIGINT)
+==79164==    at 0x49C5392: read (read.c:26)
+==79164==    by 0x1E8D72: main (main-server.c:86)
+--79164-- REDIR: 0x4a6f6d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+==79164== 
+==79164== HEAP SUMMARY:
+==79164==     in use at exit: 0 bytes in 0 blocks
+==79164==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==79164== 
+==79164== All heap blocks were freed -- no leaks are possible
+==79164== 
+==79164== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==79163== 
+==79163== Process terminating with default action of signal 2 (SIGINT)
+==79163==    at 0x483FEE8: strcmp (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x1E9866: data_mgr (main-server.c:229)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== HEAP SUMMARY:
+==79163==     in use at exit: 152,836 bytes in 73 blocks
+==79163==   total heap usage: 263 allocs, 190 frees, 229,109 bytes allocated
+==79163== 
+==79163== Searching for pointers to 73 not-freed blocks
+==79163== Checked 25,275,672 bytes
+==79163== 
+==79163== Thread 1:
+==79163== 16 bytes in 1 blocks are still reachable in loss record 1 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1205E3: sqlite3DbMallocRaw (sqlite3.c:28373)
+==79163==    by 0x12398D: strAccumFinishRealloc (sqlite3.c:29642)
+==79163==    by 0x123A51: sqlite3StrAccumFinish (sqlite3.c:29656)
+==79163==    by 0x123EAD: sqlite3_vmprintf (sqlite3.c:29804)
+==79163==    by 0x123F90: sqlite3_mprintf (sqlite3.c:29819)
+==79163==    by 0x1E4FE7: sqlite3_overload_function (sqlite3.c:167179)
+==79163==    by 0x197CEF: sqlite3RegisterPerConnectionBuiltinFunctions (sqlite3.c:121136)
+==79163==    by 0x1E69DF: openDatabase (sqlite3.c:168429)
+==79163== 
+==79163== 16 bytes in 1 blocks are still reachable in loss record 2 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1205E3: sqlite3DbMallocRaw (sqlite3.c:28373)
+==79163==    by 0x19ADB4: sqlite3TableAffinity (sqlite3.c:123195)
+==79163==    by 0x19F669: sqlite3GenerateConstraintChecks (sqlite3.c:125450)
+==79163==    by 0x19D2ED: sqlite3Insert (sqlite3.c:124311)
+==79163==    by 0x1DD5D0: yy_reduce (sqlite3.c:162178)
+==79163==    by 0x1E085F: sqlite3Parser (sqlite3.c:163194)
+==79163==    by 0x1E1B58: sqlite3RunParser (sqlite3.c:164490)
+==79163==    by 0x1A87F8: sqlite3Prepare (sqlite3.c:131777)
+==79163== 
+==79163== 20 bytes in 1 blocks are still reachable in loss record 3 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x114550: read_room (os_msg.c:23)
+==79163==    by 0x1E8F4C: main (main-server.c:113)
+==79163== 
+==79163== 24 bytes in 1 blocks are still reachable in loss record 4 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x11FF54: sqlite3_malloc64 (sqlite3.c:28097)
+==79163==    by 0x12CC05: unixOpen (sqlite3.c:40192)
+==79163==    by 0x11EC64: sqlite3OsOpen (sqlite3.c:23650)
+==79163==    by 0x137234: sqlite3PagerOpen (sqlite3.c:57513)
+==79163==    by 0x142398: sqlite3BtreeOpen (sqlite3.c:67960)
+==79163==    by 0x1E6897: openDatabase (sqlite3.c:168394)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163== 
+==79163== 32 bytes in 1 blocks are still reachable in loss record 5 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1E4C41: createFunctionApi (sqlite3.c:167028)
+==79163==    by 0x1E4DD3: sqlite3_create_function_v2 (sqlite3.c:167080)
+==79163==    by 0x1E502F: sqlite3_overload_function (sqlite3.c:167181)
+==79163==    by 0x197CEF: sqlite3RegisterPerConnectionBuiltinFunctions (sqlite3.c:121136)
+==79163==    by 0x1E69DF: openDatabase (sqlite3.c:168429)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163== 
+==79163== 32 bytes in 1 blocks are still reachable in loss record 6 of 44
+==79163==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x112EC7: fdb_init (fdb.c:20)
+==79163==    by 0x113671: fdb_open_sensor_db (fdb.c:188)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== 40 bytes in 1 blocks are still reachable in loss record 7 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x128310: sqlite3HashInsert (sqlite3.c:33645)
+==79163==    by 0x1923BB: findCollSeqEntry (sqlite3.c:117928)
+==79163==    by 0x19242C: sqlite3FindCollSeq (sqlite3.c:117970)
+==79163==    by 0x1E5AE5: createCollation (sqlite3.c:167773)
+==79163==    by 0x1E66F9: openDatabase (sqlite3.c:168353)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163== 
+==79163== 40 bytes in 1 blocks are still reachable in loss record 8 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x128310: sqlite3HashInsert (sqlite3.c:33645)
+==79163==    by 0x1923BB: findCollSeqEntry (sqlite3.c:117928)
+==79163==    by 0x19242C: sqlite3FindCollSeq (sqlite3.c:117970)
+==79163==    by 0x1E5AE5: createCollation (sqlite3.c:167773)
+==79163==    by 0x1E6777: openDatabase (sqlite3.c:168356)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163== 
+==79163== 40 bytes in 1 blocks are still reachable in loss record 9 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x128310: sqlite3HashInsert (sqlite3.c:33645)
+==79163==    by 0x1923BB: findCollSeqEntry (sqlite3.c:117928)
+==79163==    by 0x19242C: sqlite3FindCollSeq (sqlite3.c:117970)
+==79163==    by 0x1E5AE5: createCollation (sqlite3.c:167773)
+==79163==    by 0x1E67A1: openDatabase (sqlite3.c:168357)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163== 
+==79163== 40 bytes in 1 blocks are still reachable in loss record 10 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x128310: sqlite3HashInsert (sqlite3.c:33645)
+==79163==    by 0x192B45: sqlite3FindFunction (sqlite3.c:118264)
+==79163==    by 0x1E4B32: sqlite3CreateFunc (sqlite3.c:166972)
+==79163==    by 0x1E4CC3: createFunctionApi (sqlite3.c:167038)
+==79163==    by 0x1E4DD3: sqlite3_create_function_v2 (sqlite3.c:167080)
+==79163==    by 0x1E502F: sqlite3_overload_function (sqlite3.c:167181)
+==79163==    by 0x197CEF: sqlite3RegisterPerConnectionBuiltinFunctions (sqlite3.c:121136)
+==79163==    by 0x1E69DF: openDatabase (sqlite3.c:168429)
+==79163== 
+==79163== 40 bytes in 2 blocks are still reachable in loss record 11 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x120A4A: sqlite3DbStrNDup (sqlite3.c:28513)
+==79163==    by 0x188933: sqlite3NameFromToken (sqlite3.c:113211)
+==79163==    by 0x189092: sqlite3StartTable (sqlite3.c:113539)
+==79163==    by 0x1DB1EE: yy_reduce (sqlite3.c:161587)
+==79163==    by 0x1E085F: sqlite3Parser (sqlite3.c:163194)
+==79163==    by 0x1E1B58: sqlite3RunParser (sqlite3.c:164490)
+==79163== 
+==79163== 48 bytes in 1 blocks are still reachable in loss record 12 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x11F7F7: pthreadMutexAlloc (sqlite3.c:26867)
+==79163==    by 0x11F661: sqlite3MutexAlloc (sqlite3.c:26410)
+==79163==    by 0x1E65A4: openDatabase (sqlite3.c:168246)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163== 
+==79163== 48 bytes in 1 blocks are still reachable in loss record 13 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x11F84E: pthreadMutexAlloc (sqlite3.c:26888)
+==79163==    by 0x11F630: sqlite3_mutex_alloc (sqlite3.c:26401)
+==79163==    by 0x128DCB: findInodeInfo (sqlite3.c:35489)
+==79163==    by 0x12C2FB: fillInUnixFile (sqlite3.c:39738)
+==79163==    by 0x12CF6D: unixOpen (sqlite3.c:40366)
+==79163==    by 0x11EC64: sqlite3OsOpen (sqlite3.c:23650)
+==79163==    by 0x137234: sqlite3PagerOpen (sqlite3.c:57513)
+==79163== 
+==79163== 56 bytes in 2 blocks are still reachable in loss record 14 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x1205D5: sqlite3DbMallocRaw (sqlite3.c:28372)
+==79163==    by 0x1209EC: sqlite3DbStrDup (sqlite3.c:28502)
+==79163==    by 0x189008: sqlite3StartTable (sqlite3.c:113526)
+==79163==    by 0x1DB1EE: yy_reduce (sqlite3.c:161587)
+==79163==    by 0x1E085F: sqlite3Parser (sqlite3.c:163194)
+==79163==    by 0x1E1B58: sqlite3RunParser (sqlite3.c:164490)
+==79163== 
+==79163== 80 bytes in 1 blocks are still reachable in loss record 15 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x1E9EB0: storage_mgr (main-server.c:308)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== 80 bytes in 1 blocks are still reachable in loss record 16 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x141FAC: sqlite3BtreeOpen (sqlite3.c:67859)
+==79163==    by 0x1E6897: openDatabase (sqlite3.c:168394)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== 80 bytes in 1 blocks are still reachable in loss record 17 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x1E9725: data_mgr (main-server.c:217)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== 80 bytes in 2 blocks are still reachable in loss record 18 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x128310: sqlite3HashInsert (sqlite3.c:33645)
+==79163==    by 0x18C47D: sqlite3EndTable (sqlite3.c:115093)
+==79163==    by 0x1DB2A6: yy_reduce (sqlite3.c:161612)
+==79163==    by 0x1E085F: sqlite3Parser (sqlite3.c:163194)
+==79163==    by 0x1E1B58: sqlite3RunParser (sqlite3.c:164490)
+==79163==    by 0x1A87F8: sqlite3Prepare (sqlite3.c:131777)
+==79163==    by 0x1A76BB: sqlite3InitCallback (sqlite3.c:131188)
+==79163==    by 0x1A79B4: sqlite3InitOne (sqlite3.c:131282)
+==79163== 
+==79163== 80 bytes in 2 blocks are still reachable in loss record 19 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x128310: sqlite3HashInsert (sqlite3.c:33645)
+==79163==    by 0x18C47D: sqlite3EndTable (sqlite3.c:115093)
+==79163==    by 0x1DB2A6: yy_reduce (sqlite3.c:161612)
+==79163==    by 0x1E085F: sqlite3Parser (sqlite3.c:163194)
+==79163==    by 0x1E1B58: sqlite3RunParser (sqlite3.c:164490)
+==79163==    by 0x1A87F8: sqlite3Prepare (sqlite3.c:131777)
+==79163==    by 0x1A76BB: sqlite3InitCallback (sqlite3.c:131188)
+==79163==    by 0x1A0D55: sqlite3_exec (sqlite3.c:126221)
+==79163== 
+==79163== 88 bytes in 1 blocks are still reachable in loss record 20 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x11FF54: sqlite3_malloc64 (sqlite3.c:28097)
+==79163==    by 0x128D66: findInodeInfo (sqlite3.c:35482)
+==79163==    by 0x12C2FB: fillInUnixFile (sqlite3.c:39738)
+==79163==    by 0x12CF6D: unixOpen (sqlite3.c:40366)
+==79163==    by 0x11EC64: sqlite3OsOpen (sqlite3.c:23650)
+==79163==    by 0x137234: sqlite3PagerOpen (sqlite3.c:57513)
+==79163==    by 0x142398: sqlite3BtreeOpen (sqlite3.c:67960)
+==79163==    by 0x1E6897: openDatabase (sqlite3.c:168394)
+==79163== 
+==79163== 88 bytes in 1 blocks are still reachable in loss record 21 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x1205D5: sqlite3DbMallocRaw (sqlite3.c:28372)
+==79163==    by 0x120544: sqlite3DbMallocZero (sqlite3.c:28329)
+==79163==    by 0x192A93: sqlite3FindFunction (sqlite3.c:118256)
+==79163==    by 0x1E4B32: sqlite3CreateFunc (sqlite3.c:166972)
+==79163==    by 0x1E4CC3: createFunctionApi (sqlite3.c:167038)
+==79163==    by 0x1E4DD3: sqlite3_create_function_v2 (sqlite3.c:167080)
+==79163== 
+==79163== 120 bytes in 5 blocks are still reachable in loss record 22 of 44
+==79163==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11433F: _list_push (os_list.c:191)
+==79163==    by 0x113DFA: list_push (os_list.c:84)
+==79163==    by 0x1E965D: connection_mgr (main-server.c:198)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== 128 bytes in 1 blocks are still reachable in loss record 23 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1205E3: sqlite3DbMallocRaw (sqlite3.c:28373)
+==79163==    by 0x120544: sqlite3DbMallocZero (sqlite3.c:28329)
+==79163==    by 0x14FF83: sqlite3BtreeSchema (sqlite3.c:76034)
+==79163==    by 0x192D5B: sqlite3SchemaGet (sqlite3.c:118323)
+==79163==    by 0x1E68FD: openDatabase (sqlite3.c:168404)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163== 
+==79163== 128 bytes in 1 blocks are still reachable in loss record 24 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1205E3: sqlite3DbMallocRaw (sqlite3.c:28373)
+==79163==    by 0x120544: sqlite3DbMallocZero (sqlite3.c:28329)
+==79163==    by 0x192D70: sqlite3SchemaGet (sqlite3.c:118325)
+==79163==    by 0x1E695F: openDatabase (sqlite3.c:168409)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163== 
+==79163== 136 bytes in 1 blocks are still reachable in loss record 25 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x1205D5: sqlite3DbMallocRaw (sqlite3.c:28372)
+==79163==    by 0x120544: sqlite3DbMallocZero (sqlite3.c:28329)
+==79163==    by 0x192312: findCollSeqEntry (sqlite3.c:117918)
+==79163==    by 0x19242C: sqlite3FindCollSeq (sqlite3.c:117970)
+==79163==    by 0x1E5AE5: createCollation (sqlite3.c:167773)
+==79163==    by 0x1E66F9: openDatabase (sqlite3.c:168353)
+==79163== 
+==79163== 136 bytes in 1 blocks are still reachable in loss record 26 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x1205D5: sqlite3DbMallocRaw (sqlite3.c:28372)
+==79163==    by 0x120544: sqlite3DbMallocZero (sqlite3.c:28329)
+==79163==    by 0x192312: findCollSeqEntry (sqlite3.c:117918)
+==79163==    by 0x19242C: sqlite3FindCollSeq (sqlite3.c:117970)
+==79163==    by 0x1E5AE5: createCollation (sqlite3.c:167773)
+==79163==    by 0x1E6777: openDatabase (sqlite3.c:168356)
+==79163== 
+==79163== 136 bytes in 1 blocks are still reachable in loss record 27 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x1205D5: sqlite3DbMallocRaw (sqlite3.c:28372)
+==79163==    by 0x120544: sqlite3DbMallocZero (sqlite3.c:28329)
+==79163==    by 0x192312: findCollSeqEntry (sqlite3.c:117918)
+==79163==    by 0x19242C: sqlite3FindCollSeq (sqlite3.c:117970)
+==79163==    by 0x1E5AE5: createCollation (sqlite3.c:167773)
+==79163==    by 0x1E67A1: openDatabase (sqlite3.c:168357)
+==79163== 
+==79163== 152 bytes in 1 blocks are still reachable in loss record 28 of 44
+==79163==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x1139ED: list_create (os_list.c:11)
+==79163==    by 0x1E8F5D: main (main-server.c:114)
+==79163== 
+==79163== 160 bytes in 1 blocks are still reachable in loss record 29 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x142337: sqlite3BtreeOpen (sqlite3.c:67955)
+==79163==    by 0x1E6897: openDatabase (sqlite3.c:168394)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== 176 bytes in 1 blocks are still reachable in loss record 30 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x13182E: pcache1Create (sqlite3.c:51475)
+==79163==    by 0x12FFCA: sqlite3PcacheSetPageSize (sqlite3.c:50136)
+==79163==    by 0x12FF80: sqlite3PcacheOpen (sqlite3.c:50125)
+==79163==    by 0x1373D3: sqlite3PagerOpen (sqlite3.c:57593)
+==79163==    by 0x142398: sqlite3BtreeOpen (sqlite3.c:67960)
+==79163==    by 0x1E6897: openDatabase (sqlite3.c:168394)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163== 
+==79163== 272 bytes in 1 blocks are possibly lost in loss record 31 of 44
+==79163==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x40149DA: allocate_dtv (dl-tls.c:286)
+==79163==    by 0x40149DA: _dl_allocate_tls (dl-tls.c:532)
+==79163==    by 0x49BB322: allocate_stack (allocatestack.c:622)
+==79163==    by 0x49BB322: pthread_create@@GLIBC_2.2.5 (pthread_create.c:660)
+==79163==    by 0x1E8F9D: main (main-server.c:120)
+==79163== 
+==79163== 272 bytes in 1 blocks are possibly lost in loss record 32 of 44
+==79163==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x40149DA: allocate_dtv (dl-tls.c:286)
+==79163==    by 0x40149DA: _dl_allocate_tls (dl-tls.c:532)
+==79163==    by 0x49BB322: allocate_stack (allocatestack.c:622)
+==79163==    by 0x49BB322: pthread_create@@GLIBC_2.2.5 (pthread_create.c:660)
+==79163==    by 0x1E8FC3: main (main-server.c:121)
+==79163== 
+==79163== 272 bytes in 1 blocks are possibly lost in loss record 33 of 44
+==79163==    at 0x483DD99: calloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x40149DA: allocate_dtv (dl-tls.c:286)
+==79163==    by 0x40149DA: _dl_allocate_tls (dl-tls.c:532)
+==79163==    by 0x49BB322: allocate_stack (allocatestack.c:622)
+==79163==    by 0x49BB322: pthread_create@@GLIBC_2.2.5 (pthread_create.c:660)
+==79163==    by 0x1E8FE9: main (main-server.c:122)
+==79163== 
+==79163== 376 bytes in 16 blocks are still reachable in loss record 34 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x1205D5: sqlite3DbMallocRaw (sqlite3.c:28372)
+==79163==    by 0x1898C7: sqlite3AddColumn (sqlite3.c:113802)
+==79163==    by 0x1DB3B8: yy_reduce (sqlite3.c:161632)
+==79163==    by 0x1E085F: sqlite3Parser (sqlite3.c:163194)
+==79163==    by 0x1E1B58: sqlite3RunParser (sqlite3.c:164490)
+==79163==    by 0x1A87F8: sqlite3Prepare (sqlite3.c:131777)
+==79163== 
+==79163== 512 bytes in 4 blocks are still reachable in loss record 35 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x1205D5: sqlite3DbMallocRaw (sqlite3.c:28372)
+==79163==    by 0x120544: sqlite3DbMallocZero (sqlite3.c:28329)
+==79163==    by 0x1892CA: sqlite3StartTable (sqlite3.c:113600)
+==79163==    by 0x1DB1EE: yy_reduce (sqlite3.c:161587)
+==79163==    by 0x1E085F: sqlite3Parser (sqlite3.c:163194)
+==79163==    by 0x1E1B58: sqlite3RunParser (sqlite3.c:164490)
+==79163== 
+==79163== 520 bytes in 1 blocks are still reachable in loss record 36 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x12F1CC: sqlite3BitvecCreate (sqlite3.c:49517)
+==79163==    by 0x1381F5: pager_open_journal (sqlite3.c:58401)
+==79163==    by 0x138631: pager_write (sqlite3.c:58629)
+==79163==    by 0x138A3A: sqlite3PagerWrite (sqlite3.c:58802)
+==79163==    by 0x1485C0: insertCell (sqlite3.c:72264)
+==79163==    by 0x14CB30: sqlite3BtreeInsert (sqlite3.c:74388)
+==79163==    by 0x1651A0: sqlite3VdbeExec (sqlite3.c:91661)
+==79163== 
+==79163== 744 bytes in 1 blocks are still reachable in loss record 37 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x1E6585: openDatabase (sqlite3.c:168239)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== 984 bytes in 1 blocks are still reachable in loss record 38 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x136FC8: sqlite3PagerOpen (sqlite3.c:57436)
+==79163==    by 0x142398: sqlite3BtreeOpen (sqlite3.c:67960)
+==79163==    by 0x1E6897: openDatabase (sqlite3.c:168394)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163== 
+==79163== 1,056 bytes in 4 blocks are still reachable in loss record 39 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x12058A: dbMallocRawFinish (sqlite3.c:28341)
+==79163==    by 0x120665: sqlite3DbMallocRawNN (sqlite3.c:28389)
+==79163==    by 0x1207F0: sqlite3DbRealloc (sqlite3.c:28435)
+==79163==    by 0x189A24: sqlite3AddColumn (sqlite3.c:113818)
+==79163==    by 0x1DB3B8: yy_reduce (sqlite3.c:161632)
+==79163==    by 0x1E085F: sqlite3Parser (sqlite3.c:163194)
+==79163==    by 0x1E1B58: sqlite3RunParser (sqlite3.c:164490)
+==79163==    by 0x1A87F8: sqlite3Prepare (sqlite3.c:131777)
+==79163== 
+==79163== 2,056 bytes in 1 blocks are still reachable in loss record 40 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1204F7: sqlite3MallocZero (sqlite3.c:28315)
+==79163==    by 0x131352: pcache1ResizeHash (sqlite3.c:51253)
+==79163==    by 0x1318F2: pcache1Create (sqlite3.c:51493)
+==79163==    by 0x12FFCA: sqlite3PcacheSetPageSize (sqlite3.c:50136)
+==79163==    by 0x12FF80: sqlite3PcacheOpen (sqlite3.c:50125)
+==79163==    by 0x1373D3: sqlite3PagerOpen (sqlite3.c:57593)
+==79163==    by 0x142398: sqlite3BtreeOpen (sqlite3.c:67960)
+==79163==    by 0x1E6897: openDatabase (sqlite3.c:168394)
+==79163== 
+==79163== 4,104 bytes in 1 blocks are possibly lost in loss record 41 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x130FA9: pcache1Alloc (sqlite3.c:51051)
+==79163==    by 0x1312A3: sqlite3PageMalloc (sqlite3.c:51195)
+==79163==    by 0x142A74: allocateTempSpace (sqlite3.c:68152)
+==79163==    by 0x144F75: btreeCursor (sqlite3.c:69889)
+==79163==    by 0x145163: sqlite3BtreeCursor (sqlite3.c:69946)
+==79163==    by 0x1638AC: sqlite3VdbeExec (sqlite3.c:90359)
+==79163==    by 0x15BE24: sqlite3Step (sqlite3.c:84861)
+==79163==    by 0x15C07E: sqlite3_step (sqlite3.c:84918)
+==79163== 
+==79163== 4,112 bytes in 1 blocks are still reachable in loss record 42 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x130FA9: pcache1Alloc (sqlite3.c:51051)
+==79163==    by 0x1312A3: sqlite3PageMalloc (sqlite3.c:51195)
+==79163==    by 0x135D27: sqlite3PagerSetPagesize (sqlite3.c:56367)
+==79163==    by 0x13736F: sqlite3PagerOpen (sqlite3.c:57585)
+==79163==    by 0x142398: sqlite3BtreeOpen (sqlite3.c:67960)
+==79163==    by 0x1E6897: openDatabase (sqlite3.c:168394)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163== 
+==79163== 48,008 bytes in 1 blocks are still reachable in loss record 43 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x1E319C: setupLookaside (sqlite3.c:165857)
+==79163==    by 0x1E6A75: openDatabase (sqlite3.c:168469)
+==79163==    by 0x1E6B7F: sqlite3_open_v2 (sqlite3.c:168517)
+==79163==    by 0x113577: fdb_open_sensor_db (fdb.c:165)
+==79163==    by 0x1E9EC1: storage_mgr (main-server.c:309)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163== 
+==79163== 87,208 bytes in 1 blocks are still reachable in loss record 44 of 44
+==79163==    at 0x483B7F3: malloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==79163==    by 0x11F354: sqlite3MemMalloc (sqlite3.c:24162)
+==79163==    by 0x11FE03: mallocWithAlarm (sqlite3.c:28043)
+==79163==    by 0x11FEAF: sqlite3Malloc (sqlite3.c:28073)
+==79163==    by 0x130E10: pcache1InitBulk (sqlite3.c:51003)
+==79163==    by 0x131156: pcache1AllocPage (sqlite3.c:51124)
+==79163==    by 0x131C34: pcache1FetchStage2 (sqlite3.c:51618)
+==79163==    by 0x131D9F: pcache1FetchNoMutex (sqlite3.c:51722)
+==79163==    by 0x131DD2: pcache1Fetch (sqlite3.c:51764)
+==79163==    by 0x130083: sqlite3PcacheFetch (sqlite3.c:50200)
+==79163==    by 0x137BEB: getPageNormal (sqlite3.c:58127)
+==79163==    by 0x13808C: sqlite3PagerGet (sqlite3.c:58303)
+==79163== 
+==79163== LEAK SUMMARY:
+==79163==    definitely lost: 0 bytes in 0 blocks
+==79163==    indirectly lost: 0 bytes in 0 blocks
+==79163==      possibly lost: 4,920 bytes in 4 blocks
+==79163==    still reachable: 147,916 bytes in 69 blocks
+==79163==                       of which reachable via heuristic:
+==79163==                         length64           : 147,432 bytes in 59 blocks
+==79163==         suppressed: 0 bytes in 0 blocks
+==79163== 
+==79163== ERROR SUMMARY: 11 errors from 7 contexts (suppressed: 0 from 0)
+==79163== 
+==79163== 1 errors in context 1 of 7:
+==79163== Thread 3:
+==79163== Syscall param write(buf) points to uninitialised byte(s)
+==79163==    at 0x49C532F: __libc_write (write.c:26)
+==79163==    by 0x49C532F: write (write.c:24)
+==79163==    by 0x115C59: _log (os_file.c:14)
+==79163==    by 0x115DC3: write_to_pipe (os_file.c:23)
+==79163==    by 0x1E9D7C: data_mgr (main-server.c:281)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163==  Address 0x5fc99ea is on thread 3's stack
+==79163==  in frame #1, created by _log (os_file.c:10)
+==79163==  Uninitialised value was created by a stack allocation
+==79163==    at 0x115BE0: _log (os_file.c:10)
+==79163== 
+==79163== 
+==79163== 2 errors in context 2 of 7:
+==79163== Syscall param write(buf) points to uninitialised byte(s)
+==79163==    at 0x49C532F: __libc_write (write.c:26)
+==79163==    by 0x49C532F: write (write.c:24)
+==79163==    by 0x115C59: _log (os_file.c:14)
+==79163==    by 0x115DC3: write_to_pipe (os_file.c:23)
+==79163==    by 0x1E9E04: data_mgr (main-server.c:286)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163==  Address 0x5fc99d5 is on thread 3's stack
+==79163==  in frame #1, created by _log (os_file.c:10)
+==79163==  Uninitialised value was created by a stack allocation
+==79163==    at 0x115BE0: _log (os_file.c:10)
+==79163== 
+==79163== 
+==79163== 4 errors in context 3 of 7:
+==79163== Syscall param write(buf) points to uninitialised byte(s)
+==79163==    at 0x49C532F: __libc_write (write.c:26)
+==79163==    by 0x49C532F: write (write.c:24)
+==79163==    by 0x115C59: _log (os_file.c:14)
+==79163==    by 0x115DC3: write_to_pipe (os_file.c:23)
+==79163==    by 0x1E9CD1: data_mgr (main-server.c:276)
+==79163==    by 0x49BA608: start_thread (pthread_create.c:477)
+==79163==    by 0x4AF4132: clone (clone.S:95)
+==79163==  Address 0x5fc99e9 is on thread 3's stack
+==79163==  in frame #1, created by _log (os_file.c:10)
+==79163==  Uninitialised value was created by a stack allocation
+==79163==    at 0x115BE0: _log (os_file.c:10)
+==79163== 
+==79163== ERROR SUMMARY: 11 errors from 7 contexts (suppressed: 0 from 0)

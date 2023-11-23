@@ -60,9 +60,9 @@ int search(int *arr, int x, int left, int right)
 }
 
 
-int avg(int *arr)
+double avg(double *arr)
 {
-    int ret = 0;
+    double ret = 0;
     for(int i = 1; i <= 5; i++)
         ret += arr[i];
     

@@ -30,3 +30,9 @@ Write wrong data to pipe if multi client send data to server.
 Fixed memory leak.
 ``````
 
+# 21-11-2023
+
+## Fixed
+``````
+Convert int to double
+``````

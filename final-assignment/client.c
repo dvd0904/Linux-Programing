@@ -4,13 +4,11 @@
 #include "cJSON.h"
 #include "os_net/os_net.h"
 
-#define PORT "2023" // the port client will be connecting to 
-
 static void help_msg();
 
 int main(int argc, char *argv[])
 {
-	int temp;
+	double temp;
 	int senID, debug_level = 0, server_fd, ret;
 	unsigned short port = 0;
 	const char *ip = NULL;
@@ -76,10 +74,9 @@ int main(int argc, char *argv[])
 	os_malloc(OS_BUFFER_SIZE, msg);
 
 	srand(time(0)); // Use current time as seed for random generator
-
 	while(1)
 	{
-		temp = MIN_TEMP + rand() % (MAX_TEMP - MIN_TEMP + 1);
+		temp = MIN_TEMP + (rand() / (double) RAND_MAX) * (MAX_TEMP - MIN_TEMP);
 		getMsg(&msg, senID, temp);
 		if(ret = OS_SendTCP(server_fd, msg), ret < 0)
 			merror(SEND_ERROR, errno, strerror(errno));

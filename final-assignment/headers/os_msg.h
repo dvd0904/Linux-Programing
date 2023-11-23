@@ -4,9 +4,9 @@
 
 typedef struct msg_t
 {
-    int senID;
-    int temp;
     char ts[64];
+    double temp;
+    int senID;
 } msg_t;
 
 /**

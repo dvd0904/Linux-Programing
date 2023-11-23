@@ -59,4 +59,4 @@ int fdb_stmt_cache(fdb_t *fdb, int index);
  * @param ts timestamp
  * @return 0 if success otherwise -1
  */
-int fdb_data_insert(fdb_t *fdb, int SID, int temp, const char *ts);
+int fdb_data_insert(fdb_t *fdb, int SID, double temp, const char *ts);

@@ -25,7 +25,7 @@ int search(int *arr, int x, int left, int right);
  * @param arr an array
  * @return average of an array
 */
-int avg(int *arr);
+double avg(double *arr);
 
 
 #endif

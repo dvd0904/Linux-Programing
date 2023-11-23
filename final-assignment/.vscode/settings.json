@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "os_sdata.h": "c",
-        "random": "c"
+        "random": "c",
+        "shared.h": "c"
     }
 }
